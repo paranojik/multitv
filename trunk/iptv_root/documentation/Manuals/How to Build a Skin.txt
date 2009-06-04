@@ -1,0 +1,84 @@
+HOW TO BUILD A SKIN
+===================
+Version 0.0 (Jan 26 2009)
+
+1 INTRODUCTION
+
+2 SHARED OBJECT SIGNATURE FUNCTIONS 
+        2.1 AllocSkin()
+        2.2 GetSkinName()
+
+3 ESSENTIAL CLASSES
+        3.1 Skin
+        3.2 AppInterface
+
+4 SUMMARY
+
+5 VERSION HISTORY
+
+================================================================================
+
+1 INTRODUCTION
+==============
+        This  document  is intended  to give a  high-level  description  of  the
+process of creating a new Skin for the iptv_client application. Although it does
+not cover  the process  in detail,  it presents  the main classes  and functions
+involved in the process and gives a brief description of them. For more details,
+please see the source code.
+
+2 SHARED OBJECT SIGNATURE FUNCTIONS
+===================================
+        To be recognized as a Skin,  a shared  object  must export the functions
+AllocSkin() and GetSkinName(). These must be marked as C-linkage functions. They
+must also be exported from the DLL (in the Win32 case).
+
+2.1 AllocSkin()
+---------------
+extern "C" Skin *AllocSkin()
+
+        This function serves to allocate an  instance of your Skin-derived class
+(more on this in Chapter 3) and return a pointer to it to the application.
+
+2.2 GetSkinName()
+-----------------
+extern "C" const char *GetSkinName()
+
+        This function  returns the  skin name as  a C-style string.  This is the
+name that appears in the skin selection dialog.
+
+3 ESSENTIAL CLASSES
+===================
+        There are two  main classes  involved in  operation of a Skin,  they are
+Skin and AppInterface. See the source for more details on them.
+
+3.1 Skin
+--------
+        The Skin class is common to the Skins and the application. It represents
+the Skin object.  It is also a wxFrame derivative so it also represents the main
+window of your Skin.  It may or may not  be shaped.  Most of the virtual methods
+in  Skin  are  called by  the  application  and  are  used mostly to  update the
+interface or  inform the Skin of  application/protocol  events.  Your new Skin's
+"main" class is derived from  class Skin (and in the  Win32 case it must also be
+exported from the DLL). See Skin.h and SkinLite's source for more details.
+
+3.2 AppInterface
+----------------
+        The  AppInterface  class  is an  isolation  layer  between  Skin and the
+application. It's an abstract class whose  methods are implemented internally in
+the application.  Upon loading,  the protected member  Skin::m_appInterface will
+contain a  pointer  to the  AppInterface  implementation.  Use the  AppInterface
+methods  to   "give  commands"   to  the  application.   See   AppInterface  and
+implementation IPTVClientApp in the source code for more details.
+
+4 SUMMARY
+=========
+        Creating a Skin is essentially creating a shared object (DLL) with:
+        - C-linkage functions AllocSkin and GetSkinName.
+        - a class derived from Skin  (and in turn from wxFrame) implementing the
+virtual methods (please see SkinLite's source for reference).
+        - whatever more  is needed  for your Skin  to operate.  Access  to App's
+functions is done through a pointer to AppInterface.
+
+5 VERSION HISTORY
+=================
+        0.0 090126 Initial revision.

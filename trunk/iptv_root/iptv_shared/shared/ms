@@ -1,0 +1,35 @@
+gcc -Wall -g -O2 -D_LINUX -D_DEBUG -c clbuffer.cpp -o debug/clbuffer.o
+gcc -Wall -g -O2 -D_LINUX -D_DEBUG -c clsbuffer.cpp -o debug/clsbuffer.o
+gcc -Wall -g -O2 -D_LINUX -D_DEBUG -c cmd_base.cpp -o debug/cmd_base.o
+gcc -Wall -g -O2 -D_LINUX -D_DEBUG -c common.cpp -o debug/common.o
+gcc -Wall -g -O2 -D_LINUX -D_DEBUG -c compat.cpp -o debug/compat.o
+gcc -Wall -g -O2 -D_LINUX -D_DEBUG -c Debug.cpp -o debug/Debug.o
+gcc -Wall -g -O2 -D_LINUX -D_DEBUG -c Expr.cpp -o debug/Expr.o
+gcc -Wall -g -O2 -D_LINUX -D_DEBUG -c File_ct.cpp -o debug/File_ct.o
+gcc -Wall -g -O2 -D_LINUX -D_DEBUG -c File_ot.cpp -o debug/File_ot.o
+gcc -Wall -g -O2 -D_LINUX -D_DEBUG -c File_x.cpp -o debug/File_x.o
+gcc -Wall -g -O2 -D_LINUX -D_DEBUG -c Hash_cmd.cpp -o debug/Hash_cmd.o
+gcc -Wall -g -O2 -D_LINUX -D_DEBUG -c locked_inc.cpp -o debug/locked_inc.o
+gcc -Wall -g -O2 -D_LINUX -D_DEBUG -c mem_x.cpp -o debug/mem_x.o
+gcc -Wall -g -O2 -D_LINUX -D_DEBUG -c memmgr.cpp -o debug/memmgr.o
+gcc -Wall -g -O2 -D_LINUX -D_DEBUG -c new-del.cpp -o debug/new-del.o
+gcc -Wall -g -O2 -D_LINUX -D_DEBUG -c semaphore.cpp -o debug/semaphore.o
+gcc -Wall -g -O2 -D_LINUX -D_DEBUG -c ../socket/fd_set.cpp -o debug/fd_set.o
+gcc -Wall -g -O2 -D_LINUX -D_DEBUG -c ../socket/SocketCtrl.cpp -o debug/SocketCtrl.o
+gcc -Wall -g -O2 -D_LINUX -D_DEBUG -c str_ap.cpp -o debug/str_ap.o
+gcc -Wall -g -O2 -D_LINUX -D_DEBUG -c txtbufvect.cpp -o debug/txtbufvect.o
+gcc -Wall -g -O2 -D_LINUX -D_DEBUG -c unixthread.cpp -o debug/unixthread.o
+
+cd debug
+ar rcs libshared.a clbuffer.o clsbuffer.o cmd_base.o common.o compat.o Debug.o Expr.o File_ct.o File_ot.o File_x.o Hash_cmd.o locked_inc.o mem_x.o memmgr.o new-del.o semaphore.o fd_set.o SocketCtrl.o str_ap.o txtbufvect.o unixthread.o
+cp ./libshared.a ../../elccsrv/debug
+
+
+
+#ar rcs shared_lib.a clbuffer.o clsbuffer.o cmd_base.o common.o compat.o Debug.o Expr.o File_ct.o File_ot.o File_x.o Hash_cmd.o locked_inc.o mem_x.o memmgr.o new-del.o semaphore.o fd_set.o SocketCtrl.o str_ap.o txtbufvect.o unixthread.o
+
+# Testes #
+#gcc -g -O2 -D_LINUX -D_DEBUG -I../../ircd/include -c Text1.cpp -o debug/Text1.o
+#gcc -g -O2 -D_LINUX -D_DEBUG -c s_bsd.c -o s_bsd.o
+#gcc -Wall -g -O2 -DFD_SETSIZE=1024 -DUSE_POLL -I../include -I../zlib -c s_bsd.c
+

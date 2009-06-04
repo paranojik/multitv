@@ -1,0 +1,1095 @@
+The system is: Linux - 2.6.22-14-generic - unknown
+Determining if the C compiler is GNU succeeded with the following output:
+# 1 "/usr/share/cmake-2.4/Modules/CMakeTestGNU.c"
+# 1 "<built-in>"
+# 1 "<command line>"
+# 1 "/usr/share/cmake-2.4/Modules/CMakeTestGNU.c"
+
+void THIS_IS_GNU();
+
+Determining if the C++ compiler is GNU succeeded with the following output:
+# 1 "/usr/share/cmake-2.4/Modules/CMakeTestGNU.c"
+# 1 "<built-in>"
+# 1 "<command line>"
+# 1 "/usr/share/cmake-2.4/Modules/CMakeTestGNU.c"
+
+void THIS_IS_GNU();
+
+Determining if the C compiler works passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entering directory `/home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/testCCompiler.o
+/usr/bin/gcc   -o CMakeFiles/cmTryCompileExec.dir/testCCompiler.o   -c /home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc        -fPIC "CMakeFiles/cmTryCompileExec.dir/testCCompiler.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Leaving directory `/home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+Determining size of void* passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entering directory `/home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckTypeSize.o
+/usr/bin/gcc   -o CMakeFiles/cmTryCompileExec.dir/CheckTypeSize.o   -c /home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CheckTypeSize.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc        -fPIC "CMakeFiles/cmTryCompileExec.dir/CheckTypeSize.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Leaving directory `/home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+Determining if the CXX compiler works passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entering directory `/home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec.dir/testCXXCompiler.o
+/usr/bin/c++    -o CMakeFiles/cmTryCompileExec.dir/testCXXCompiler.o -c /home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/c++         -fPIC "CMakeFiles/cmTryCompileExec.dir/testCXXCompiler.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Leaving directory `/home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+Determining size of long passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entering directory `/home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckTypeSize.o
+/usr/bin/gcc   -o CMakeFiles/cmTryCompileExec.dir/CheckTypeSize.o   -c /home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CheckTypeSize.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc        -fPIC "CMakeFiles/cmTryCompileExec.dir/CheckTypeSize.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Leaving directory `/home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+Determining size of long long passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entering directory `/home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckTypeSize.o
+/usr/bin/gcc   -o CMakeFiles/cmTryCompileExec.dir/CheckTypeSize.o   -c /home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CheckTypeSize.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc        -fPIC "CMakeFiles/cmTryCompileExec.dir/CheckTypeSize.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Leaving directory `/home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+Determining size of unsigned int passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entering directory `/home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckTypeSize.o
+/usr/bin/gcc   -o CMakeFiles/cmTryCompileExec.dir/CheckTypeSize.o   -c /home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CheckTypeSize.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc        -fPIC "CMakeFiles/cmTryCompileExec.dir/CheckTypeSize.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Leaving directory `/home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+Determining size of void* passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entering directory `/home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckTypeSize.o
+/usr/bin/gcc   -o CMakeFiles/cmTryCompileExec.dir/CheckTypeSize.o   -c /home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CheckTypeSize.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc        -fPIC "CMakeFiles/cmTryCompileExec.dir/CheckTypeSize.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Leaving directory `/home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+Performing C SOURCE FILE Test HAVE_W_EXTRA succeded with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entering directory `/home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/src.o
+/usr/bin/gcc  -DHAVE_W_EXTRA   -Wextra -o CMakeFiles/cmTryCompileExec.dir/src.o   -c /home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc      -DHAVE_W_EXTRA  -fPIC "CMakeFiles/cmTryCompileExec.dir/src.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Leaving directory `/home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main() { return 0;}
+Performing C SOURCE FILE Test HAVE_STRICT_ALIASING succeded with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entering directory `/home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/src.o
+/usr/bin/gcc  -DHAVE_STRICT_ALIASING   -fstrict-aliasing -o CMakeFiles/cmTryCompileExec.dir/src.o   -c /home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc      -DHAVE_STRICT_ALIASING  -fPIC "CMakeFiles/cmTryCompileExec.dir/src.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Leaving directory `/home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main() { return 0;}
+Performing C SOURCE FILE Test HAVE_GCC_DESTRUCTOR succeded with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entering directory `/home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/src.o
+/usr/bin/gcc  -DHAVE_GCC_DESTRUCTOR   -o CMakeFiles/cmTryCompileExec.dir/src.o   -c /home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc      -DHAVE_GCC_DESTRUCTOR  -fPIC "CMakeFiles/cmTryCompileExec.dir/src.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Leaving directory `/home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+Source file was:
+int foo() __attribute__((destructor));
+                                 int main() {return 0;}
+Performing C SOURCE FILE Test HAVE_VISIBILITY_SWITCH succeded with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entering directory `/home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/src.o
+/usr/bin/gcc  -DHAVE_VISIBILITY_SWITCH   -fvisibility=hidden -o CMakeFiles/cmTryCompileExec.dir/src.o   -c /home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc      -DHAVE_VISIBILITY_SWITCH  -fPIC "CMakeFiles/cmTryCompileExec.dir/src.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Leaving directory `/home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main() { return 0;}
+Performing C SOURCE FILE Test HAVE_GCC_VISIBILITY succeded with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entering directory `/home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/src.o
+/usr/bin/gcc  -DHAVE_GCC_VISIBILITY   -o CMakeFiles/cmTryCompileExec.dir/src.o   -c /home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc      -DHAVE_GCC_VISIBILITY  -fPIC "CMakeFiles/cmTryCompileExec.dir/src.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Leaving directory `/home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+Source file was:
+int foo() __attribute__((visibility("default")));
+                                     int main() {return 0;}
+Determining if the function sqrtf exists in the m passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entering directory `/home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o
+/usr/bin/gcc  -DCHECK_FUNCTION_EXISTS=sqrtf   -o CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o   -c /usr/share/cmake-2.4/Modules/CheckFunctionExists.c
+/usr/share/cmake-2.4/Modules/CheckFunctionExists.c:3: warning: conflicting types for built-in function ‘sqrtf’
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc      -DCHECK_FUNCTION_EXISTS=sqrtf  -fPIC "CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o"   -o cmTryCompileExec -rdynamic -lm 
+make[1]: Leaving directory `/home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+Determining if the function acosf exists in the m passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entering directory `/home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o
+/usr/bin/gcc  -DCHECK_FUNCTION_EXISTS=acosf   -o CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o   -c /usr/share/cmake-2.4/Modules/CheckFunctionExists.c
+/usr/share/cmake-2.4/Modules/CheckFunctionExists.c:3: warning: conflicting types for built-in function ‘acosf’
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc      -DCHECK_FUNCTION_EXISTS=acosf  -fPIC "CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o"   -o cmTryCompileExec -rdynamic -lm 
+make[1]: Leaving directory `/home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+Determining if the function strtof exists passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entering directory `/home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o
+/usr/bin/gcc  -DCHECK_FUNCTION_EXISTS=strtof   -o CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o   -c /usr/share/cmake-2.4/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc      -DCHECK_FUNCTION_EXISTS=strtof  -fPIC "CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Leaving directory `/home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+Determining if the function strcasecmp exists passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entering directory `/home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o
+/usr/bin/gcc  -DCHECK_FUNCTION_EXISTS=strcasecmp   -o CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o   -c /usr/share/cmake-2.4/Modules/CheckFunctionExists.c
+/usr/share/cmake-2.4/Modules/CheckFunctionExists.c:3: warning: conflicting types for built-in function ‘strcasecmp’
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc      -DCHECK_FUNCTION_EXISTS=strcasecmp  -fPIC "CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Leaving directory `/home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+Determining if the function strncasecmp exists passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entering directory `/home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o
+/usr/bin/gcc  -DCHECK_FUNCTION_EXISTS=strncasecmp   -o CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o   -c /usr/share/cmake-2.4/Modules/CheckFunctionExists.c
+/usr/share/cmake-2.4/Modules/CheckFunctionExists.c:3: warning: conflicting types for built-in function ‘strncasecmp’
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc      -DCHECK_FUNCTION_EXISTS=strncasecmp  -fPIC "CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Leaving directory `/home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+Determining if the function snprintf exists passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entering directory `/home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o
+/usr/bin/gcc  -DCHECK_FUNCTION_EXISTS=snprintf   -o CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o   -c /usr/share/cmake-2.4/Modules/CheckFunctionExists.c
+/usr/share/cmake-2.4/Modules/CheckFunctionExists.c:3: warning: conflicting types for built-in function ‘snprintf’
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc      -DCHECK_FUNCTION_EXISTS=snprintf  -fPIC "CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Leaving directory `/home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file dlfcn.h exists passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entering directory `/home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckIncludeFile.o
+/usr/bin/gcc   -o CMakeFiles/cmTryCompileExec.dir/CheckIncludeFile.o   -c /home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc        -fPIC "CMakeFiles/cmTryCompileExec.dir/CheckIncludeFile.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Leaving directory `/home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+Determining if the function dlopen exists in the dl passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entering directory `/home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o
+/usr/bin/gcc  -DCHECK_FUNCTION_EXISTS=dlopen   -o CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o   -c /usr/share/cmake-2.4/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc      -DCHECK_FUNCTION_EXISTS=dlopen  -fPIC "CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o"   -o cmTryCompileExec -rdynamic -ldl 
+make[1]: Leaving directory `/home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+Determining if the function gettimeofday exists passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entering directory `/home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o
+/usr/bin/gcc  -DCHECK_FUNCTION_EXISTS=gettimeofday   -o CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o   -c /usr/share/cmake-2.4/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc      -DCHECK_FUNCTION_EXISTS=gettimeofday  -fPIC "CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Leaving directory `/home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+Determining if the function nanosleep exists passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entering directory `/home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o
+/usr/bin/gcc  -DCHECK_FUNCTION_EXISTS=nanosleep   -o CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o   -c /usr/share/cmake-2.4/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc      -DCHECK_FUNCTION_EXISTS=nanosleep  -fPIC "CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Leaving directory `/home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file pthread.h exists passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entering directory `/home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckIncludeFile.o
+/usr/bin/gcc   -o CMakeFiles/cmTryCompileExec.dir/CheckIncludeFile.o   -c /home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc        -fPIC "CMakeFiles/cmTryCompileExec.dir/CheckIncludeFile.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Leaving directory `/home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+Determining if the function pthread_create exists in the pthread passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entering directory `/home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o
+/usr/bin/gcc  -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o   -c /usr/share/cmake-2.4/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc      -DCHECK_FUNCTION_EXISTS=pthread_create  -fPIC "CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o"   -o cmTryCompileExec -rdynamic -lpthread 
+make[1]: Leaving directory `/home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file stdint.h exists passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entering directory `/home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckIncludeFile.o
+/usr/bin/gcc   -o CMakeFiles/cmTryCompileExec.dir/CheckIncludeFile.o   -c /home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc        -fPIC "CMakeFiles/cmTryCompileExec.dir/CheckIncludeFile.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Leaving directory `/home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file alsa/asoundlib.h exists passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entering directory `/home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckIncludeFile.o
+/usr/bin/gcc   -o CMakeFiles/cmTryCompileExec.dir/CheckIncludeFile.o   -c /home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc        -fPIC "CMakeFiles/cmTryCompileExec.dir/CheckIncludeFile.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Leaving directory `/home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+Determining if the function snd_pcm_open exists in the asound passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entering directory `/home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o
+/usr/bin/gcc  -DCHECK_FUNCTION_EXISTS=snd_pcm_open   -o CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o   -c /usr/share/cmake-2.4/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc      -DCHECK_FUNCTION_EXISTS=snd_pcm_open  -fPIC "CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o"   -o cmTryCompileExec -rdynamic -lasound 
+make[1]: Leaving directory `/home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file sys/soundcard.h exists passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entering directory `/home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckIncludeFile.o
+/usr/bin/gcc   -o CMakeFiles/cmTryCompileExec.dir/CheckIncludeFile.o   -c /home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc        -fPIC "CMakeFiles/cmTryCompileExec.dir/CheckIncludeFile.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Leaving directory `/home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+The system is: Linux - 2.6.24-23-generic - unknown
+Determining if the C compiler is GNU succeeded with the following output:
+# 1 "/usr/share/cmake-2.4/Modules/CMakeTestGNU.c"
+# 1 "<embutido>"
+# 1 "<linha-de-comando>"
+# 1 "/usr/share/cmake-2.4/Modules/CMakeTestGNU.c"
+
+void THIS_IS_GNU();
+
+Determining if the C++ compiler is GNU succeeded with the following output:
+# 1 "/usr/share/cmake-2.4/Modules/CMakeTestGNU.c"
+# 1 "<embutido>"
+# 1 "<linha-de-comando>"
+# 1 "/usr/share/cmake-2.4/Modules/CMakeTestGNU.c"
+
+void THIS_IS_GNU();
+
+Determining if the C compiler works passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entrando no diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/testCCompiler.o
+/usr/bin/gcc   -o CMakeFiles/cmTryCompileExec.dir/testCCompiler.o   -c /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc        -fPIC "CMakeFiles/cmTryCompileExec.dir/testCCompiler.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Saindo do diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+Determining size of void* passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entrando no diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckTypeSize.o
+/usr/bin/gcc   -o CMakeFiles/cmTryCompileExec.dir/CheckTypeSize.o   -c /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CheckTypeSize.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc        -fPIC "CMakeFiles/cmTryCompileExec.dir/CheckTypeSize.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Saindo do diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+Determining if the CXX compiler works passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entrando no diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec.dir/testCXXCompiler.o
+/usr/bin/c++    -o CMakeFiles/cmTryCompileExec.dir/testCXXCompiler.o -c /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/c++         -fPIC "CMakeFiles/cmTryCompileExec.dir/testCXXCompiler.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Saindo do diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+Determining size of long passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entrando no diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckTypeSize.o
+/usr/bin/gcc   -o CMakeFiles/cmTryCompileExec.dir/CheckTypeSize.o   -c /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CheckTypeSize.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc        -fPIC "CMakeFiles/cmTryCompileExec.dir/CheckTypeSize.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Saindo do diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+Determining size of long long passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entrando no diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckTypeSize.o
+/usr/bin/gcc   -o CMakeFiles/cmTryCompileExec.dir/CheckTypeSize.o   -c /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CheckTypeSize.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc        -fPIC "CMakeFiles/cmTryCompileExec.dir/CheckTypeSize.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Saindo do diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+Determining size of unsigned int passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entrando no diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckTypeSize.o
+/usr/bin/gcc   -o CMakeFiles/cmTryCompileExec.dir/CheckTypeSize.o   -c /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CheckTypeSize.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc        -fPIC "CMakeFiles/cmTryCompileExec.dir/CheckTypeSize.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Saindo do diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+Determining size of void* passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entrando no diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckTypeSize.o
+/usr/bin/gcc   -o CMakeFiles/cmTryCompileExec.dir/CheckTypeSize.o   -c /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CheckTypeSize.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc        -fPIC "CMakeFiles/cmTryCompileExec.dir/CheckTypeSize.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Saindo do diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+Performing C SOURCE FILE Test HAVE_W_EXTRA succeded with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entrando no diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/src.o
+/usr/bin/gcc  -DHAVE_W_EXTRA   -Wextra -o CMakeFiles/cmTryCompileExec.dir/src.o   -c /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc      -DHAVE_W_EXTRA  -fPIC "CMakeFiles/cmTryCompileExec.dir/src.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Saindo do diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main() { return 0;}
+Performing C SOURCE FILE Test HAVE_STRICT_ALIASING succeded with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entrando no diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/src.o
+/usr/bin/gcc  -DHAVE_STRICT_ALIASING   -fstrict-aliasing -o CMakeFiles/cmTryCompileExec.dir/src.o   -c /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc      -DHAVE_STRICT_ALIASING  -fPIC "CMakeFiles/cmTryCompileExec.dir/src.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Saindo do diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main() { return 0;}
+Performing C SOURCE FILE Test HAVE_GCC_DESTRUCTOR succeded with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entrando no diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/src.o
+/usr/bin/gcc  -DHAVE_GCC_DESTRUCTOR   -o CMakeFiles/cmTryCompileExec.dir/src.o   -c /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc      -DHAVE_GCC_DESTRUCTOR  -fPIC "CMakeFiles/cmTryCompileExec.dir/src.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Saindo do diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+Source file was:
+int foo() __attribute__((destructor));
+                                 int main() {return 0;}
+Performing C SOURCE FILE Test HAVE_VISIBILITY_SWITCH succeded with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entrando no diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/src.o
+/usr/bin/gcc  -DHAVE_VISIBILITY_SWITCH   -fvisibility=hidden -o CMakeFiles/cmTryCompileExec.dir/src.o   -c /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc      -DHAVE_VISIBILITY_SWITCH  -fPIC "CMakeFiles/cmTryCompileExec.dir/src.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Saindo do diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main() { return 0;}
+Performing C SOURCE FILE Test HAVE_GCC_VISIBILITY succeded with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entrando no diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/src.o
+/usr/bin/gcc  -DHAVE_GCC_VISIBILITY   -o CMakeFiles/cmTryCompileExec.dir/src.o   -c /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc      -DHAVE_GCC_VISIBILITY  -fPIC "CMakeFiles/cmTryCompileExec.dir/src.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Saindo do diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+Source file was:
+int foo() __attribute__((visibility("default")));
+                                     int main() {return 0;}
+Determining if the function sqrtf exists in the m passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entrando no diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o
+/usr/bin/gcc  -DCHECK_FUNCTION_EXISTS=sqrtf   -o CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o   -c /usr/share/cmake-2.4/Modules/CheckFunctionExists.c
+/usr/share/cmake-2.4/Modules/CheckFunctionExists.c:3: aviso: conflicting types for built-in function ‘sqrtf’
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc      -DCHECK_FUNCTION_EXISTS=sqrtf  -fPIC "CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o"   -o cmTryCompileExec -rdynamic -lm 
+make[1]: Saindo do diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+Determining if the function acosf exists in the m passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entrando no diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o
+/usr/bin/gcc  -DCHECK_FUNCTION_EXISTS=acosf   -o CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o   -c /usr/share/cmake-2.4/Modules/CheckFunctionExists.c
+/usr/share/cmake-2.4/Modules/CheckFunctionExists.c:3: aviso: conflicting types for built-in function ‘acosf’
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc      -DCHECK_FUNCTION_EXISTS=acosf  -fPIC "CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o"   -o cmTryCompileExec -rdynamic -lm 
+make[1]: Saindo do diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+Determining if the function strtof exists passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entrando no diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o
+/usr/bin/gcc  -DCHECK_FUNCTION_EXISTS=strtof   -o CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o   -c /usr/share/cmake-2.4/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc      -DCHECK_FUNCTION_EXISTS=strtof  -fPIC "CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Saindo do diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+Determining if the function strcasecmp exists passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entrando no diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o
+/usr/bin/gcc  -DCHECK_FUNCTION_EXISTS=strcasecmp   -o CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o   -c /usr/share/cmake-2.4/Modules/CheckFunctionExists.c
+/usr/share/cmake-2.4/Modules/CheckFunctionExists.c:3: aviso: conflicting types for built-in function ‘strcasecmp’
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc      -DCHECK_FUNCTION_EXISTS=strcasecmp  -fPIC "CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Saindo do diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+Determining if the function strncasecmp exists passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entrando no diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o
+/usr/bin/gcc  -DCHECK_FUNCTION_EXISTS=strncasecmp   -o CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o   -c /usr/share/cmake-2.4/Modules/CheckFunctionExists.c
+/usr/share/cmake-2.4/Modules/CheckFunctionExists.c:3: aviso: conflicting types for built-in function ‘strncasecmp’
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc      -DCHECK_FUNCTION_EXISTS=strncasecmp  -fPIC "CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Saindo do diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+Determining if the function snprintf exists passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entrando no diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o
+/usr/bin/gcc  -DCHECK_FUNCTION_EXISTS=snprintf   -o CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o   -c /usr/share/cmake-2.4/Modules/CheckFunctionExists.c
+/usr/share/cmake-2.4/Modules/CheckFunctionExists.c:3: aviso: conflicting types for built-in function ‘snprintf’
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc      -DCHECK_FUNCTION_EXISTS=snprintf  -fPIC "CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Saindo do diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file dlfcn.h exists passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entrando no diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckIncludeFile.o
+/usr/bin/gcc   -o CMakeFiles/cmTryCompileExec.dir/CheckIncludeFile.o   -c /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc        -fPIC "CMakeFiles/cmTryCompileExec.dir/CheckIncludeFile.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Saindo do diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+Determining if the function dlopen exists in the dl passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entrando no diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o
+/usr/bin/gcc  -DCHECK_FUNCTION_EXISTS=dlopen   -o CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o   -c /usr/share/cmake-2.4/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc      -DCHECK_FUNCTION_EXISTS=dlopen  -fPIC "CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o"   -o cmTryCompileExec -rdynamic -ldl 
+make[1]: Saindo do diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+Determining if the function gettimeofday exists passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entrando no diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o
+/usr/bin/gcc  -DCHECK_FUNCTION_EXISTS=gettimeofday   -o CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o   -c /usr/share/cmake-2.4/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc      -DCHECK_FUNCTION_EXISTS=gettimeofday  -fPIC "CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Saindo do diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+Determining if the function nanosleep exists passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entrando no diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o
+/usr/bin/gcc  -DCHECK_FUNCTION_EXISTS=nanosleep   -o CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o   -c /usr/share/cmake-2.4/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc      -DCHECK_FUNCTION_EXISTS=nanosleep  -fPIC "CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Saindo do diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file pthread.h exists passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entrando no diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckIncludeFile.o
+/usr/bin/gcc   -o CMakeFiles/cmTryCompileExec.dir/CheckIncludeFile.o   -c /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc        -fPIC "CMakeFiles/cmTryCompileExec.dir/CheckIncludeFile.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Saindo do diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+Determining if the function pthread_create exists in the pthread passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entrando no diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o
+/usr/bin/gcc  -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o   -c /usr/share/cmake-2.4/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc      -DCHECK_FUNCTION_EXISTS=pthread_create  -fPIC "CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o"   -o cmTryCompileExec -rdynamic -lpthread 
+make[1]: Saindo do diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file stdint.h exists passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entrando no diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckIncludeFile.o
+/usr/bin/gcc   -o CMakeFiles/cmTryCompileExec.dir/CheckIncludeFile.o   -c /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc        -fPIC "CMakeFiles/cmTryCompileExec.dir/CheckIncludeFile.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Saindo do diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file alsa/asoundlib.h exists passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entrando no diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckIncludeFile.o
+/usr/bin/gcc   -o CMakeFiles/cmTryCompileExec.dir/CheckIncludeFile.o   -c /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc        -fPIC "CMakeFiles/cmTryCompileExec.dir/CheckIncludeFile.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Saindo do diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+Determining if the function snd_pcm_open exists in the asound passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entrando no diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o
+/usr/bin/gcc  -DCHECK_FUNCTION_EXISTS=snd_pcm_open   -o CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o   -c /usr/share/cmake-2.4/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc      -DCHECK_FUNCTION_EXISTS=snd_pcm_open  -fPIC "CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o"   -o cmTryCompileExec -rdynamic -lasound 
+make[1]: Saindo do diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file sys/soundcard.h exists passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entrando no diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckIncludeFile.o
+/usr/bin/gcc   -o CMakeFiles/cmTryCompileExec.dir/CheckIncludeFile.o   -c /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc        -fPIC "CMakeFiles/cmTryCompileExec.dir/CheckIncludeFile.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Saindo do diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+The system is: Linux - 2.6.24-23-generic - unknown
+Determining if the C compiler is GNU succeeded with the following output:
+# 1 "/usr/share/cmake-2.4/Modules/CMakeTestGNU.c"
+# 1 "<embutido>"
+# 1 "<linha-de-comando>"
+# 1 "/usr/share/cmake-2.4/Modules/CMakeTestGNU.c"
+
+void THIS_IS_GNU();
+
+Determining if the C++ compiler is GNU succeeded with the following output:
+# 1 "/usr/share/cmake-2.4/Modules/CMakeTestGNU.c"
+# 1 "<embutido>"
+# 1 "<linha-de-comando>"
+# 1 "/usr/share/cmake-2.4/Modules/CMakeTestGNU.c"
+
+void THIS_IS_GNU();
+
+Determining if the C compiler works passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entrando no diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/testCCompiler.o
+/usr/bin/gcc   -o CMakeFiles/cmTryCompileExec.dir/testCCompiler.o   -c /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/testCCompiler.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc        -fPIC "CMakeFiles/cmTryCompileExec.dir/testCCompiler.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Saindo do diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+Determining size of void* passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entrando no diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckTypeSize.o
+/usr/bin/gcc   -o CMakeFiles/cmTryCompileExec.dir/CheckTypeSize.o   -c /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CheckTypeSize.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc        -fPIC "CMakeFiles/cmTryCompileExec.dir/CheckTypeSize.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Saindo do diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+Determining if the CXX compiler works passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entrando no diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building CXX object CMakeFiles/cmTryCompileExec.dir/testCXXCompiler.o
+/usr/bin/c++    -o CMakeFiles/cmTryCompileExec.dir/testCXXCompiler.o -c /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/testCXXCompiler.cxx
+Linking CXX executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/c++         -fPIC "CMakeFiles/cmTryCompileExec.dir/testCXXCompiler.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Saindo do diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+Determining size of long passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entrando no diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckTypeSize.o
+/usr/bin/gcc   -o CMakeFiles/cmTryCompileExec.dir/CheckTypeSize.o   -c /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CheckTypeSize.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc        -fPIC "CMakeFiles/cmTryCompileExec.dir/CheckTypeSize.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Saindo do diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+Determining size of long long passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entrando no diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckTypeSize.o
+/usr/bin/gcc   -o CMakeFiles/cmTryCompileExec.dir/CheckTypeSize.o   -c /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CheckTypeSize.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc        -fPIC "CMakeFiles/cmTryCompileExec.dir/CheckTypeSize.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Saindo do diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+Determining size of unsigned int passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entrando no diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckTypeSize.o
+/usr/bin/gcc   -o CMakeFiles/cmTryCompileExec.dir/CheckTypeSize.o   -c /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CheckTypeSize.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc        -fPIC "CMakeFiles/cmTryCompileExec.dir/CheckTypeSize.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Saindo do diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+Determining size of void* passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entrando no diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckTypeSize.o
+/usr/bin/gcc   -o CMakeFiles/cmTryCompileExec.dir/CheckTypeSize.o   -c /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CheckTypeSize.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc        -fPIC "CMakeFiles/cmTryCompileExec.dir/CheckTypeSize.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Saindo do diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+Performing C SOURCE FILE Test HAVE_W_EXTRA succeded with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entrando no diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/src.o
+/usr/bin/gcc  -DHAVE_W_EXTRA   -Wextra -o CMakeFiles/cmTryCompileExec.dir/src.o   -c /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc      -DHAVE_W_EXTRA  -fPIC "CMakeFiles/cmTryCompileExec.dir/src.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Saindo do diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main() { return 0;}
+Performing C SOURCE FILE Test HAVE_STRICT_ALIASING succeded with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entrando no diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/src.o
+/usr/bin/gcc  -DHAVE_STRICT_ALIASING   -fstrict-aliasing -o CMakeFiles/cmTryCompileExec.dir/src.o   -c /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc      -DHAVE_STRICT_ALIASING  -fPIC "CMakeFiles/cmTryCompileExec.dir/src.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Saindo do diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main() { return 0;}
+Performing C SOURCE FILE Test HAVE_GCC_DESTRUCTOR succeded with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entrando no diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/src.o
+/usr/bin/gcc  -DHAVE_GCC_DESTRUCTOR   -o CMakeFiles/cmTryCompileExec.dir/src.o   -c /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc      -DHAVE_GCC_DESTRUCTOR  -fPIC "CMakeFiles/cmTryCompileExec.dir/src.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Saindo do diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+Source file was:
+int foo() __attribute__((destructor));
+                                 int main() {return 0;}
+Performing C SOURCE FILE Test HAVE_VISIBILITY_SWITCH succeded with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entrando no diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/src.o
+/usr/bin/gcc  -DHAVE_VISIBILITY_SWITCH   -fvisibility=hidden -o CMakeFiles/cmTryCompileExec.dir/src.o   -c /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc      -DHAVE_VISIBILITY_SWITCH  -fPIC "CMakeFiles/cmTryCompileExec.dir/src.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Saindo do diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+Source file was:
+int main() { return 0;}
+Performing C SOURCE FILE Test HAVE_GCC_VISIBILITY succeded with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entrando no diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/src.o
+/usr/bin/gcc  -DHAVE_GCC_VISIBILITY   -o CMakeFiles/cmTryCompileExec.dir/src.o   -c /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc      -DHAVE_GCC_VISIBILITY  -fPIC "CMakeFiles/cmTryCompileExec.dir/src.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Saindo do diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+Source file was:
+int foo() __attribute__((visibility("default")));
+                                     int main() {return 0;}
+Determining if the function sqrtf exists in the m passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entrando no diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o
+/usr/bin/gcc  -DCHECK_FUNCTION_EXISTS=sqrtf   -o CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o   -c /usr/share/cmake-2.4/Modules/CheckFunctionExists.c
+/usr/share/cmake-2.4/Modules/CheckFunctionExists.c:3: aviso: conflicting types for built-in function ‘sqrtf’
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc      -DCHECK_FUNCTION_EXISTS=sqrtf  -fPIC "CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o"   -o cmTryCompileExec -rdynamic -lm 
+make[1]: Saindo do diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+Determining if the function acosf exists in the m passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entrando no diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o
+/usr/bin/gcc  -DCHECK_FUNCTION_EXISTS=acosf   -o CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o   -c /usr/share/cmake-2.4/Modules/CheckFunctionExists.c
+/usr/share/cmake-2.4/Modules/CheckFunctionExists.c:3: aviso: conflicting types for built-in function ‘acosf’
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc      -DCHECK_FUNCTION_EXISTS=acosf  -fPIC "CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o"   -o cmTryCompileExec -rdynamic -lm 
+make[1]: Saindo do diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+Determining if the function strtof exists passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entrando no diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o
+/usr/bin/gcc  -DCHECK_FUNCTION_EXISTS=strtof   -o CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o   -c /usr/share/cmake-2.4/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc      -DCHECK_FUNCTION_EXISTS=strtof  -fPIC "CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Saindo do diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+Determining if the function strcasecmp exists passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entrando no diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o
+/usr/bin/gcc  -DCHECK_FUNCTION_EXISTS=strcasecmp   -o CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o   -c /usr/share/cmake-2.4/Modules/CheckFunctionExists.c
+/usr/share/cmake-2.4/Modules/CheckFunctionExists.c:3: aviso: conflicting types for built-in function ‘strcasecmp’
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc      -DCHECK_FUNCTION_EXISTS=strcasecmp  -fPIC "CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Saindo do diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+Determining if the function strncasecmp exists passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entrando no diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o
+/usr/bin/gcc  -DCHECK_FUNCTION_EXISTS=strncasecmp   -o CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o   -c /usr/share/cmake-2.4/Modules/CheckFunctionExists.c
+/usr/share/cmake-2.4/Modules/CheckFunctionExists.c:3: aviso: conflicting types for built-in function ‘strncasecmp’
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc      -DCHECK_FUNCTION_EXISTS=strncasecmp  -fPIC "CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Saindo do diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+Determining if the function snprintf exists passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entrando no diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o
+/usr/bin/gcc  -DCHECK_FUNCTION_EXISTS=snprintf   -o CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o   -c /usr/share/cmake-2.4/Modules/CheckFunctionExists.c
+/usr/share/cmake-2.4/Modules/CheckFunctionExists.c:3: aviso: conflicting types for built-in function ‘snprintf’
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc      -DCHECK_FUNCTION_EXISTS=snprintf  -fPIC "CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Saindo do diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file dlfcn.h exists passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entrando no diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckIncludeFile.o
+/usr/bin/gcc   -o CMakeFiles/cmTryCompileExec.dir/CheckIncludeFile.o   -c /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc        -fPIC "CMakeFiles/cmTryCompileExec.dir/CheckIncludeFile.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Saindo do diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+Determining if the function dlopen exists in the dl passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entrando no diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o
+/usr/bin/gcc  -DCHECK_FUNCTION_EXISTS=dlopen   -o CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o   -c /usr/share/cmake-2.4/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc      -DCHECK_FUNCTION_EXISTS=dlopen  -fPIC "CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o"   -o cmTryCompileExec -rdynamic -ldl 
+make[1]: Saindo do diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+Determining if the function gettimeofday exists passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entrando no diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o
+/usr/bin/gcc  -DCHECK_FUNCTION_EXISTS=gettimeofday   -o CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o   -c /usr/share/cmake-2.4/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc      -DCHECK_FUNCTION_EXISTS=gettimeofday  -fPIC "CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Saindo do diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+Determining if the function nanosleep exists passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entrando no diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o
+/usr/bin/gcc  -DCHECK_FUNCTION_EXISTS=nanosleep   -o CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o   -c /usr/share/cmake-2.4/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc      -DCHECK_FUNCTION_EXISTS=nanosleep  -fPIC "CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Saindo do diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file pthread.h exists passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entrando no diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckIncludeFile.o
+/usr/bin/gcc   -o CMakeFiles/cmTryCompileExec.dir/CheckIncludeFile.o   -c /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc        -fPIC "CMakeFiles/cmTryCompileExec.dir/CheckIncludeFile.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Saindo do diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+Determining if the function pthread_create exists in the pthread passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entrando no diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o
+/usr/bin/gcc  -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o   -c /usr/share/cmake-2.4/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc      -DCHECK_FUNCTION_EXISTS=pthread_create  -fPIC "CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o"   -o cmTryCompileExec -rdynamic -lpthread 
+make[1]: Saindo do diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file stdint.h exists passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entrando no diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckIncludeFile.o
+/usr/bin/gcc   -o CMakeFiles/cmTryCompileExec.dir/CheckIncludeFile.o   -c /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc        -fPIC "CMakeFiles/cmTryCompileExec.dir/CheckIncludeFile.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Saindo do diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file alsa/asoundlib.h exists passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entrando no diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckIncludeFile.o
+/usr/bin/gcc   -o CMakeFiles/cmTryCompileExec.dir/CheckIncludeFile.o   -c /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc        -fPIC "CMakeFiles/cmTryCompileExec.dir/CheckIncludeFile.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Saindo do diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+Determining if the function snd_pcm_open exists in the asound passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entrando no diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o
+/usr/bin/gcc  -DCHECK_FUNCTION_EXISTS=snd_pcm_open   -o CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o   -c /usr/share/cmake-2.4/Modules/CheckFunctionExists.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc      -DCHECK_FUNCTION_EXISTS=snd_pcm_open  -fPIC "CMakeFiles/cmTryCompileExec.dir/CheckFunctionExists.o"   -o cmTryCompileExec -rdynamic -lasound 
+make[1]: Saindo do diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+
+Determining if the include file sys/soundcard.h exists passed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entrando no diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckIncludeFile.o
+/usr/bin/gcc   -o CMakeFiles/cmTryCompileExec.dir/CheckIncludeFile.o   -c /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTryCompileExec
+/usr/bin/cmake -P CMakeFiles/cmTryCompileExec.dir/cmake_clean_target.cmake
+/usr/bin/gcc        -fPIC "CMakeFiles/cmTryCompileExec.dir/CheckIncludeFile.o"   -o cmTryCompileExec -rdynamic 
+make[1]: Saindo do diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+
+

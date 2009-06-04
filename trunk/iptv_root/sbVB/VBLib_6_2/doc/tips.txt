@@ -1,0 +1,8 @@
+Add this to include path
+../../../include,$(sbvb_home)/VBLib_6_1/include
+
+Add this to library path
+$(sbvb_home)/VBLib_6_1/lib
+
+Add this to libraries
+VBLib_6_1.lib

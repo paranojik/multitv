@@ -1,0 +1,1620 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: MultiTV\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-02-25 23:18-0300\n"
+"PO-Revision-Date: 2009-02-25 23:20-0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Portuguese\n"
+"X-Poedit-Country: BRAZIL\n"
+"X-Poedit-Basepath: ../../../\n"
+"X-Poedit-SearchPath-0: ./include/Skin\n"
+"X-Poedit-SearchPath-1: ../skin_lite/include/SkinLite\n"
+"X-Poedit-SearchPath-2: ../skin_lite/src/SkinLite\n"
+"X-Poedit-SearchPath-3: ./src/Skin\n"
+"X-Poedit-SearchPath-4: ../iptv_wboard/src\n"
+"X-Poedit-SearchPath-5: ../skin_telemedicine/include/SkinTelemedicine\n"
+"X-Poedit-SearchPath-6: ../skin_telemedicine/src/SkinTelemedicine\n"
+
+#: ../skin_lite/src/SkinLite/ChannelModesDialog.cpp:158
+msgid "Topic:"
+msgstr "Tópico:"
+
+#: ../skin_lite/src/SkinLite/ChannelModesDialog.cpp:174
+msgid "Only moderators can set topic"
+msgstr "Somente moderadores definem tópico"
+
+#: ../skin_lite/src/SkinLite/ChannelModesDialog.cpp:182
+msgid "Silence collaborators"
+msgstr "Emudecer colaboradores"
+
+#: ../skin_lite/src/SkinLite/ChannelModesDialog.cpp:190
+msgid "No external messages allowed"
+msgstr "Ignorar mensagens externas"
+
+#: ../skin_lite/src/SkinLite/ChannelModesDialog.cpp:198
+msgid "Private"
+msgstr "Privado"
+
+#: ../skin_lite/src/SkinLite/ChannelModesDialog.cpp:209
+msgid "Adjust bitrate"
+msgstr "Ajustar banda a"
+
+#: ../skin_lite/src/SkinLite/ChannelModesDialog.cpp:220
+msgid "kbps"
+msgstr ""
+
+#: ../skin_lite/src/SkinLite/ChannelModesDialog.cpp:231
+msgid "Password"
+msgstr "Senha"
+
+#: ../skin_lite/src/SkinLite/ChannelModesDialog.cpp:248
+msgid "Multiple video transmissions"
+msgstr "Múltiplas transmissões de vídeo"
+
+#: ../skin_lite/src/SkinLite/ChannelModesDialog.cpp:256
+msgid "Invited only"
+msgstr "Somente convidados"
+
+#: ../skin_lite/src/SkinLite/ChannelModesDialog.cpp:267
+#: ../skin_lite/src/SkinLite/ChannelModesDialog.cpp:293
+msgid "Limit to"
+msgstr "Limitar a"
+
+#: ../skin_lite/src/SkinLite/ChannelModesDialog.cpp:282
+msgid "collaborators"
+msgstr "colaboradores"
+
+#: ../skin_lite/src/SkinLite/ChannelModesDialog.cpp:305
+msgid "users"
+msgstr "usuários"
+
+#: ../skin_lite/src/SkinLite/ChannelModesDialog.cpp:316
+msgid "Share band up to"
+msgstr "Compartilhar banda até"
+
+#: ../skin_lite/src/SkinLite/ChannelModesDialog.cpp:328
+msgid "transmissions"
+msgstr "transmissões"
+
+#: ../skin_lite/src/SkinLite/ChannelModesDialog.cpp:336
+msgid "Secret"
+msgstr "Secreto"
+
+#: ../skin_lite/src/SkinLite/ChannelModesDialog.cpp:347
+msgid "Automatic audio switch time"
+msgstr "Chaveamento automático de áudio em"
+
+#: ../skin_lite/src/SkinLite/ChannelModesDialog.cpp:362
+msgid "ms"
+msgstr ""
+
+#: ../skin_lite/src/SkinLite/ChannelModesDialog.cpp:370
+msgid "Moderated"
+msgstr "Moderado"
+
+#: ../skin_lite/src/SkinLite/ChannelModesDialog.cpp:378
+msgid "Adjust bitrate in function of packet loss"
+msgstr "Ajustar banda em função da perda de pacotes"
+
+#: ../skin_lite/src/SkinLite/ChannelModesDialog.cpp:384
+msgid "Ok"
+msgstr ""
+
+#: ../skin_lite/src/SkinLite/ChannelModesDialog.cpp:387
+#: ../skin_lite/src/SkinLite/PlaylistFrame.cpp:249
+#: ../skin_lite/src/SkinLite/ReceiveFilesFrame.cpp:407
+#: ../skin_lite/src/SkinLite/RecordingDialog.cpp:179
+#: ../skin_lite/src/SkinLite/SendFilesFrame.cpp:494
+#: ../skin_lite/src/SkinLite/SeriesCollaborationDialog.cpp:90
+#: ../skin_lite/src/SkinLite/TransmissionConfigDialog.cpp:366
+#: include/Skin/Constants.h:40
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:155
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:175
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:192
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: ../skin_lite/src/SkinLite/ChannelWindow.cpp:102
+msgid "Channel List"
+msgstr "Lista de Canais"
+
+#: ../skin_lite/src/SkinLite/ChannelWindow.cpp:104
+msgid "Selected Channel"
+msgstr "Canal Selecionado"
+
+#: ../skin_lite/src/SkinLite/ChannelWindow.cpp:132
+#: include/Skin/Constants.h:35
+#: include/Skin/Constants.h:38
+msgid "Password:"
+msgstr "Senha:"
+
+#: ../skin_lite/src/SkinLite/ChannelWindow.cpp:386
+msgid "Connected on server: "
+msgstr "Conectado ao servidor:"
+
+#: ../skin_lite/src/SkinLite/ChannelWindow.cpp:390
+msgid "Not connected"
+msgstr "Desconectado"
+
+#: ../skin_lite/src/SkinLite/MulticastConfigDialog.cpp:39
+msgid "Host"
+msgstr "Servidor"
+
+#: ../skin_lite/src/SkinLite/MulticastConfigDialog.cpp:40
+msgid "Port"
+msgstr "Porta"
+
+#: ../skin_lite/src/SkinLite/MulticastConfigDialog.cpp:47
+#, c-format
+msgid "%d"
+msgstr ""
+
+#: ../skin_lite/src/SkinLite/MulticastConfigDialog.cpp:102
+msgid "Host name must not be blank."
+msgstr "Nome do Host não deve ser nulo."
+
+#: ../skin_lite/src/SkinLite/MulticastConfigDialog.cpp:103
+#: ../skin_lite/src/SkinLite/MulticastConfigDialog.cpp:111
+#: ../skin_lite/src/SkinLite/MulticastConfigDialog.cpp:120
+#: ../skin_lite/src/SkinLite/ReceiveFilesFrame.cpp:393
+#: ../skin_lite/src/SkinLite/RecordingDialog.cpp:302
+#: ../skin_lite/src/SkinLite/SendPollFrame.cpp:271
+#: ../skin_lite/src/SkinLite/SendPollFrame.cpp:372
+#: ../skin_lite/src/SkinLite/SessionWindow.cpp:1893
+#: ../skin_lite/src/SkinLite/SkinLite.cpp:735
+#: include/Skin/Constants.h:64
+msgid "Error"
+msgstr "Erro"
+
+#: ../skin_lite/src/SkinLite/MulticastConfigDialog.cpp:110
+msgid "Port number must not be blank."
+msgstr "Número da porta não deve ser nulo."
+
+#: ../skin_lite/src/SkinLite/MulticastConfigDialog.cpp:119
+msgid "Port number must be between 0 and 65535."
+msgstr "Número da porta deve estar entre 0 e 65535."
+
+#: ../skin_lite/src/SkinLite/PlaylistFrame.cpp:69
+msgid "Media files|*.wmv;*.wma"
+msgstr "Arquivos de mídia|*.wmv;*.wma"
+
+#: ../skin_lite/src/SkinLite/PlaylistFrame.cpp:191
+msgid "Select videos to be shown:"
+msgstr "Selecione os vídeos a serem exibidos:"
+
+#: ../skin_lite/src/SkinLite/PlaylistFrame.cpp:209
+msgid "Add video"
+msgstr "Adicionar vídeo"
+
+#: ../skin_lite/src/SkinLite/PlaylistFrame.cpp:213
+msgid "Delete video"
+msgstr "Excluir vídeo"
+
+#: ../skin_lite/src/SkinLite/PlaylistFrame.cpp:217
+msgid "Move Up"
+msgstr "Mover para cima"
+
+#: ../skin_lite/src/SkinLite/PlaylistFrame.cpp:221
+msgid "Move Down"
+msgstr "Mover para baixo"
+
+#: ../skin_lite/src/SkinLite/PlaylistFrame.cpp:228
+#: ../iptv_wboard/src/WBoardFrame.cpp:3353
+msgid "Open"
+msgstr "Abrir"
+
+#: ../skin_lite/src/SkinLite/PlaylistFrame.cpp:231
+#: ../iptv_wboard/src/WBoardFrame.cpp:125
+#: ../iptv_wboard/src/WBoardFrame.cpp:531
+#: ../iptv_wboard/src/WBoardFrame.cpp:3191
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:158
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:191
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:193
+msgid "Save"
+msgstr "Salvar"
+
+#: ../skin_lite/src/SkinLite/PlaylistFrame.cpp:237
+msgid "Repeat video sequence"
+msgstr "Repetir sequência de vídeos"
+
+#: ../skin_lite/src/SkinLite/PlaylistFrame.cpp:246
+#: ../skin_lite/src/SkinLite/PlaylistFrame.cpp:496
+msgid "Start"
+msgstr "Iniciar"
+
+#: ../skin_lite/src/SkinLite/PlaylistFrame.cpp:320
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:180
+msgid "Choose a file"
+msgstr "Escolha um arquivo"
+
+#: ../skin_lite/src/SkinLite/PlaylistFrame.cpp:489
+msgid "Finish"
+msgstr "Finalizar"
+
+#: ../skin_lite/src/SkinLite/PlaylistFrame.cpp:530
+#, c-format
+msgid "Playing file: %s"
+msgstr "Executando arquivo: %s"
+
+#: ../skin_lite/src/SkinLite/PlaylistFrame.cpp:534
+#, c-format
+msgid "Error while attempt play %s"
+msgstr "Erro ao tentar tocar %s"
+
+#: ../skin_lite/src/SkinLite/PlaylistFrame.cpp:547
+msgid "Finished send transmission of Playlist"
+msgstr "Fim da transmissao da sequência de vídeos"
+
+#: ../skin_lite/src/SkinLite/PlaylistFrame.cpp:548
+#: ../skin_lite/src/SkinLite/PlaylistFrame.cpp:703
+#: ../skin_lite/src/SkinLite/PlaylistFrame.cpp:747
+#: ../skin_lite/src/SkinLite/PollAnswerDialog.cpp:133
+#: ../skin_lite/src/SkinLite/PollQuestionCtrl.cpp:400
+#: ../skin_lite/src/SkinLite/PollQuestionCtrl.cpp:422
+msgid "Information"
+msgstr "Informação"
+
+#: ../skin_lite/src/SkinLite/PlaylistFrame.cpp:596
+#, c-format
+msgid "Time to end of transmission: %d sec"
+msgstr "Tempo para o fim da transmissão: %d seg"
+
+#: ../skin_lite/src/SkinLite/PlaylistFrame.cpp:650
+#: ../skin_lite/src/SkinLite/PlaylistFrame.cpp:719
+msgid "Playlist|*.ivl"
+msgstr "Lista de vídeos|*.ivl"
+
+#: ../skin_lite/src/SkinLite/PlaylistFrame.cpp:657
+msgid "Inexistent file."
+msgstr "Arquivo inexistente."
+
+#: ../skin_lite/src/SkinLite/PlaylistFrame.cpp:657
+msgid "ERROR"
+msgstr "ERRO"
+
+#: ../skin_lite/src/SkinLite/PlaylistFrame.cpp:703
+msgid "Playlist loaded successfully."
+msgstr "Sequência de vídeos carregada com sucesso."
+
+#: ../skin_lite/src/SkinLite/PlaylistFrame.cpp:726
+#: ../skin_lite/src/SkinLite/RecordingDialog.cpp:176
+msgid "Confirm"
+msgstr "Confirmar"
+
+#: ../skin_lite/src/SkinLite/PlaylistFrame.cpp:726
+msgid "Overwite file?"
+msgstr "Sobrescrever arquivo?"
+
+#: ../skin_lite/src/SkinLite/PlaylistFrame.cpp:747
+msgid "Playlist saved successfully."
+msgstr "Sequência de vídeos salva com sucesso."
+
+#: ../skin_lite/src/SkinLite/PollAnswerDialog.cpp:75
+msgid "Blank"
+msgstr "Em branco"
+
+#: ../skin_lite/src/SkinLite/PollAnswerDialog.cpp:76
+msgid "Vote"
+msgstr "Votar"
+
+#: ../skin_lite/src/SkinLite/PollAnswerDialog.cpp:132
+msgid "Please select an item, or click \"Blank\" if you want to send a blank answer."
+msgstr "Por favor selecione um item, ou clique \"Em branco\" se quiser votar em branco."
+
+#: ../skin_lite/src/SkinLite/PollQuestionCtrl.cpp:211
+#: ../skin_lite/src/SkinLite/PollQuestionCtrl.cpp:443
+#, c-format
+msgid "%c)"
+msgstr ""
+
+#: ../skin_lite/src/SkinLite/PollQuestionCtrl.cpp:400
+#, c-format
+msgid "Cannot choose number of answers greater than %d"
+msgstr "Impossível escolher número de respostas acima de %d"
+
+#: ../skin_lite/src/SkinLite/PollQuestionCtrl.cpp:421
+#, c-format
+msgid "Cannot choose number of answers less than %d"
+msgstr "Impossível escolher número de respostas abaixo de %d"
+
+#: ../skin_lite/src/SkinLite/PollStatsDialog.cpp:124
+#: ../skin_lite/src/SkinLite/PollStatsDialog.cpp:144
+#, c-format
+msgid "%d votes (%0.02f%%)"
+msgstr "%d votos (%0.02f%%)"
+
+#: ../skin_lite/src/SkinLite/PollStatsDialog.cpp:165
+msgid "Graphic"
+msgstr "Gráfico"
+
+#: ../skin_lite/src/SkinLite/PollStatsDialog.cpp:166
+#: ../iptv_wboard/src/WBoardFrame.cpp:129
+msgid "Close"
+msgstr "Fechar"
+
+#: ../skin_lite/src/SkinLite/PollStatsDialog.cpp:170
+msgid "Total votes"
+msgstr "Votos totais"
+
+#: ../skin_lite/src/SkinLite/PollStatsDialog.cpp:226
+msgid "Poll Graphic result"
+msgstr "Resulatado gráfico da enquete"
+
+#: ../skin_lite/src/SkinLite/ReceiveFilesFrame.cpp:175
+#: ../skin_lite/src/SkinLite/ReceiveFilesFrame.cpp:191
+msgid "0.00 KB"
+msgstr ""
+
+#: ../skin_lite/src/SkinLite/ReceiveFilesFrame.cpp:185
+msgid "0 %"
+msgstr ""
+
+#: ../skin_lite/src/SkinLite/ReceiveFilesFrame.cpp:197
+msgid "00:00:00"
+msgstr ""
+
+#: ../skin_lite/src/SkinLite/ReceiveFilesFrame.cpp:203
+msgid "0.0 kbps"
+msgstr ""
+
+#: ../skin_lite/src/SkinLite/ReceiveFilesFrame.cpp:216
+#: ../skin_lite/src/SkinLite/SendPollFrame.cpp:204
+#: ../skin_lite/src/SkinLite/SendPollFrame.cpp:210
+#: ../iptv_wboard/src/WBoardFrame.cpp:1064
+msgid "0"
+msgstr ""
+
+#: ../skin_lite/src/SkinLite/ReceiveFilesFrame.cpp:271
+#: ../skin_lite/src/SkinLite/ReceiveFilesFrame.cpp:279
+#: ../skin_lite/src/SkinLite/SendFilesFrame.cpp:430
+msgid "You do not have permission to access this file."
+msgstr "Você não tem permissão para acessar este arquivo."
+
+#: ../skin_lite/src/SkinLite/ReceiveFilesFrame.cpp:286
+msgid "Fail to copy file."
+msgstr "Falha ao copiar arquivo."
+
+#: ../skin_lite/src/SkinLite/ReceiveFilesFrame.cpp:293
+msgid "Save successful."
+msgstr "Salvo com sucesso."
+
+#: ../skin_lite/src/SkinLite/ReceiveFilesFrame.cpp:331
+msgid "Receiving file"
+msgstr "Recebendo arquivo"
+
+#: ../skin_lite/src/SkinLite/ReceiveFilesFrame.cpp:393
+msgid "File transfer reception error."
+msgstr "Erro na recepção da transferência de arquivo."
+
+#: ../skin_lite/src/SkinLite/ReceiveFilesFrame.cpp:407
+msgid "Do you want cancel receive file?"
+msgstr "Cancelar recepção de arquivo?"
+
+#: ../skin_lite/src/SkinLite/RecordingDialog.cpp:154
+msgid "Enable Recording"
+msgstr "Habilitar Gravação"
+
+#: ../skin_lite/src/SkinLite/RecordingDialog.cpp:161
+msgid "Save recordings in this folder:"
+msgstr "Os arquivos serão gravados nesta pasta:"
+
+#: ../skin_lite/src/SkinLite/RecordingDialog.cpp:170
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:166
+msgid "Search"
+msgstr "Procurar"
+
+#: ../skin_lite/src/SkinLite/RecordingDialog.cpp:272
+msgid "Choose a directory"
+msgstr "Escolha um diretório"
+
+#: ../skin_lite/src/SkinLite/RecordingDialog.cpp:302
+msgid "Invalid Path"
+msgstr "Diretório inválido."
+
+#: ../skin_lite/src/SkinLite/SendFilesFrame.cpp:373
+msgid "All files|*.*"
+msgstr "Todos arquivos|*.*"
+
+#: ../skin_lite/src/SkinLite/SendFilesFrame.cpp:375
+msgid "All files|*"
+msgstr "Todos arquivos|*"
+
+#: ../skin_lite/src/SkinLite/SendFilesFrame.cpp:400
+#: ../skin_lite/src/SkinLite/SendFilesFrame.cpp:482
+msgid "any files being sent."
+msgstr "Nenhum arquivo sendo enviado."
+
+#: ../skin_lite/src/SkinLite/SendFilesFrame.cpp:436
+msgid "This file don't exist."
+msgstr "Este arquivo não existe."
+
+#: ../skin_lite/src/SkinLite/SendFilesFrame.cpp:494
+msgid "Do you want cancel send file?"
+msgstr "Cancelar transmissão de arquivo?"
+
+#: ../skin_lite/src/SkinLite/SendFilesFrame.cpp:631
+msgid "User don't have voice"
+msgstr "Usuário não tem a vez"
+
+#: ../skin_lite/src/SkinLite/SendFilesFrame.cpp:713
+msgid "File transfer send successfull."
+msgstr "Arquivo enviado com sucesso."
+
+#: ../skin_lite/src/SkinLite/SendFilesFrame.cpp:766
+#, c-format
+msgid ""
+"File transfer Send error.\n"
+"%s lost voice."
+msgstr ""
+"Erro no envio da transferência de arquivo.\n"
+"%s perdeu a vez."
+
+#: ../skin_lite/src/SkinLite/SendFilesFrame.cpp:768
+msgid "File transfer Send error."
+msgstr "Erro no envio da transferência de arquivo."
+
+#: ../skin_lite/src/SkinLite/SendPollFrame.cpp:194
+msgid "Statistics"
+msgstr "Estatísticas"
+
+#: ../skin_lite/src/SkinLite/SendPollFrame.cpp:271
+msgid "No poll statistics to show."
+msgstr "Não há estatísticas a exibir."
+
+#: ../skin_lite/src/SkinLite/SendPollFrame.cpp:365
+msgid "Invalid data."
+msgstr "Dado inválido."
+
+#: ../skin_lite/src/SkinLite/SendPollFrame.cpp:365
+msgid "Warning"
+msgstr "Aviso"
+
+#: ../skin_lite/src/SkinLite/SendPollFrame.cpp:372
+msgid "Couldn't send poll."
+msgstr "Enquete não pôde ser enviada."
+
+#: ../skin_lite/src/SkinLite/SendPollFrame.cpp:378
+msgid "Poll sent successfully."
+msgstr "Enquete enviada com sucesso."
+
+#: ../skin_lite/src/SkinLite/SendPollFrame.cpp:378
+msgid "Success"
+msgstr "Sucesso"
+
+#: ../skin_lite/src/SkinLite/SeriesCollaborationDialog.cpp:72
+msgid "Select users to participate:"
+msgstr "Selecione os usuários que receberão colaboração:"
+
+#: ../skin_lite/src/SkinLite/SeriesCollaborationDialog.cpp:78
+msgid "Automatically select all users"
+msgstr "Selecionar todos os usuários automaticamente"
+
+#: ../skin_lite/src/SkinLite/SeriesCollaborationDialog.cpp:80
+msgid "Switch interval:"
+msgstr "Tempo de permanência:"
+
+#: ../skin_lite/src/SkinLite/SeriesCollaborationDialog.cpp:86
+msgid "seconds"
+msgstr "segundos"
+
+#: ../skin_lite/src/SkinLite/SeriesCollaborationDialog.cpp:89
+#: ../skin_lite/src/SkinLite/TransmissionConfigDialog.cpp:363
+#: include/Skin/Constants.h:39
+msgid "OK"
+msgstr ""
+
+#: ../skin_lite/src/SkinLite/SessionWindow.cpp:248
+msgid "Leaving channel..."
+msgstr "Saindo do Canal..."
+
+#: ../skin_lite/src/SkinLite/SessionWindow.cpp:254
+msgid "Terminating..."
+msgstr "Encerrando..."
+
+#: ../skin_lite/src/SkinLite/SessionWindow.cpp:367
+#: ../skin_lite/src/SkinLite/SkinLite.cpp:894
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:104
+msgid "Private Chat"
+msgstr "Chat Privado"
+
+#: ../skin_lite/src/SkinLite/SessionWindow.cpp:368
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:103
+msgid "Send..."
+msgstr "Enviar..."
+
+#: ../skin_lite/src/SkinLite/SessionWindow.cpp:370
+msgid "Grant Voice"
+msgstr "Conceder a Vez"
+
+#: ../skin_lite/src/SkinLite/SessionWindow.cpp:371
+msgid "Remove Voice"
+msgstr "Retirar a Vez"
+
+#: ../skin_lite/src/SkinLite/SessionWindow.cpp:373
+msgid "Grant Sharing"
+msgstr "Conceder Colaboração"
+
+#: ../skin_lite/src/SkinLite/SessionWindow.cpp:374
+msgid "Remove Sharing"
+msgstr "Retirar Colaboração"
+
+#: ../skin_lite/src/SkinLite/SessionWindow.cpp:375
+msgid "Remove all collaborations"
+msgstr "Retirar todas as colaborações"
+
+#: ../skin_lite/src/SkinLite/SessionWindow.cpp:377
+msgid "Start series collaboration..."
+msgstr "Iniciar colaboração em série..."
+
+#: ../skin_lite/src/SkinLite/SessionWindow.cpp:378
+msgid "Stop series collaboration"
+msgstr "Finalizar colaboração em série"
+
+#: ../skin_lite/src/SkinLite/SessionWindow.cpp:380
+msgid "Assign mediation"
+msgstr "Delegar"
+
+#: ../skin_lite/src/SkinLite/SessionWindow.cpp:381
+msgid "Remove mediation"
+msgstr "Retirar Mediação"
+
+#: ../skin_lite/src/SkinLite/SessionWindow.cpp:495
+#: include/Skin/Constants.h:52
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:174
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:200
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:204
+msgid "Send"
+msgstr "Enviar"
+
+#: ../skin_lite/src/SkinLite/SessionWindow.cpp:505
+msgid "Public Chat"
+msgstr "Chat Público"
+
+#: ../skin_lite/src/SkinLite/SessionWindow.cpp:543
+msgid "User List"
+msgstr "Lista de Usuários"
+
+#: ../skin_lite/src/SkinLite/SessionWindow.cpp:570
+msgid "User Commands"
+msgstr "Comandos do Usuário"
+
+#: ../skin_lite/src/SkinLite/SessionWindow.cpp:678
+msgid "Show secondary window"
+msgstr "Mostrar janela secundária"
+
+#: ../skin_lite/src/SkinLite/SessionWindow.cpp:683
+msgid "Equal videos size"
+msgstr "Igualar tamanho dos vídeos"
+
+#: ../skin_lite/src/SkinLite/SessionWindow.cpp:1286
+msgid "List Item not found"
+msgstr "Item da lista não encontrado"
+
+#: ../skin_lite/src/SkinLite/SessionWindow.cpp:1828
+msgid "Connected on server:"
+msgstr "Conectado ao servidor:"
+
+#: ../skin_lite/src/SkinLite/SessionWindow.cpp:1829
+msgid "Session time:"
+msgstr "Tempo de sessão:"
+
+#: ../skin_lite/src/SkinLite/SessionWindow.cpp:1855
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:171
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:189
+msgid "Bitrate:"
+msgstr ""
+
+#: ../skin_lite/src/SkinLite/SessionWindow.cpp:1860
+#: ../skin_lite/src/SkinLite/SkinLite.cpp:462
+msgid "Listening on "
+msgstr "Ouvindo de "
+
+#: ../skin_lite/src/SkinLite/SessionWindow.cpp:1865
+msgid "Playing from "
+msgstr "Executando de "
+
+#: ../skin_lite/src/SkinLite/SessionWindow.cpp:1893
+msgid "Error initializing capture."
+msgstr "Erro inicializando captura."
+
+#: ../skin_lite/src/SkinLite/SessionWindow.cpp:2111
+msgid "Request voice"
+msgstr "Pedir a Vez"
+
+#: ../skin_lite/src/SkinLite/SessionWindow.cpp:2116
+msgid "Cancel voice request"
+msgstr "Cancelar pedir vez"
+
+#: ../skin_lite/src/SkinLite/SessionWindow.cpp:2155
+msgid "Stop media transmission"
+msgstr "Interromper transmissão de vídeo"
+
+#: ../skin_lite/src/SkinLite/SessionWindow.cpp:2161
+msgid "Start media transmission"
+msgstr "Iniciar transmissão de vídeo"
+
+#: ../skin_lite/src/SkinLite/SettingsManagerDialog.cpp:104
+#: ../skin_lite/src/SkinLite/SettingsManagerDialog.cpp:112
+#: ../skin_lite/src/SkinLite/SettingsManagerDialog.cpp:118
+#: ../skin_lite/src/SkinLite/SettingsManagerDialog.cpp:333
+#: ../skin_lite/src/SkinLite/SettingsManagerDialog.cpp:379
+#: ../skin_lite/src/SkinLite/SettingsManagerDialog.cpp:398
+#: ../skin_lite/src/SkinLite/SettingsManagerDialog.cpp:516
+#: ../skin_lite/src/SkinLite/SettingsManagerDialog.cpp:529
+#: ../skin_lite/src/SkinLite/SettingsManagerDialog.cpp:554
+msgid "Latest"
+msgstr "Último"
+
+#: ../skin_lite/src/SkinLite/SettingsManagerDialog.cpp:381
+msgid "Cannot delete Latest profile."
+msgstr "Não se pode apagar o Último perfil"
+
+#: ../skin_lite/src/SkinLite/SettingsManagerDialog.cpp:386
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:157
+msgid "Delete"
+msgstr "Deletar"
+
+#: ../skin_lite/src/SkinLite/SettingsManagerDialog.cpp:386
+#, c-format
+msgid "Do you want to delete the profile %s ?"
+msgstr "Você deseja deletar o perfil %s?"
+
+#: ../skin_lite/src/SkinLite/SettingsManagerDialog.cpp:412
+msgid "Cannot create profile without a name."
+msgstr "Perfil não pode ser criado sem um nome."
+
+#: ../skin_lite/src/SkinLite/SettingsManagerDialog.cpp:439
+#: ../skin_lite/src/SkinLite/SettingsManagerDialog.cpp:460
+msgid "Profile saved successfully."
+msgstr "Perfil salvo com sucesso."
+
+#: ../skin_lite/src/SkinLite/SettingsManagerDialog.cpp:443
+#: ../skin_lite/src/SkinLite/SettingsManagerDialog.cpp:464
+msgid "Cannot save profile."
+msgstr "Perfil não pôde ser salvo."
+
+#: ../skin_lite/src/SkinLite/SettingsManagerDialog.cpp:471
+msgid "Open File"
+msgstr "Abrir Arquivo"
+
+#: ../skin_lite/src/SkinLite/SettingsManagerDialog.cpp:471
+#: ../skin_lite/src/SkinLite/SettingsManagerDialog.cpp:502
+msgid "XML files (*.xml)|*.xml"
+msgstr "Arquivos XML (*xml)|*.xml"
+
+#: ../skin_lite/src/SkinLite/SettingsManagerDialog.cpp:480
+msgid "Cannot import profile."
+msgstr "Perfil não pôde ser importado."
+
+#: ../skin_lite/src/SkinLite/SettingsManagerDialog.cpp:490
+msgid "Profile imported successfully."
+msgstr "Perfil importado com sucesso."
+
+#: ../skin_lite/src/SkinLite/SettingsManagerDialog.cpp:494
+msgid "Cannot save imported profile."
+msgstr "Perfil importado não pôde ser salvo."
+
+#: ../skin_lite/src/SkinLite/SettingsManagerDialog.cpp:502
+msgid "Save File"
+msgstr "Salvar Arquivo"
+
+#: ../skin_lite/src/SkinLite/SkinLite.cpp:105
+#: ../skin_lite/src/SkinLite/SkinLite.cpp:107
+#: ../skin_lite/src/SkinLite/SkinLite.cpp:325
+#: ../skin_lite/src/SkinLite/SkinLite.cpp:1388
+#: ../skin_telemedicine/src/SkinTelemedicine/SkinTelemedicine.cpp:96
+msgid "Skin"
+msgstr ""
+
+#: ../skin_lite/src/SkinLite/SkinLite.cpp:183
+#: ../skin_lite/src/SkinLite/SkinLite.cpp:347
+msgid "Change &Skin"
+msgstr "Alterar &Skin"
+
+#: ../skin_lite/src/SkinLite/SkinLite.cpp:184
+#: ../skin_lite/src/SkinLite/SkinLite.cpp:348
+msgid "Change &Language"
+msgstr "Alterar &Idioma"
+
+#: ../skin_lite/src/SkinLite/SkinLite.cpp:186
+#: ../skin_lite/src/SkinLite/SkinLite.cpp:349
+msgid "Connection &profile"
+msgstr "&Perfil de Conexão"
+
+#: ../skin_lite/src/SkinLite/SkinLite.cpp:187
+#: ../skin_lite/src/SkinLite/SkinLite.cpp:350
+msgid "&Transmission"
+msgstr "&Transmissão"
+
+#: ../skin_lite/src/SkinLite/SkinLite.cpp:188
+msgid "&Recording"
+msgstr "&Gravação"
+
+#: ../skin_lite/src/SkinLite/SkinLite.cpp:199
+#: ../skin_lite/src/SkinLite/SkinLite.cpp:352
+msgid "&About..."
+msgstr "&Sobre..."
+
+#: ../skin_lite/src/SkinLite/SkinLite.cpp:202
+#: ../skin_lite/src/SkinLite/SkinLite.cpp:339
+#: ../skin_lite/src/SkinLite/SkinLite.cpp:342
+msgid "&Settings"
+msgstr "&Configurações"
+
+#: ../skin_lite/src/SkinLite/SkinLite.cpp:203
+#: ../skin_lite/src/SkinLite/SkinLite.cpp:340
+#: ../skin_lite/src/SkinLite/SkinLite.cpp:343
+msgid "&Help"
+msgstr "&Ajuda"
+
+#: ../skin_lite/src/SkinLite/SkinLite.cpp:239
+#: ../skin_telemedicine/src/SkinTelemedicine/SkinTelemedicine.cpp:205
+msgid "About..."
+msgstr "Sobre..."
+
+#: ../skin_lite/src/SkinLite/SkinLite.cpp:251
+msgid "Profile"
+msgstr "Perfil"
+
+#: ../skin_lite/src/SkinLite/SkinLite.cpp:263
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:127
+msgid "Configuration"
+msgstr "Configuração"
+
+#: ../skin_lite/src/SkinLite/SkinLite.cpp:416
+msgid "Open file"
+msgstr "Abrir Arquivo"
+
+#: ../skin_lite/src/SkinLite/SkinLite.cpp:735
+msgid "Unable to join channel: Wrong password."
+msgstr "Impossível entrar no canal: Senha incorreta"
+
+#: ../skin_lite/src/SkinLite/TransmissionConfigDialog.cpp:199
+msgid "Transmission"
+msgstr "Transmissão"
+
+#: ../skin_lite/src/SkinLite/TransmissionConfigDialog.cpp:206
+msgid "Connection Type:"
+msgstr "Tipo de conexão:"
+
+#: ../skin_lite/src/SkinLite/TransmissionConfigDialog.cpp:215
+msgid "Transmission Profile:"
+msgstr "Perfil de Transmissão:"
+
+#: ../skin_lite/src/SkinLite/TransmissionConfigDialog.cpp:221
+msgid "Activate HTTP Tunnel"
+msgstr "Ativar HTTP Tunnel"
+
+#: ../skin_lite/src/SkinLite/TransmissionConfigDialog.cpp:234
+msgid "Video"
+msgstr "Vídeo"
+
+#: ../skin_lite/src/SkinLite/TransmissionConfigDialog.cpp:240
+msgid "Video Device:"
+msgstr "Dispositivo de Vídeo:"
+
+#: ../skin_lite/src/SkinLite/TransmissionConfigDialog.cpp:249
+#: ../skin_lite/src/SkinLite/TransmissionConfigDialog.cpp:292
+msgid "Input Type:"
+msgstr "Tipo de Entrada:"
+
+#: ../skin_lite/src/SkinLite/TransmissionConfigDialog.cpp:263
+#: ../skin_lite/src/SkinLite/TransmissionConfigDialog.cpp:307
+msgid "Codec:"
+msgstr ""
+
+#: ../skin_lite/src/SkinLite/TransmissionConfigDialog.cpp:276
+msgid "Audio"
+msgstr "Áudio"
+
+#: ../skin_lite/src/SkinLite/TransmissionConfigDialog.cpp:283
+msgid "Audio Devices:"
+msgstr "Dispositivos de Áudio:"
+
+#: ../skin_lite/src/SkinLite/TransmissionConfigDialog.cpp:318
+msgid "Echo Cancellation"
+msgstr "Cancelamento de Eco"
+
+#: ../skin_lite/src/SkinLite/TransmissionConfigDialog.cpp:322
+msgid "Noise Cancellation"
+msgstr "Cancelamento de ruído"
+
+#: ../skin_lite/src/SkinLite/TransmissionConfigDialog.cpp:331
+msgid "Automatic gain control:"
+msgstr "Controle Automático de Ganho:"
+
+#: ../skin_lite/src/SkinLite/TransmissionConfigDialog.cpp:350
+msgid "Capture State:"
+msgstr "Estado da Captura:"
+
+#: ../skin_lite/src/SkinLite/TransmissionConfigDialog.cpp:353
+msgid "Advanced"
+msgstr "Avançado"
+
+#: ../skin_lite/src/SkinLite/TransmissionConfigDialog.cpp:418
+msgid "Dial Up"
+msgstr "Conexão Discada"
+
+#: ../skin_lite/src/SkinLite/TransmissionConfigDialog.cpp:419
+msgid "Satellite"
+msgstr "Satélite"
+
+#: ../skin_lite/src/SkinLite/TransmissionConfigDialog.cpp:420
+msgid "Internet Broadband"
+msgstr "Internet Banda Larga"
+
+#: ../skin_lite/src/SkinLite/TransmissionConfigDialog.cpp:437
+msgid "33.6 kbps"
+msgstr ""
+
+#: ../skin_lite/src/SkinLite/TransmissionConfigDialog.cpp:438
+msgid "64 kbps"
+msgstr ""
+
+#: ../skin_lite/src/SkinLite/TransmissionConfigDialog.cpp:439
+msgid "128 kbps"
+msgstr ""
+
+#: ../skin_lite/src/SkinLite/TransmissionConfigDialog.cpp:440
+msgid "256 kbps"
+msgstr ""
+
+#: ../skin_lite/src/SkinLite/TransmissionConfigDialog.cpp:441
+msgid "384 kbps"
+msgstr ""
+
+#: ../skin_lite/src/SkinLite/TransmissionConfigDialog.cpp:442
+msgid "512 kbps"
+msgstr ""
+
+#: ../skin_lite/src/SkinLite/TransmissionConfigDialog.cpp:443
+msgid "1.0 Mbps"
+msgstr ""
+
+#: ../skin_lite/src/SkinLite/TransmissionConfigDialog.cpp:752
+msgid "To be implemented Advanced button"
+msgstr ""
+
+#: src/Skin/Skin.cpp:259
+msgid "Not supplied"
+msgstr "Não fornecido"
+
+#: ../iptv_wboard/src/WBoardFrame.cpp:124
+#: ../iptv_wboard/src/WBoardFrame.cpp:523
+msgid "New"
+msgstr "Novo"
+
+#: ../iptv_wboard/src/WBoardFrame.cpp:126
+#: ../iptv_wboard/src/WBoardFrame.cpp:539
+msgid "Print"
+msgstr "Imprimir"
+
+#: ../iptv_wboard/src/WBoardFrame.cpp:127
+msgid "Page setup"
+msgstr ""
+
+#: ../iptv_wboard/src/WBoardFrame.cpp:130
+msgid "File"
+msgstr "Arquivo"
+
+#: ../iptv_wboard/src/WBoardFrame.cpp:133
+#: ../iptv_wboard/src/WBoardFrame.cpp:555
+msgid "Undo"
+msgstr "Desfazer"
+
+#: ../iptv_wboard/src/WBoardFrame.cpp:135
+#: ../iptv_wboard/src/WBoardFrame.cpp:547
+msgid "Cut"
+msgstr "Cortar"
+
+#: ../iptv_wboard/src/WBoardFrame.cpp:136
+msgid "Edit"
+msgstr "Editar"
+
+#: ../iptv_wboard/src/WBoardFrame.cpp:139
+#: ../iptv_wboard/src/WBoardFrame.cpp:565
+msgid "Stop image send"
+msgstr "Parar envio de imagem"
+
+#: ../iptv_wboard/src/WBoardFrame.cpp:140
+msgid "Control"
+msgstr "Controle"
+
+#: ../iptv_wboard/src/WBoardFrame.cpp:143
+msgid "Help Topics"
+msgstr "Tópicos da Ajuda"
+
+#: ../iptv_wboard/src/WBoardFrame.cpp:145
+msgid "About"
+msgstr "Sobre"
+
+#: ../iptv_wboard/src/WBoardFrame.cpp:146
+msgid "Help"
+msgstr "Ajuda"
+
+#: ../iptv_wboard/src/WBoardFrame.cpp:319
+msgid "Version"
+msgstr "Versão"
+
+#: ../iptv_wboard/src/WBoardFrame.cpp:322
+msgid "About White Board"
+msgstr "Sobre o Quadro Digital"
+
+#: ../iptv_wboard/src/WBoardFrame.cpp:919
+msgid "Position"
+msgstr "Posição"
+
+#: ../iptv_wboard/src/WBoardFrame.cpp:929
+msgid "Eraser"
+msgstr "Borracha"
+
+#: ../iptv_wboard/src/WBoardFrame.cpp:939
+msgid "Text"
+msgstr "Texto"
+
+#: ../iptv_wboard/src/WBoardFrame.cpp:949
+msgid "Marker"
+msgstr "Marcador"
+
+#: ../iptv_wboard/src/WBoardFrame.cpp:959
+msgid "Pointer"
+msgstr "Apontador"
+
+#: ../iptv_wboard/src/WBoardFrame.cpp:971
+msgid "Image"
+msgstr "Imagem"
+
+#: ../iptv_wboard/src/WBoardFrame.cpp:981
+msgid "Pen"
+msgstr "Caneta"
+
+#: ../iptv_wboard/src/WBoardFrame.cpp:991
+msgid "Line"
+msgstr "Linha"
+
+#: ../iptv_wboard/src/WBoardFrame.cpp:1001
+msgid "Rectangle"
+msgstr "Retângulo"
+
+#: ../iptv_wboard/src/WBoardFrame.cpp:1011
+msgid "Full Rectangle"
+msgstr "Retângulo Cheio"
+
+#: ../iptv_wboard/src/WBoardFrame.cpp:1021
+msgid "Ellipse"
+msgstr "Elipse"
+
+#: ../iptv_wboard/src/WBoardFrame.cpp:1031
+msgid "Full Ellipse"
+msgstr "Elipse Cheia"
+
+#: ../iptv_wboard/src/WBoardFrame.cpp:1058
+msgid "Color"
+msgstr "Cor"
+
+#: ../iptv_wboard/src/WBoardFrame.cpp:1061
+msgid "AB"
+msgstr ""
+
+#: ../iptv_wboard/src/WBoardFrame.cpp:1067
+msgid "Font"
+msgstr "Fonte"
+
+#: ../iptv_wboard/src/WBoardFrame.cpp:3154
+msgid "The document was not saved. Proceed?"
+msgstr "O documento não foi salvo. Continuar?"
+
+#: ../iptv_wboard/src/WBoardFrame.cpp:3154
+msgid "White Board"
+msgstr "Quadro Digital"
+
+#: ../iptv_wboard/src/WBoardFrame.cpp:3225
+msgid "IP.TV White Board"
+msgstr "IP.TV Quadro Digital"
+
+#: ../iptv_wboard/src/WBoardFrame.cpp:3234
+msgid ""
+"There was a problem printing.\n"
+"Perhaps your current printer is not set correctly?"
+msgstr ""
+
+#: ../iptv_wboard/src/WBoardFrame.cpp:3234
+#: ../iptv_wboard/src/WBoardFrame.cpp:3236
+msgid "Printing"
+msgstr "Imprimindo"
+
+#: ../iptv_wboard/src/WBoardFrame.cpp:3236
+msgid "You canceled printing"
+msgstr ""
+
+#: include/Skin/Constants.h:17
+msgid "No skin found"
+msgstr "Nenhuma skin foi encontrada"
+
+#: include/Skin/Constants.h:18
+msgid "Default skin not found"
+msgstr "Skin padrão não foi encontrada"
+
+#: include/Skin/Constants.h:19
+msgid "Default skin file not found"
+msgstr "Arquivo de Skin padrão não foi encontrado"
+
+#: include/Skin/Constants.h:20
+msgid "Cannot initialize configuration file"
+msgstr "Arquivo de configuração não pôde ser inicializado"
+
+#: include/Skin/Constants.h:26
+msgid "Change Skin"
+msgstr "Alterar Skin"
+
+#: include/Skin/Constants.h:27
+msgid "Change Language"
+msgstr "Alterar Idioma"
+
+#: include/Skin/Constants.h:28
+msgid "Language"
+msgstr "Idioma"
+
+#: include/Skin/Constants.h:29
+msgid "Exit"
+msgstr "Sair"
+
+#: include/Skin/Constants.h:30
+msgid "Connect to server"
+msgstr "Conectar ao servidor"
+
+#: include/Skin/Constants.h:31
+msgid "Join multicast"
+msgstr "Rodar multicast"
+
+#: include/Skin/Constants.h:32
+msgid "File playback"
+msgstr "Reproduzir arquivo"
+
+#: include/Skin/Constants.h:33
+msgid "Server"
+msgstr "Servidor"
+
+#: include/Skin/Constants.h:34
+#: include/Skin/Constants.h:37
+msgid "Name:"
+msgstr "Nome"
+
+#: include/Skin/Constants.h:36
+msgid "User"
+msgstr "Usuário"
+
+#: include/Skin/Constants.h:41
+msgid "Public Channels"
+msgstr "Canais Públicos"
+
+#: include/Skin/Constants.h:42
+#: include/Skin/Constants.h:48
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:43
+msgid "Users"
+msgstr "Usuários"
+
+#: include/Skin/Constants.h:43
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:44
+msgid "Topic"
+msgstr "Tópico"
+
+#: include/Skin/Constants.h:44
+msgid "Update List"
+msgstr "Atualizar Lista"
+
+#: include/Skin/Constants.h:45
+msgid "Join Channel"
+msgstr "Entrar no Canal"
+
+#: include/Skin/Constants.h:46
+msgid "Leave Channel"
+msgstr "Sair do Canal"
+
+#: include/Skin/Constants.h:47
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:109
+msgid "Back"
+msgstr "Voltar"
+
+#: include/Skin/Constants.h:49
+#, c-format
+msgid "%s is out of channel"
+msgstr "%s está fora do canal"
+
+#: include/Skin/Constants.h:50
+#: include/Skin/Constants.h:51
+#, c-format
+msgid "%s is on channel %s"
+msgstr "%s está no canal %s"
+
+#: include/Skin/Constants.h:53
+#, c-format
+msgid "%s says: "
+msgstr "%s diz:"
+
+#: include/Skin/Constants.h:60
+msgid "Select Skin"
+msgstr "Selecionar Skin"
+
+#: include/Skin/Constants.h:61
+msgid "Select Language"
+msgstr "Selecionar idioma"
+
+#: include/Skin/Constants.h:62
+msgid "IP.TV - "
+msgstr "IP.TV - "
+
+#: include/Skin/Constants.h:63
+#: ../skin_lite/include/SkinLite/UnicastConfigDialog.h:29
+msgid "Unicast Settings"
+msgstr "Configurações Unicast"
+
+#: include/Skin/Constants.h:65
+msgid "Channels List Frame"
+msgstr "Lista de Canais"
+
+#: include/Skin/Constants.h:66
+msgid "IP.TV - Users Viewer"
+msgstr "IP.TV - Visualizador de Usuários"
+
+#: include/Skin/Constants.h:67
+#, c-format
+msgid "%s - Private Chat"
+msgstr "%s - Chat Privado"
+
+#: include/Skin/Constants.h:68
+#, c-format
+msgid "%s - Public Chat"
+msgstr "%s - Chat Público"
+
+#: include/Skin/Constants.h:71
+msgid "Select Skin Dialog"
+msgstr ""
+
+#: include/Skin/Constants.h:74
+msgid "&OK"
+msgstr "&OK"
+
+#: include/Skin/Constants.h:75
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:141
+msgid "&Cancel"
+msgstr "&Cancelar"
+
+#: include/Skin/Constants.h:79
+msgid "Conference files (*.imc)|*.imc|All files|*.*"
+msgstr "Arquivos de Conferência (*.imc)|*.imc|Todos Arquivos|*.*"
+
+#: include/Skin/Constants.h:81
+msgid "Conference files (*.imc)|*.imc|All files|*"
+msgstr "Arquivos de Conferência (*.imc)|*.imc|Todos Arquivos|*"
+
+#: include/Skin/Constants.h:88
+msgid "Server name must not be blank."
+msgstr "Nome do Servidor não deve ser nulo."
+
+#: include/Skin/Constants.h:89
+msgid "User name must not be blank."
+msgstr "Nome do usuário não deve ser nulo."
+
+#: include/Skin/Constants.h:90
+msgid "User password must not be blank."
+msgstr "Senha do usuário não deve ser nulo."
+
+#: include/Skin/Constants.h:91
+msgid "No channel selected"
+msgstr "Nenhum canal selecionado"
+
+#: include/Skin/PollInfo.h:10
+msgid "No answer"
+msgstr "Sem resposta"
+
+#: ../skin_lite/include/SkinLite/ChannelModesDialog.h:60
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:126
+msgid "Channel Modes"
+msgstr "Modos de Canais"
+
+#: ../skin_lite/include/SkinLite/ChannelWindow.h:39
+#: ../skin_lite/include/SkinLite/ChannelWindow.h:44
+msgid "Channels"
+msgstr "Canais"
+
+#: ../skin_lite/include/SkinLite/ChatFrame.h:42
+msgid "Chat Frame"
+msgstr ""
+
+#: ../skin_lite/include/SkinLite/MessageDialog.h:32
+msgid "Disconnect Dialog"
+msgstr " Dialog Desconectar"
+
+#: ../skin_lite/include/SkinLite/MulticastConfigDialog.h:21
+#: ../skin_lite/include/SkinLite/MulticastConfigDialog.h:28
+msgid "Multicast Settings"
+msgstr "Configurações Multicast"
+
+#: ../skin_lite/include/SkinLite/MulticastConfigDialog.h:23
+#: ../skin_lite/include/SkinLite/MulticastConfigDialog.h:30
+msgid "dialogBox"
+msgstr ""
+
+#: ../skin_lite/include/SkinLite/PlaylistFrame.h:55
+msgid "Playlist"
+msgstr "Selecionar filme"
+
+#: ../skin_lite/include/SkinLite/PollAnswerDialog.h:28
+#: ../skin_lite/include/SkinLite/PollAnswerDialog.h:33
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:125
+msgid "Poll"
+msgstr "Enquete"
+
+#: ../skin_lite/include/SkinLite/PollGraphicFrame.h:42
+msgid "PollGraphicFrame"
+msgstr ""
+
+#: ../skin_lite/include/SkinLite/PollStatsDialog.h:40
+#: ../skin_lite/include/SkinLite/PollStatsDialog.h:45
+#: ../skin_lite/include/SkinLite/PollStatsDialog.h:53
+msgid "Poll Statistics"
+msgstr "Estatísticas da Enquete"
+
+#: ../skin_lite/include/SkinLite/ReceiveFilesFrame.h:42
+msgid "Receive Files"
+msgstr "Receber Arquivos"
+
+#: ../skin_lite/include/SkinLite/RecordingDialog.h:45
+msgid "Recording Properties"
+msgstr "Propriedades de Gravação"
+
+#: ../skin_lite/include/SkinLite/SendFilesFrame.h:46
+msgid "Send Files"
+msgstr "Enviar Arquivos"
+
+#: ../skin_lite/include/SkinLite/SendPollFrame.h:56
+msgid "Send Poll"
+msgstr "Enviar Enquete"
+
+#: ../skin_lite/include/SkinLite/SeriesCollaborationDialog.h:33
+#: ../skin_lite/include/SkinLite/SeriesCollaborationDialog.h:38
+msgid "Series Collaboration"
+msgstr "Colaboração em série"
+
+#: ../skin_lite/include/SkinLite/SessionWindow.h:114
+msgid "IP.TV - Viewer"
+msgstr "IP.TV - Visualizador"
+
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:15
+msgid "Graphics/SkinLite/iptv.ico"
+msgstr ""
+
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:16
+msgid "Welcome to IP.TV!"
+msgstr "Bem-vindo ao IP.TV"
+
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:17
+#: ../skin_telemedicine/include/SkinTelemedicine/SkinTelemedicineConstants.h:57
+#, c-format
+msgid "Connecting to %s..."
+msgstr "Conectando em %s"
+
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:18
+#: ../skin_telemedicine/include/SkinTelemedicine/SkinTelemedicineConstants.h:58
+msgid "Disconnected"
+msgstr "Desconectado"
+
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:19
+#: ../skin_telemedicine/include/SkinTelemedicine/SkinTelemedicineConstants.h:59
+#, c-format
+msgid "Couldn't connect to %s. %s"
+msgstr "Não pôde ser conectado ao %s. %s"
+
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:20
+#: ../skin_telemedicine/include/SkinTelemedicine/SkinTelemedicineConstants.h:60
+#, c-format
+msgid "Disconnected from %s. %s"
+msgstr "Desconectado de %s. %s"
+
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:36
+msgid "Disconnect from IRM server?"
+msgstr "Desconectar do servidor IRM?"
+
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:37
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:41
+msgid "Disconnect"
+msgstr "Desconectar"
+
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:38
+msgid "Refresh"
+msgstr "Atualizar"
+
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:39
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:152
+msgid "Channel:"
+msgstr "Canal:"
+
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:40
+msgid "Join"
+msgstr "Entrar"
+
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:42
+msgid "Channel"
+msgstr "Canal"
+
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:100
+msgid "StatusText UserName"
+msgstr ""
+
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:101
+msgid "Public"
+msgstr "Público"
+
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:105
+msgid "Hide/Show Menu"
+msgstr "Esconder/Mostrar Menu"
+
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:106
+msgid "Public Messages"
+msgstr "Mensagens Públicas"
+
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:107
+msgid "Enlarge screen"
+msgstr "Aumentar tela"
+
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:108
+#, fuzzy
+msgid "Userslist"
+msgstr "Lista de Usuários"
+
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:111
+msgid "Stop Share video capture"
+msgstr "Parar compartilhamento da captura de vídeo"
+
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:112
+msgid "Share video capture"
+msgstr "Compartilhar captura de vídeo"
+
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:113
+msgid "Play/Stop video capture"
+msgstr "Rodar/Parar Captura de Vídeo"
+
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:115
+msgid "Request Voice"
+msgstr "Pedir a Vez"
+
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:121
+msgid "Video Capture"
+msgstr "Captura de Vídeo"
+
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:124
+msgid "Send File"
+msgstr "Enviar Arquivo"
+
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:128
+msgid "Whiteboard"
+msgstr "Quadro digital"
+
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:129
+msgid "Executive TV - Movie"
+msgstr "TV Executiva -Selecionar vídeo"
+
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:134
+msgid "Bouncing Shape"
+msgstr ""
+
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:138
+msgid "&Yes"
+msgstr "&Sim"
+
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:139
+msgid "&No"
+msgstr "&Não"
+
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:140
+msgid "&Ok"
+msgstr "&OK"
+
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:144
+msgid "Profile Manager"
+msgstr "Gerenciador de Perfil"
+
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:145
+msgid "Profile Manager - Creating New Profile"
+msgstr "Gerenciador de Perfil - Criando novo Perfil"
+
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:146
+msgid "Profile Manager - Editing Profile"
+msgstr "Gerenciador de Perfil - Editando Perfil"
+
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:147
+msgid "Profile Name:"
+msgstr "Nome do perfil:"
+
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:148
+msgid "User:"
+msgstr "Usuário:"
+
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:149
+msgid "User Password:"
+msgstr "Senha do Usuário:"
+
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:150
+msgid "Server:"
+msgstr "Servidor:"
+
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:151
+msgid "Server Password:"
+msgstr "Senha do Servidor:"
+
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:153
+msgid "Channel Password:"
+msgstr "Senha do Canal:"
+
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:154
+msgid "Select"
+msgstr "Selecionar"
+
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:156
+msgid "Create"
+msgstr "Criar"
+
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:159
+msgid "Import"
+msgstr "Importar"
+
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:160
+msgid "Export"
+msgstr "Exportar"
+
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:165
+msgid "File Name:"
+msgstr "Nome do Arquivo:"
+
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:167
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:185
+msgid "Size:"
+msgstr "Tamanho:"
+
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:168
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:176
+msgid "Sent:"
+msgstr "Enviado:"
+
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:169
+msgid "Sent Bytes:"
+msgstr "Bytes enviados:"
+
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:170
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:173
+msgid "Remaining Time:"
+msgstr "Tempo restante:"
+
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:172
+msgid "Recovered:"
+msgstr "Recuperados:"
+
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:177
+msgid "Cancelled:"
+msgstr "Cancelado:"
+
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:178
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:186
+msgid "Received:"
+msgstr "Recebidos:"
+
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:179
+msgid "To Receive:"
+msgstr "A Receber:"
+
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:187
+msgid "Bytes received:"
+msgstr "Bytes recebidos:"
+
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:188
+msgid "Remaining time:"
+msgstr "Tempo restante:"
+
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:190
+msgid "Packages to Recover:"
+msgstr "Pacotes a Recuperar:"
+
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:197
+msgid "Answers:"
+msgstr "Respostas:"
+
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:198
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:209
+msgid "Question:"
+msgstr "Pergunta:"
+
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:199
+msgid "Erase"
+msgstr "Apagar"
+
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:201
+msgid "Sent Questions:"
+msgstr "Perguntas Enviadas:"
+
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:202
+msgid "Received Answers:"
+msgstr "Respostas Recebidas:"
+
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:203
+msgid "Visualize"
+msgstr "Visualizar"
+
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:208
+msgid "Number of options:"
+msgstr "Número de opções:"
+
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:213
+msgid "Browse for folder"
+msgstr "Procurar por pastas"
+
+#: ../skin_lite/include/SkinLite/SkinLiteConstants.h:214
+msgid "Cancel:"
+msgstr "Cancelar:"
+
+#: ../skin_lite/include/SkinLite/TransmissionConfigDialog.h:64
+msgid "Transmission Configuration"
+msgstr "Configurações de Transmissão"
+
+#: ../skin_telemedicine/include/SkinTelemedicine/SkinTelemedicineConstants.h:55
+#, c-format
+msgid "Connecting to %s"
+msgstr "Conectando em %s"
+
+#: ../skin_telemedicine/include/SkinTelemedicine/SkinTelemedicineConstants.h:56
+#, c-format
+msgid "Connected to %s"
+msgstr "Conectado em %s"
+
+#: ../skin_telemedicine/include/SkinTelemedicine/SkinTelemedicineConstants.h:64
+msgid "Unicast settings"
+msgstr "Configurações Unicast"
+
+#: ../skin_telemedicine/include/SkinTelemedicine/SkinTelemedicineConstants.h:65
+msgid "Server name:"
+msgstr "Nome do servidor:"
+
+#: ../skin_telemedicine/include/SkinTelemedicine/SkinTelemedicineConstants.h:66
+msgid "Server password:"
+msgstr "Senha do servidor:"
+
+#: ../skin_telemedicine/include/SkinTelemedicine/SkinTelemedicineConstants.h:67
+msgid "User name:"
+msgstr "Nome do usuário:"
+
+#: ../skin_telemedicine/include/SkinTelemedicine/SkinTelemedicineConstants.h:68
+msgid "User password:"
+msgstr "Senha do usuário:"
+
+#~ msgid "Version "
+#~ msgstr "Versão "
+#~ msgid "Core version "
+#~ msgstr "Versão do núcleo "
+#~ msgid "Project Coordinator"
+#~ msgstr "Coordenador do projeto"
+#~ msgid "Digital Video Consultant"
+#~ msgstr "Consultor de Vídeo Digital"
+#~ msgid "Software Development Manager"
+#~ msgstr "Gerente de Desenvolvimento de Software"
+#~ msgid "Software Engineers"
+#~ msgstr "Engenheiros de Software"
+#~ msgid "About IP.TV"
+#~ msgstr "Sobre o IP.TV"
+#~ msgid "Toogle fullscreen mode"
+#~ msgstr "Alternar modo fullscreen"
+#~ msgid "Hide/Show Users list"
+#~ msgstr "Esconder/Mostrar lista de Usuários"
+#~ msgid "Hide/Show Channel Chat"
+#~ msgstr "Esconder/Mostrar Chat do Canal"
+
+#, fuzzy
+#~ msgid "Remaning time: %d sec"
+#~ msgstr "Tempo restante:"
+#~ msgid "Confirmation"
+#~ msgstr "Confirmação"
+

@@ -1,0 +1,55 @@
+IP.TV/UFRJ 1399
+
+TRANSMISSÃO DE WMV:
+- Não há opção para salvar ou carregar playlist. Ambos devem existir;
+- Mudar o nome do botão que chama o recurso para um mais sugestivo e semelhante ao IP.TV/VAT. 
+Tv Executiva Filme, por ex.;
+- Durante a transmissão não é possível remover qualquer vídeo, apenas o último. Deve permitir
+que qualquer vídeo seja removido, exceto o que estiver tocando no momento;
+- Os filmes estão sendo interrompidos antes do fim. Deve-se implementar contagem regressiva 
+de 17seg. ao receber a notificação do fim do arquivo (igual no IP.TV/VAT) ou manter o video 
+tocando enquanto houver dados no buffer;
+
+
+ENQUETE:
+- O botão de rádio deve ser preenchido apenas para identificar uma resposta certa, no caso de 
+um questionamento acadêmico. Se a pergunta for uma pesquisa de opinião, nenhum botão de rádio 
+deve ser selecionado, pois não há sentido;
+- O botão Apagar deve desmarcar o botão de rádio;
+- A informação "Resposta certa" é informada apenas no gráfico.
+- Quando o usuário recebe a resposta da enquete, a janela de "pergunta" da mesma deve ser fechada.
+  Isto acontece qdo o usuário Linux nao responde e nao fecha a janela da enquete antes do 
+  recebimento da resposta.
+
+
+VIDEOCONFERENCIA:
+- Ao entrar no canal que possuia 2 usuários transmitindo, quem estava com a vez sempre ficava na 
+tela pequena (PIP) em vez de ficar na grande. O correto é o inverso. Depois o usuário pode 
+configurar a visualização do jeito que quiser.
+
+DUPLO CLIQUE NOS VIDEOS: 
+- No caso de PIP, ao clicar no video q estiver maior, maximizar a janela mantendo as opções 
+  previamente selecionadas (com ou sem chat publico e/ou lista de usuários visíveis). Chamarei 
+  daqui em diante de tela cheia parcial;
+  Ao clicar no usuário que está no PIP, inverter a posição dos vídeos (já está funcionando);
+- Com os videos igualados, ao clicar em qualquer um dos videos executar o mesmo procedimento acima;
+- Nos casos acima, se a janela já estiver maximizada (com opções visíveis), deve ficar totalmente full, 
+  mostrando apenas os vídeos. E quando desta forma, ao clicar, volta para o tela cheia parcial;
+
+
+BOTÕES:
+- A ordem e os nomes dos botões do IP.TV/VAT em tela cheia é:
+  1- Lista de Usuários - mostra/esconde a lista de usuários da sessao;
+  2- Mensagens públicas - mostra/esconde o chat público;
+  3- Aumentar tela - poe a tela em 100% cheia (sem botoes). Se o usuário der duplo-click neste modo,
+     irá manter em tela cheia, porém mostra os botões e todas as opções que estiverem selecionadas;
+  4- Mostrar janela secundária - Mostra/esconde o(s) PIP(s);
+  5- Igualar tamanho dos vídeos - Poe as telas lado a lado;
+  6- Inverter os vídeos - inverte a posição dos vídeos entre o usuário com a vez e o 1o colaborador;
+  7- Voltar - volta para a tela normal do IP.TV.
+
+- Faltam os botões MUDO e ÁUDIO;
+
+- A informação "Bitrate: ??? kbps" que é exibida no rodapé do IP.TV/UFRJ deve exibir o menor dos dois 
+  valores entre o perfil local selecionado e o perfil do canal. Tem q levar em consideração a divisão 
+  de banda quando há colaboradores.

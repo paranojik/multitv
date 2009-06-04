@@ -1,0 +1,285 @@
+<html>
+<head>
+<title>
+Intel® Integrated Performance Primitives Signal Filter Sample for Linux* Readme
+</title>
+<style>
+<!-- /* Style Definitions */ p.MsoNormal, li.MsoNormal, div.MsoNormal {margin:0in; margin-bottom:.0001pt; font-size:12.0pt; font-family:"Times New Roman"; color:black;} h1 {margin-right:0in; margin-left:0in; font-size:24.0pt; font-family:"Times New Roman"; color:black; font-weight:bold;} h2 {margin-right:0in; margin-left:0in; font-size:18.0pt; font-family:"Times New Roman"; color:black; font-weight:bold;} h5 {margin-right:0in; margin-left:0in; font-size:10.0pt; font-family:"Times New Roman"; color:black; font-weight:bold;} a:link, span.MsoHyperlink {color:blue; text-decoration:underline;} a:visited, span.MsoHyperlinkFollowed {color:blue; text-decoration:underline;} p {margin-right:0in; margin-left:0in; font-size:12.0pt; font-family:"Times New Roman"; color:black;} @page Section1 {size:8.5in 11.0in; margin:56.7pt 42.5pt 56.7pt 85.05pt;} div.Section1 {page:Section1;} -->
+</style>
+</head>
+<body bgcolor=white lang=EN-US link=blue vlink=blue>
+<div class=Section1>
+<div>
+<h1 align=center style='text-align:center'>
+<i>
+Intel
+<sup>
+®
+</sup>
+Integrated Performance Primitives
+<br>
+USC Noise Reduction (NR) Sample for Linux*
+</i>
+</h1>
+<h5>
+<span lang=RU>
+<a href="#Disclaimer">
+<span lang=EN-US>
+Disclaimer
+</span>
+</a>
+</span>
+<br>
+<span lang=RU>
+<a href="#License_Definitions">
+<span lang=EN-US>
+License Definitions
+</span>
+</a>
+</span>
+<br>
+<span lang=RU>
+<a href="#Overview">
+<span lang=EN-US>
+Overview
+</span>
+</a>
+</span>
+<br>
+<span lang=RU>
+<a href="#Running_the_Software">
+<span lang=EN-US>
+Running the Software
+</span>
+</a>
+</span>
+&nbsp;
+</h5>
+<h2>
+<a name=Disclaimer>
+</a>
+Disclaimer
+</h2>
+<p class=MsoNormal>
+<span style='font-size:10.0pt;color:windowtext'>
+INFORMATION IN THIS DOCUMENT IS PROVIDED IN CONNECTION WITH INTEL
+<sup>
+®
+</sup>
+PRODUCTS. NO LICENSE, EXPRESS OR IMPLIED, BY ESTOPPEL OR OTHERWISE, TO ANY INTELLECTUAL PROPERTY RIGHTS IS GRANTED BY THIS DOCUMENT. EXCEPT AS PROVIDED IN INTEL'S TERMS AND CONDITIONS OF SALE FOR SUCH PRODUCTS, INTEL ASSUMES NO LIABILITY WHATSOEVER, AND INTEL DISCLAIMS ANY EXPRESS OR IMPLIED WARRANTY, RELATING TO SALE AND/OR USE OF INTEL PRODUCTS INCLUDING LIABILITY OR WARRANTIES RELATING TO FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR INFRINGEMENT OF ANY PATENT, COPYRIGHT OR OTHER INTELLECTUAL PROPERTY RIGHT.
+</span>
+</p>
+<p>
+Intel products are not intended for use in medical, life saving, life sustaining, critical control or safety systems, or in nuclear facility applications. Intel may make changes to specifications and product descriptions at anytime, without notice.
+</p>
+<h2>
+<a name="License_Definitions">
+</a>
+License Definitions
+</h2>
+<p>
+By downloading and installing this sample, you hereby agree that the accompanying Materials are being provided to you under the terms and conditions of the End User License Agreement for the Intel
+<sup>
+®
+</sup>
+Integrated Performance Primitives (Intel
+<sup>
+®
+</sup>
+IPP) product previously accepted by you. Please refer to the file
+<b>
+ippEULA.rtf or ippEULA.txt
+</b>
+located in the root directory of your Intel
+<sup>
+®
+</sup>
+IPP product installation for more information.&nbsp;
+</p>
+<p>
+The G.723.1, G.729 are international standards promoted by ITU (
+<a href="http://www.itu.int">
+http://www.itu.int
+</a>
+). Implementations of these standards, or the standard enabled platforms may require licenses from various entities, including Intel Corporation.
+</p>
+<h2>
+<a name=Overview>
+</a>
+Overview
+</h2>
+<p class=MsoNormal>
+<span style='color:windowtext'>
+The USC Noise reduction sample is a command line based application. It supports two components: Noise Reduction and Voice Activity Detection.
+</span>
+</p>
+<p class=MsoNormal>
+<span style='color:windowtext'>
+The Noise reduction sample&#8217;s component processes input PCM file narrow band 16bit 8000 Hz and creates output PCM file narrow band 16bit 8000 Hz.
+</span>
+</p>
+<p class=MsoNormal>
+<span style='color:windowtext'>
+The VAD detection sample&#8217;s component processes input PCM file narrow band 16bit 8000 Hz or wide band
+</span>
+<span style='color:windowtext'>
+16bit 16000 Hz
+</span>
+<span style='color:windowtext'>
+and creates output PCM file narrow band 16bit 8000 Hz or
+</span>
+<span style='color:windowtext'>
+wide band 16bit 16000 Hz
+</span>
+<span style='color:windowtext'>
+respectively.
+</span>
+</p>
+<p>
+Additional information on this software as well as other Intel
+<sup>
+®
+</sup>
+Software Development Products is available at
+<span lang=RU>
+<a href="http://developer.intel.com/software/products/">
+<span lang=EN-US>
+http://developer.intel.com/software/products/
+</span>
+</a>
+</span>
+.
+</p>
+<h2>
+<a name=Installation>
+</a>
+<a name="Running_the_Software">
+</a>
+Running the Software
+</h2>
+<p>
+For information on building the sample, see the readme file in the ipp_samples\speech-codecs directory.
+</p>
+<p>
+In order to run the executable created by this sample,
+</p>
+<div>
+<p class=MsoNormal>
+<span style='color:windowtext'>
+be sure that the
+<b>
+LD_LIBRARY_PATH
+</b>
+environment variable includes the directories of the .so files from the Intel
+<sup>
+®
+</sup>
+IPP installation. This can be accomplished by entering the following at the command prompt:&nbsp;&nbsp;&nbsp;for examples&nbsp;
+</span>
+</p>
+<p>
+export LD_LIBRARY_PATH=/opt/intel/ipp/5.3/ia32/sharedlib:$LD_LIBRARY_PATH
+</p>
+<p>
+or by running the shell script
+<b>
+ippvars32.sh
+</b>
+from the Intel
+<sup>
+®
+</sup>
+IPP installation (located in /opt/intel/ipp/5.3/ia32/tools/env/ by default).
+</p>
+<p>
+<b>
+./usc_nr [options] &lt;inPCMFile&gt; &lt;outPCMFile&gt;&nbsp;
+</b>
+</p>
+<p>
+The option list:&nbsp;&nbsp;
+</p>
+<p>
+<b>
+-alg
+</b>
+IPP_NR_EPHM|IPP_NR_EC|IPP_VADG723|IPP_VADG729_FP|IPP_VADG729|IPP_VAD - signal filter algorithm name.
+</p>
+<blockquote>
+<p>
+IPP_NR_EPHM - Ehprame-Malah based Noise Reduction algorithm.
+</p>
+<p>
+IPP_NR_EC - IPP based Noise Reduction algorithm.
+</p>
+<p>
+IPP_VADG723 - ITU G.723.1 VAD algorithm.
+</p>
+<p>
+IPP_VADG729_FP - ITU G.729 floating-point VAD algorithm.
+</p>
+<p>
+IPP_VADG729 - ITU G.729 VAD algorithm.
+</p>
+<p>
+IPP_VAD - IPP based VAD algorithm.
+</p>
+</blockquote>
+<p style='margin-top:3.0pt;margin-right:0in;margin-bottom:3.0pt;margin-left: 0in'>
+<b>
+-f&lt;freq&gt;&nbsp;
+</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Sample frequency in Hertz. 16000 for IPP_VAD algorithm, 8000 for others.
+</p>
+<p style='margin-top:3.0pt;margin-right:0in;margin-bottom:3.0pt;margin-left: 0in'>
+<b>
+-n&nbsp;&nbsp;
+</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; output additional information&nbsp; (optional).
+</p>
+<p style='margin-top:3.0pt;margin-right:0in;margin-bottom:3.0pt;margin-left: 0in'>
+<b>
+-list&nbsp;&nbsp;
+</b>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Enumerate linked USC signal filter algorithms and exit&nbsp; (optional).
+</p>
+<p style='margin-top:3.0pt;margin-right:0in;margin-bottom:3.0pt;margin-left: 0in'>
+&nbsp;
+<b>
+-o &lt;logFile&gt;
+</b>
+&nbsp;&nbsp;&nbsp;&nbsp; write to &lt;logFile&gt; file log information (optional).
+<br>
+<b>
+&lt;inPCMFile&gt;
+</b>
+- input audio PCM file 8000 Hz (IPP_NR_EPHM, IPP_NR_EC, IPP_VADG723, IPP_VADG729_FP, IPP_VADG729 algorithms) or 16000 Hz (IPP_VAD algorithm).
+</p>
+<p style='margin-top:3.0pt;margin-right:0in;margin-bottom:3.0pt;margin-left: 0in'>
+<b>
+&lt;outPCMFile&gt;
+</b>
+- output audio PCM file 8000 Hz (IPP_NR_EPHM, IPP_NR_EC, IPP_VADG723, IPP_VADG729_FP, IPP_VADG729 algorithms) or 16000 Hz (IPP_VAD algorithm).
+</p>
+</div>
+<p>
+<a name=Support>
+</a>
+<span style='font-size:7.5pt'>
+Intel, the Intel logo, Intel SpeedStep, Intel NetBurst, Intel NetStructure, MMX, Intel386, Intel486, Celeron, Intel Centrino, Intel Xeon, Intel XScale, Itanium, Pentium, Pentium II Xeon, Pentium III Xeon, Pentium M, and VTune are trademarks or registered trademarks of Intel Corporation or its subsidiaries in the United States and other countries.
+<br>
+&nbsp;
+<br>
+* Other names and brands may be claimed as the property of others.
+<br>
+&nbsp;
+<br>
+</span>
+<span lang=RU style='font-size:7.5pt'>
+Copyright (c) 2002-2008 Intel Corporation. All rights reserved.
+</span>
+</p>
+</div>
+</div>
+</body>
+</html>

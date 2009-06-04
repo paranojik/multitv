@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<iptv>
+  <config>
+    <skin>Telemedicine (Debug)</skin>
+    <language>151</language>
+    <transmissionProfile>128k</transmissionProfile>
+    <audioDevice>0</audioDevice>
+    <audioCodec>speex_hi</audioCodec>
+    <videoDevice>0</videoDevice>
+    <videoCodec>h264</videoCodec>
+    <recordingEnable>0</recordingEnable>
+    <recordingPath>c:\Documents and Settings\Administrador\Meus documentos\_work\iptv_root\iptv_client\bin</recordingPath>
+    <profile>Latest</profile>
+  </config>
+  <profile>
+    <profileName>Latest</profileName>
+    <userName>mtvinicius</userName>
+    <userPassword>vinicius</userPassword>
+    <serverName>alpha.ip.tv</serverName>
+    <serverPassword></serverPassword>
+    <channelName>multitv</channelName>
+    <channelPassword></channelPassword>
+  </profile>
+</iptv>
