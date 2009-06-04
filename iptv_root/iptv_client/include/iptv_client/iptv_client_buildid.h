@@ -1,0 +1,5 @@
+// buildUID.h
+#define BUILD_ID "1415"
+#define BUILD_DATETIME "Fev 06 2009 00:34"
+#define BUILD_DATETIME_STR "2009|02|06|00|08|0|0"
+#define BUILD_USER_VERSION "0.2.4"

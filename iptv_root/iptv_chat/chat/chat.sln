@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "chat", "chat.vcproj", "{00DD12F9-842E-4420-9284-CCC30DB0E0FA}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "testInstantiate", "..\tests\project\VC2005\testInstantiate.vcproj", "{95F1FEFA-C4FB-49A9-8493-D0E557EF77CA}"
+	ProjectSection(ProjectDependencies) = postProject
+		{00DD12F9-842E-4420-9284-CCC30DB0E0FA} = {00DD12F9-842E-4420-9284-CCC30DB0E0FA}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{00DD12F9-842E-4420-9284-CCC30DB0E0FA}.Debug|Win32.ActiveCfg = Debug|Win32
+		{00DD12F9-842E-4420-9284-CCC30DB0E0FA}.Debug|Win32.Build.0 = Debug|Win32
+		{00DD12F9-842E-4420-9284-CCC30DB0E0FA}.Release|Win32.ActiveCfg = Release|Win32
+		{00DD12F9-842E-4420-9284-CCC30DB0E0FA}.Release|Win32.Build.0 = Release|Win32
+		{95F1FEFA-C4FB-49A9-8493-D0E557EF77CA}.Debug|Win32.ActiveCfg = Debug|Win32
+		{95F1FEFA-C4FB-49A9-8493-D0E557EF77CA}.Debug|Win32.Build.0 = Debug|Win32
+		{95F1FEFA-C4FB-49A9-8493-D0E557EF77CA}.Release|Win32.ActiveCfg = Release|Win32
+		{95F1FEFA-C4FB-49A9-8493-D0E557EF77CA}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,36 @@
+Determining if the include file windows.h exists failed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entering directory `/home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckIncludeFile.o
+/usr/bin/gcc   -o CMakeFiles/cmTryCompileExec.dir/CheckIncludeFile.o   -c /home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+/home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CheckIncludeFile.c:1:21: error: windows.h: No such file or directory
+make[1]: *** [CMakeFiles/cmTryCompileExec.dir/CheckIncludeFile.o] Error 1
+make[1]: Leaving directory `/home/vinicius/_work/iptv_root/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+make: *** [cmTryCompileExec/fast] Error 2
+
+
+Determining if the include file windows.h exists failed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entrando no diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckIncludeFile.o
+/usr/bin/gcc   -o CMakeFiles/cmTryCompileExec.dir/CheckIncludeFile.o   -c /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CheckIncludeFile.c:1:21: erro: windows.h: Arquivo ou diretório inexistente
+make[1]: ** [CMakeFiles/cmTryCompileExec.dir/CheckIncludeFile.o] Erro 1
+make[1]: Saindo do diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+make: ** [cmTryCompileExec/fast] Erro 2
+
+
+Determining if the include file windows.h exists failed with the following output:
+/usr/bin/make -f CMakeFiles/cmTryCompileExec.dir/build.make CMakeFiles/cmTryCompileExec.dir/build
+make[1]: Entrando no diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+/usr/bin/cmake -E cmake_progress_report /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CMakeFiles 1
+Building C object CMakeFiles/cmTryCompileExec.dir/CheckIncludeFile.o
+/usr/bin/gcc   -o CMakeFiles/cmTryCompileExec.dir/CheckIncludeFile.o   -c /home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp/CheckIncludeFile.c:1:21: erro: windows.h: Arquivo ou diretório inexistente
+make[1]: ** [CMakeFiles/cmTryCompileExec.dir/CheckIncludeFile.o] Erro 1
+make[1]: Saindo do diretório `/home/heineck/_work/iptv_root_googleCode/openal-soft/CMakeConf/CMakeFiles/CMakeTmp'
+make: ** [cmTryCompileExec/fast] Erro 2
+
+

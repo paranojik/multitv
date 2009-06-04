@@ -1,0 +1,298 @@
+<html>
+<head>
+<title>
+Intel® Integrated Performance Primitives Echo Canceller (EC) Sample for Linux* Readme
+</title>
+<style>
+<!-- /* Style Definitions */ p.MsoNormal, li.MsoNormal, div.MsoNormal {margin:0in; margin-bottom:.0001pt; font-size:12.0pt; font-family:"Times New Roman"; color:black;} h1 {margin-right:0in; margin-left:0in; font-size:24.0pt; font-family:"Times New Roman"; color:black; font-weight:bold;} h2 {margin-right:0in; margin-left:0in; font-size:18.0pt; font-family:"Times New Roman"; color:black; font-weight:bold;} h5 {margin-right:0in; margin-left:0in; font-size:10.0pt; font-family:"Times New Roman"; color:black; font-weight:bold;} a:link, span.MsoHyperlink {color:blue; text-decoration:underline;} a:visited, span.MsoHyperlinkFollowed {color:blue; text-decoration:underline;} p {margin-right:0in; margin-left:0in; font-size:12.0pt; font-family:"Times New Roman"; color:black;} @page Section1 {size:8.5in 11.0in; margin:56.7pt 42.5pt 56.7pt 85.05pt;} div.Section1 {page:Section1;} -->
+</style>
+</head>
+<body bgcolor=white lang=EN-US link=blue vlink=blue>
+<div class=Section1>
+<div>
+<h1 align=center style='text-align:center'>
+<i>
+Intel
+<sup>
+®
+</sup>
+Integrated Performance Primitives
+<br>
+USC Echo Canceller (EC) Sample for Linux*
+</i>
+</h1>
+<h5>
+<span lang=RU>
+<a href="#Disclaimer">
+<span lang=EN-US>
+Disclaimer
+</span>
+</a>
+</span>
+<br>
+<span lang=RU>
+<a href="#License_Definitions">
+<span lang=EN-US>
+License Definitions
+</span>
+</a>
+</span>
+<br>
+<span lang=RU>
+<a href="#Overview">
+<span lang=EN-US>
+Overview
+</span>
+</a>
+</span>
+<br>
+<span lang=RU>
+<a href="#Running_the_Software">
+<span lang=EN-US>
+Running the Software
+</span>
+</a>
+</span>
+&nbsp;
+</h5>
+<h2>
+<a name=Disclaimer>
+</a>
+Disclaimer
+</h2>
+<p class=MsoNormal>
+<span style='font-size:10.0pt;color:windowtext'>
+INFORMATION IN THIS DOCUMENT IS PROVIDED IN CONNECTION WITH INTEL
+<sup>
+®
+</sup>
+PRODUCTS. NO LICENSE, EXPRESS OR IMPLIED, BY ESTOPPEL OR OTHERWISE, TO ANY INTELLECTUAL PROPERTY RIGHTS IS GRANTED BY THIS DOCUMENT. EXCEPT AS PROVIDED IN INTEL'S TERMS AND CONDITIONS OF SALE FOR SUCH PRODUCTS, INTEL ASSUMES NO LIABILITY WHATSOEVER, AND INTEL DISCLAIMS ANY EXPRESS OR IMPLIED WARRANTY, RELATING TO SALE AND/OR USE OF INTEL PRODUCTS INCLUDING LIABILITY OR WARRANTIES RELATING TO FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR INFRINGEMENT OF ANY PATENT, COPYRIGHT OR OTHER INTELLECTUAL PROPERTY RIGHT.
+</span>
+</p>
+<p>
+Intel products are not intended for use in medical, life saving, life sustaining, critical control or safety systems, or in nuclear facility applications. Intel may make changes to specifications and product descriptions at anytime, without notice.
+</p>
+<h2>
+<a name="License_Definitions">
+</a>
+License Definitions
+</h2>
+<p>
+By downloading and installing this sample, you hereby agree that the accompanying Materials are being provided to you under the terms and conditions of the End User License Agreement for the Intel
+<sup>
+®
+</sup>
+Integrated Performance Primitives product previously accepted by you. Please refer to the file
+<b>
+ippEULA.rtf or ippEULA.txt
+</b>
+for more information.
+</p>
+<p>
+The G.167 and G.168 are international standards promoted by ITU (
+<span lang=RU>
+<a href="http://www.itu.int">
+<span lang=EN-US>
+http://www.itu.int
+</span>
+</a>
+</span>
+). Implementations of these standards, or the standard enabled platforms may require licenses from various entities, including Intel Corporation.
+</p>
+<h2>
+<a name=Overview>
+</a>
+Overview
+</h2>
+<p>
+The USC Echo Canceller sample is a command line based application that performs echo cancellation. The EC sample processes two input files and creates one output PCM files either narrow band 16bit 8000 Hz or wideband 16bit 16000 Hz. The receive-in and send-in samples are processed to perform echo path parameters estimation and estimated echo is subtracted from the send-in samples and &quot;echo-free&quot; PCM data is written to send-out output file.
+</p>
+<p>
+The sample implements three algorithms:
+</p>
+<p style='margin-left:.5in;text-indent:-.25in'>
+1.
+<span style='font-size:7.0pt'>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>
+Fullband algorithm&nbsp; - processing in time domain,
+</p>
+<p style='margin-left:.5in;text-indent:-.25in'>
+2.
+<span style='font-size:7.0pt'>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>
+Subband algorithm &#8211; processing in the frequency domain,
+</p>
+<p style='margin-left:.5in;text-indent:-.25in'>
+3.
+<span style='font-size:7.0pt'>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>
+Subband-Fast algorithm &#8211; fast processing in the frequency domain. The Subband-Fast algorithm introduces 6ms delay for 8kHz and 3 ms delay for 16kHz into the output signal.
+</p>
+<u1:p>
+</u1:p>
+<p>
+<span lang="EN-US">
+The USC Echo Canceller software module is suitable for building an echo cancellation device compliant with ITU G.168-200
+</span>
+<span lang="en-us">
+2 and G.167
+</span>
+<span lang="EN-US">
+specifications.
+</span>
+</p>
+<h2>
+<a name=Installation>
+</a>
+<a name="Running_the_Software">
+</a>
+Running the Software
+</h2>
+<p>
+For information on building the sample, see the readme file in the ipp_samples\speech-codecs directory.
+</p>
+<p>
+In order to run the executable created by this sample,
+</p>
+<div>
+<p class=MsoNormal>
+<span style='color:windowtext'>
+be sure that the
+<b>
+LD_LIBRARY_PATH
+</b>
+environment variable includes the directories of the .so files from the Intel
+<sup>
+®
+</sup>
+IPP installation. This can be accomplished by entering the following at the command prompt:&nbsp;&nbsp;&nbsp;for examples&nbsp;
+</span>
+</p>
+<p>
+export LD_LIBRARY_PATH=/opt/intel/ipp/5.3/ia32/sharedlib:$LD_LIBRARY_PATH
+</p>
+<p>
+or by running the shell script
+<b>
+ippvars32.sh
+</b>
+from the Intel
+<sup>
+®
+</sup>
+IPP installation (located in /opt/intel/ipp/5.3/ia32/tools/env/ by default).
+</p>
+</div>
+<p>
+To run the USC EC sample, type:&nbsp;
+</p>
+<p>
+./usc_ec
+<span style='color:windowtext'>
+[options] &lt;r-inPCMFile&gt; &lt;s-inPCMFile&gt; &lt;s-outPCMFile&gt;
+</span>
+</p>
+<p>
+Option list:&nbsp;
+</p>
+<p style='margin-top:2.25pt;margin-right:0in;margin-bottom:2.25pt;margin-left: 0in'>
+&nbsp;&nbsp;&nbsp;&nbsp; [-f&nbsp; &lt;frequency &gt;]&nbsp;- sample frequency in KHz: 8 or 16. Default: 8.
+</p>
+<p style='margin-top:2.25pt;margin-right:0in;margin-bottom:2.25pt;margin-left: 0in'>
+&nbsp;&nbsp;&nbsp;&nbsp; [-a &lt;algorithm&gt;]&nbsp;- specify an algorithm:
+<span style='color:windowtext'>
+fb (fullband), sb (subband) or sbf (subband-fast). Default: &lt;algorithm&gt; = sb.
+</span>
+</p>
+<p style='margin-top:2.25pt;margin-right:0in;margin-bottom:2.25pt;margin-left: 0in'>
+<span style='color:windowtext'>
+&nbsp;&nbsp;&nbsp;&nbsp; [-ad &lt;mode&gt;] - set adaptation mode: &quot;full&quot; or &quot;lite&quot;. &quot;full&quot; is a default value. &quot;lite&quot; mode requires significantly low cpu resources but may show worse adaptation characteristics.
+</span>
+</p>
+<p style='margin-top:2.25pt;margin-right:0in;margin-bottom:2.25pt;margin-left: 0in'>
+<span style='color:windowtext'>
+&nbsp;&nbsp;&nbsp;&nbsp; [-ah
+</span>
+&lt;mode&gt;] - Set the anti-howling device mode:1 - on (cos shift up. Exclude sb mode). 0 - off. 0 as default.
+</p>
+<p style='margin-top:2.25pt;margin-right:0in;margin-bottom:2.25pt;margin-left: 0in'>
+<span style='color:windowtext'>
+&nbsp;&nbsp;&nbsp;&nbsp; [-l &lt;num&gt;] - echo tail length in ms in range [1, 200].
+</span>
+</p>
+<p style='margin-top:2.25pt;margin-right:0in;margin-bottom:2.25pt;margin-left: 0in'>
+<span style='color:windowtext'>
+&nbsp;&nbsp;&nbsp;
+</span>
+&nbsp;[-delay &lt;val&gt;]&nbsp;&nbsp; Set the delay in send-in PCM file, integer number of milliseconds. The leading end of send-in PCM will be cut off prior to echo cancel. Default: no delay.
+</p>
+<p style='margin-top:2.25pt;margin-right:0in;margin-bottom:2.25pt;margin-left: 0in'>
+&nbsp;&nbsp;&nbsp;&nbsp; [-s&nbsp; &lt;rep&gt;]&nbsp;- repeater, how many times input files shall be processed without resetting EC,&nbsp; default: one time.&nbsp;
+</p>
+<p class=MsoNormal>
+<span style='color:windowtext'>
+&nbsp;&nbsp;&nbsp;&nbsp; [-c &lt;csv filename&gt;] - Print out performance info line to specified file (optional).
+</span>
+</p>
+<p style='margin-top:2.25pt;margin-right:0in;margin-bottom:2.25pt;margin-left: 0in'>
+&nbsp;&nbsp;&nbsp;&nbsp; [-o &lt;logFile&gt;] -&nbsp;write log information to the file&nbsp; &lt;logFile&gt; .
+</p>
+<p style='margin-top:2.25pt;margin-right:0in;margin-bottom:2.25pt;margin-left: 0in'>
+&nbsp;&nbsp;&nbsp;&nbsp; [-list] - print out the modes list.
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp; [-sys] - print out system information.
+<br>
+&nbsp;&nbsp;&nbsp;&nbsp; [-nlp &lt;num&gt;] 0- Set NLP off.1 as default.1- NLP type actual for all modes,2- NLP type actual for sbf only.
+</p>
+<p style='margin-top:2.25pt;margin-right:0in;margin-bottom:2.25pt;margin-left: 0in'>
+&nbsp;&nbsp;&nbsp;&nbsp; [-cng &lt;num&gt;] 0-Set CNG off. 1 as default. Active when NLP is on only.1- CNG type actual for all modes.
+</p>
+<p style='margin-top:2.25pt;margin-right:0in;margin-bottom:2.25pt;margin-left: 0in'>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 2- CNG type actual for sbf only (actual with -nlp type 2 only).
+</p>
+<p style='margin-top:2.25pt;margin-right:0in;margin-bottom:2.25pt;margin-left: 0in'>
+&lt;r-inPCMFile&gt; - input file contains receive-in 16-bit PCM signal.
+</p>
+<p style='margin-top:2.25pt;margin-right:0in;margin-bottom:2.25pt;margin-left: 0in'>
+&lt;s-inPCMFile&gt; - input file contains send-in 16-bit PCM signal.
+</p>
+<p style='margin-top:2.25pt;margin-right:0in;margin-bottom:2.25pt;margin-left: 0in'>
+&lt;s-outPCMFile&gt; - output file contains send-out 16-bit PCM signal.
+</p>
+<p style='margin-top:2.25pt;margin-right:0in;margin-bottom:2.25pt;margin-left: 0in'>
+&nbsp;
+</p>
+<p style='margin-top:2.25pt;margin-right:0in;margin-bottom:2.25pt;margin-left: 0in'>
+Note:&nbsp; if repeat is specified (-s option) the last result only will be written into the output file.
+</p>
+<div>
+<p class=MsoNormal>
+<span style='color:windowtext'>
+&nbsp;
+</span>
+</p>
+</div>
+<p>
+<a name=Support>
+</a>
+<span style='font-size:7.5pt'>
+Intel, the Intel logo, Intel SpeedStep, Intel NetBurst, Intel NetStructure, MMX, Intel386, Intel486, Celeron, Intel Centrino, Intel Xeon, Intel XScale, Itanium, Pentium, Pentium II Xeon, Pentium III Xeon, Pentium M, and VTune are trademarks or registered trademarks of Intel Corporation or its subsidiaries in the United States and other countries.
+<br>
+&nbsp;
+<br>
+* Other names and brands may be claimed as the property of others.
+<br>
+&nbsp;
+<br>
+</span>
+<span lang=RU style='font-size:7.5pt'>
+Copyright (c) 2002-2008 Intel Corporation. All rights reserved.
+</span>
+</p>
+</div>
+</div>
+</body>
+</html>

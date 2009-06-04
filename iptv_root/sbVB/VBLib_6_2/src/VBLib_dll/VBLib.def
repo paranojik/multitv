@@ -1,0 +1,13 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; VBLib.def : Declares the module parameters for the DLL.
+; The LIBRARY must be VBLib_6_1, not only VBLib
+; The LIBRARY statement is optional
+; LIBRARY      "VBLib_6_1"
+DESCRIPTION  'sbVB general purpose DLL in C++. www.sbvb.com.br'
+EXPORTS
+; Explicit exports can go here
+getBuildID				@1 PRIVATE
+getBuild_dateTime		@2 PRIVATE
+getBuild_dateTime_str	@3 PRIVATE
+getUserVersion			@4 PRIVATE
+getLibraryDescription	@5 PRIVATE

@@ -1,0 +1,1698 @@
+Shared Lib
+----------
+
+
+date.cpp / date.h
+-----------------
+
+=> LPCSTR GetFormatDate(long _ctime, LPSTR _saida, UINT _size, LPCSTR _format)
+
+Formata a data/hora <_ctime) de acordo com <_format>.
+Caso <_format=NULL> retorna uma string do tipo:
+
+Fri Apr 29 12:25:12 1994
+
+Caso <_ctime=0> => obtem a data/hora do sistema
+
+
+=> LPCSTR GetSysTime(LPSTR _saida, UINT _size, LPCSTR _format)
+
+Retorna a data/hora do sistema formatada com <_format>.
+Caso <_format=NULL> retorna uma string do tipo:
+
+Fri Apr 29 12:25:12 1994
+
+
+LPCSTR GetUptime(long _reftime, LPSTR _saida, UINT _size)
+
+Retorna string indicando quanto tempo decorreu desde <_reftime>.
+
+
+xversion.cpp / xversion.h
+-------------------------
+
+=> LPCSTR GetFileVersion( LPSTR _filename, LPSTR _pversion, UINT _szversion )
+
+Obtem a versao <FileVersion> especificada no arquivo de recursos associado
+a <_filename>.
+
+
+
+ListT
+-----
+
+template <class T> class ListT
+{
+public:
+
+    ListT          (bool _flKill=true);
+   ~ListT          (void);
+
+    long get_nitens(void);
+
+    void reset           (void);
+    Node<T> * append     (T *pobj, LPCSTR nome=NULL, double val=0, Node<T> *_pNode=NULL);
+    Node<T> * insertTop  (T *pobj, LPCSTR nome=NULL, double val=0);
+    Node<T> * push       (T *pobj, LPCSTR nome=NULL, double val=0, Node *_pNode=NULL);
+    T       * pop        (void);
+    bool      update     (Node<T> *pNode, double _newval=0);
+    Node<T> * GetCurNode (void);
+
+    T * search(long ind, Node<T> **pNodeFound=NULL)    // Indice 1..nItens
+    Node<T> * search     (T *pobj);
+    T * search           (LPCSTR nome, Node<T> **pNodeRet=NULL);
+    bool test            (LPCSTR nome);
+
+    T * first      (LPCSTR *pName=NULL);
+    T * last       (LPCSTR *pName=NULL);
+    T * next       (LPCSTR *pName=NULL);
+    T * prev       (LPCSTR *pName=NULL);
+    T * current    (LPCSTR *pName=NULL);
+
+    void SetPos    (Node<T> *pNewPos);
+
+    bool erase     (long ind, bool flKeepObj=false);
+    bool erase     (Node<T> *pNode, bool flKeepObj=false, bool flKeepNode=false);
+    bool erase     (LPCSTR nome, bool flKeepObj=false);
+    bool erase     (T *pobj, bool flKeepObj=false);
+    bool eraseCur  (bool flKeepObj=false);
+};
+
+
+Implementa Lista de Estruturas simples ou Baseada em prioridades
+(Priority List)
+
+Esta classe assume que a estrutura serah sempre alocada fora de seu contexto.
+Ou seja, para incluir um novo elemento na lista deve-se aloca-lo anteriormente
+a chamada das rotinas de inclusao.
+As rotinas de manipulacao da classe tratam o ponteiro para a estrutura
+previamente alocada.
+
+. ListT<StructName>(bool flKill=true, bool flAscend=true)
+
+flKill: Se TRUE : No ato da destruicao de cada elemento da lista eh dado 
+                  delete no objeto correspondente automaticamente (default).
+        Se FALSE: A destruicao dos objetos serah de responsabilidade de quem
+                  os alocou.
+
+flAscend: Se ao incluir um elemento na lista for informada sua prioridade,
+          se flAscend=true (default) => A lista eh ordenada de forma crescente
+          por seu valor de prioridade, ou seja, itens com prioridade de valor
+          menor sao situados anteriormente aos de maior valor. Percorrendo-se
+          a lista first()..next()..next().., irao surgir antes os elementos
+          com valor de prioridade menor. Se flAscend=false => A lista eh 
+          ordenada de forma decrescente por seu valor de prioridade.
+
+
+. long get_nitens(void)
+
+Retorna numero de itens da lista.
+
+
+. void reset(void)
+
+Zera a lista.
+
+
+. Node<T> * append(T *pobj, LPCSTR nome=NULL, double val=0)
+
+Inclui elemento no fim da lista (independente do seu valor de prioridade <val>!!)
+Se a lista for uma Priority List soh se deve utilizar esta rotina com a certeza do
+item ser situado no fim da lista. Caso contrario deve-se utilizar push(...).
+nome: Identificador do nodo (opcional) para consultas futuras.
+
+Retorna o ponteiro para o Nodo recem criado Node<StructName>.
+
+
+Ex:
+
+struct Ponto
+{
+    int x,
+        y;
+
+    Ponto(int _x, int _y) : x(_x), y(_y)    
+};
+
+
+ListT<Ponto> lista;
+
+Ponto *pPonto;
+
+
+pPonto = new Ponto(5, 10);
+
+if (pPonto)
+{
+    if ( lista.append(pPonto) )
+    {
+        printf("Novo ponto incluido\n");
+    }
+}
+
+
+. Node<T> * insertTop(T *pobj, LPCSTR nome=NULL, double val=0)
+
+Inclui elemento no inicio da lista (independente do seu valor de prioridade <val>!!)
+Se a lista for uma Priority List soh se deve utilizar esta rotina com a certeza do
+item ser situado no inicio da lista. Caso contrario deve-se utilizar push(...).
+nome: Identificador do nodo (opcional) para consultas futuras.
+
+Retorna o ponteiro para o Nodo recem criado Node<StructName>.
+
+
+. Node<T> * push(T *pobj, LPCSTR nome=NULL, double val=0)
+
+Inclui elemento na lista de acordo com o seu valor de prioridade <val>
+nome: Identificador do nodo (opcional) para consultas futuras.
+
+Retorna o ponteiro para o Nodo recem criado Node<StructName>.
+
+
+. T * pop(void)
+
+Retorna o 1o elemento da lista de acordo com a ordenacao informada no 
+construtor da classe. O elemento eh removido da lista. Utilizando esta
+funcao a responsabilidade de apagar o objeto correspondente nao mais serah
+da ListT.
+
+
+. bool update(Node<T> *pNode, double _newval=0)
+
+Atualiza o valor de prioridade do elemento contido em Node<T> (para obter
+Node<T> pode-se guardar o retorno das rotinas de inclusao do elemento na lista
+ou utilizar a funcao search(...).
+
+
+. Node<T> * GetCurNode(void)
+
+Retorna ponteiro para o Nodo do elemento corrente da lista (Node<T>)
+
+
+. Node<T> * search(T *pobj)
+
+Retorna ponteiro para o Nodo (Node<T>) do elemento apontado por T *pobj
+
+
+. T * search(LPCSTR nome, Node<T> **pNodeRet=NULL)
+
+Retorna ponteiro para o elemento da lista com identificador <nome>.
+Caso <pNodeRet> seja informado, retorna ponteiro para o nodo (Node<T>) correspondente.
+
+
+. bool test(LPCSTR nome)
+
+Verifica se o elemento de identificador <nome> existe. Se existir retorna
+true senao retorna false (funciona de forma identica a search(...)).
+
+
+. T * first      (LPCSTR *pName=NULL)
+. T * last       (LPCSTR *pName=NULL)
+. T * next       (LPCSTR *pName=NULL)
+. T * prev       (LPCSTR *pName=NULL)
+. T * current    (LPCSTR *pName=NULL)
+
+Funcoes para percorrer lista.
+Retornam primeiro / ultimo / proximo / anterior / corrente.
+
+Ex:
+
+ListT<Ponto> lista;
+
+Ponto *pPonto;
+
+
+pPonto = lista.first();
+
+while (pPonto)
+{
+    printf("Ponto(%d, %d)\n", pPonto->x, pPonto->y);
+    pPonto = lista.next();
+}
+
+
+. void SetPos(Node<T> *pNewPos)
+
+Reposiciona ponteiro de posicao usado para controle em percorrer a lista.
+Apos a chamada desta rotina, o proximo item a ser obtido em next() / prev() /
+current() serao em funcao do novo nodo (Node<T> *pNewPos) informado.
+
+
+. bool erase(Node<T> *pNode, bool flKeepObj=false)
+. bool erase(LPCSTR nome, bool flKeepObj=false)
+. bool erase(T *pobj, bool flKeepObj=false)
+. bool eraseCur(bool flKeepObj=false)
+
+Funcoes para remover elemento da lista.
+A remocao pode ser por Nodo / nome / ponteiro para o elemento (T *pobj) ou
+o elemento corrente.
+flKeepObj: Se false: Ao remover o elemento executa delete no objeto correspondente.
+           Se true : A responsabilidade de deletar o objeto deixarah de ser
+                     de ListT
+
+
+
+Redefinicao de Operadores
+-------------------------
+
+Algumas das classes a seguir por se tratarem de templates genericamente,
+permitem como parametro uma estrutura (ao inves do ponteiro para a mesma).
+Sendo assim, torna-se necessaria a refinicao de alguns dos operadores da classe
+para evitar problemas.
+
+Ex.:
+
+struct StructName
+{
+    int id,
+        data;
+
+    StructName& operator= (const StructName& obj);
+    StructName& operator= (int i);
+    bool operator== (int i) const;
+    bool operator!= (int i) const;
+    bool operator== (const StructName& obj) const;
+    bool operator!= (const StructName& obj) const;
+
+    void* operator new    (size_t);          // Nao ha necessidade de redefinicao para as classes a seguir
+    void  operator delete (StructName& obj); // Necessario apenas para a classe StackT
+};
+
+// Atribuicao obj1 = obj2
+
+StructName& StructName::operator= (const StructName& obj)
+{
+    id   = obj.id;
+    data = obj.data;
+
+    return *this;
+}
+
+
+// Atribuicao obj = 0 ou obj = NULL
+
+StructName& StructName::operator= (int i)
+{
+    if (i == 0) 
+    {
+        id   = 0;
+        data = 0;
+    }
+
+    return *this;
+}
+
+// Comparacao obj == _id
+
+bool StructName::operator== (int _id) const
+{
+    if (id == _id)
+        return true;
+        
+    return false;
+}
+
+// Comparacao obj != _id
+
+bool StructName::operator!= (int _id) const
+{
+    if (id != _id)
+        return true;
+        
+    return false;
+}
+
+// Comparacao obj1 == obj2
+
+bool StructName::operator== (const StructName& obj) const
+{
+    if (id == obj.id)
+        return true;
+        
+    return false;
+}
+
+// Comparacao obj1 != obj2
+
+bool StructName::operator!= (const StructName& obj) const
+{
+    if (id != obj.id)
+        return true;
+        
+    return false;
+}
+
+// Apenas para exemplificacao
+// Nao eh necessaria sua redefinicao para as classes abaixo
+
+void * StructName::operator new( size_t stAllocateBlock )
+{
+    //static fInOpNew = 0;    // Guard flag.
+
+    //if( fLogMemory && !fInOpNew )
+    //{
+    //    fInOpNew = 1;
+    //    clog << "Memory block "   << ++cBlocksAllocated
+    //         << " allocated for " << stAllocateBlock
+    //         << " bytes\n";
+    //    fInOpNew = 0;
+    //}
+
+    return malloc( stAllocateBlock );
+}
+
+// Para a classe StackT esta rotina impedirah que de erro na tentativa
+// de execucao de delete em um objeto da classe StructName
+
+void StructName::operator delete( StructName& obj )
+{
+    //static fInOpDelete = 0;    // Guard flag.
+    //if( fLogMemory && !fInOpDelete )
+    //{
+    //    fInOpDelete = 1;
+    //    clog << "Memory block " << --cBlocksAllocated
+    //         << " deallocated\n";
+    //    fInOpDelete = 0;
+    //}
+
+    //free( pvMem );
+}
+
+
+HastT
+-----
+
+template <class T> class HashT
+{
+private:
+
+   virtual void kill_reg(T obj);
+
+
+public:
+
+    HashT(BOOL _flKillRegs = TRUE);
+   ~HashT(void);
+
+    void reset     (void);
+    int  get_nitens(void) { return nItensNotDel; }
+
+    BOOL add   (LPCSTR nome, T obj);
+    T    search(LPCSTR nome);
+    BOOL erase (LPCSTR nome);
+    BOOL remove(LPCSTR nome);
+
+    T first(LPSTR nome = NULL);
+    T next (LPSTR nome = NULL);
+};
+
+
+Implementa um Hash para a busca rapida de estruturas utilizando seu identificador
+alfa numerico.
+Diferentemente de ListT, esta classe nao assume que os objetos a
+serem incluidos sao ponteiros para suas estruturas.
+
+Surgem assim 2 possibilidades:
+
+=> Possibilidade 1 - Hash armazena estruturas diretamente
+. HashT<MyData>
+
+Neste caso deve-se redefinir os operadores, como no exemplo abaixo:
+
+struct MyData
+{
+    int idade;
+    double peso;
+
+    MyData(int _idade, double _peso) : idade(_idade), peso(_peso)
+
+    MyData& operator= (const MyData& obj);
+    MyData& operator= (int i);
+    bool operator== (int i) const;
+    bool operator!= (int i) const;
+};
+
+// Atribuicao obj1 = obj2
+
+MyData& MyData::operator= (const MyData& obj)
+{
+    idade = obj.idade;
+    peso  = obj.peso;
+
+    return *this;
+}
+
+
+// Atribuicao obj = 0 ou obj = NULL
+
+MyData& MyData::operator= (int i)
+{
+    if (i == 0) 
+    {
+        idade = 0;
+        peso  = 0;
+    }
+
+    return *this;
+}
+
+// Comparacao obj == i (basicamente para verificar se o retorno de search / 
+// first e next foram com sucesso ou nao (se retornar NULL => erro)
+
+bool MyData::operator== (int i) const
+{
+    if (idade == i)
+        return true;
+        
+    return false;
+}
+
+// Comparacao obj != i (basicamente para verificar se o retorno de search / 
+// first e next foram com sucesso ou nao (se retornar != NULL => Ok)
+
+bool MyData::operator!= (int i) const
+{
+    if (idade != i)
+        return true;
+        
+    return false;
+}
+
+
+main()
+{
+    HashT<MyData> hash;
+    MyData elemento(48, 75.5);
+
+    if ( hash.add("cox", elemento) )
+    {
+        printf("Elemento incluido com sucesso\n");
+    }
+}
+
+
+=> Possibilidade 2 - Hash armazena ponteiros para estruturas (alocadas externamente ao hash)
+. HashT<MyData *>
+
+
+Sendo assim, caso seja necessaria a chamada de rotina para a destruicao
+dos elementos incluidos, esta deve ser redefinida em uma classe derivada 
+de HashT e utilizar a forma: void kill_reg(T obj)
+
+
+Ex.:
+
+struct MyData
+{
+    int idade;
+    double peso;
+
+    MyData(int _idade, double _peso) : idade(_idade), peso(_peso)
+};
+
+class MyHash : public HashT<MyData *>
+{
+protected:
+
+    void kill_reg(MyData *pobj);
+
+public:
+   ~MyHash(void) { kill(); }    // Isto eh necessario porque o destrutor da classe base
+                                // nao chama funcoes virtuais de classes derivadas!!!
+};
+
+
+void MyHash::kill_reg(MyData *pobj)
+{
+    if (pobj)
+        delete pobj;
+}
+
+
+main()
+{
+    MyHash hash;
+    MyData *pElemento;
+
+    pElemento = new elemento(48, 75.5);
+
+    if (pElemento)
+    {
+        if ( hash.add("cox", pElemento) )
+        {
+            printf("Elemento incluido com sucesso\n");
+        }
+    }
+}
+
+
+=> Metodos disponiveis:
+
+HashT<StructName>(BOOL _flKillRegs = TRUE)
+
+_flKillRegs : Se TRUE : No ato da destruicao de cada elemento do hash eh
+              executada a funcao kill_reg(T obj) no objeto correspondente (default).
+              Se FALSE: A destruicao dos objetos serah de responsabilidade de quem
+              os alocou.
+
+
+. long get_nitens(void)
+
+Retorna numero de itens do hash.
+
+
+. void reset(void)
+
+Zera o Hash.
+
+
+. BOOL add(LPCSTR nome, T obj)
+
+Adiciona elemento ao hash. Ver exemplos acima.
+
+
+. T search(LPCSTR nome)
+
+Procura por elemento de identificador alfa numerico <nome>
+Se encontrar retorna objeto correspondente; senao retorna NULL. Se o objeto
+tratado nao for um ponteiro ou numerico, sao utilizadas as redefinicoes de operadores
+da classe para atribuir tal valor ao objeto.
+
+
+. BOOL erase (LPCSTR nome)
+
+Remove do hash elemento de identificador <nome>, e destroi o objeto correspondente
+(se for o caso).
+
+
+. BOOL remove(LPCSTR nome)
+
+Remove do hash elemento de identificador <nome>, porem NAO destroi o objeto
+correspondente (independente de flKillRegs).
+
+
+. T first(LPSTR nome = NULL)
+. T next (LPSTR nome = NULL)
+
+Funcoes para percorrer o hash. Eh importante ressaltar que a ordem de armazenamento
+interno dos itens nao estah associada a sua ordem de inclusao ou ordenacao
+alfabetica. Ou seja, nao se pode garantir a ordem que os itens irao surgir
+quando se estiver percorrendo o hash.
+
+O retorno dessas funcoes sao analogos a funcao search().
+
+
+
+VectorT
+-------
+
+template <class T> class VectorT
+{
+public:
+
+    virtual void kill_elem(T obj) { if (obj) delete obj; }
+
+    VectorT (int _flKill=TRUE, UINT _wInitSize=VECT_STEP_ALLOC);
+   ~VectorT (void);
+
+    inline UINT    get_nelem        (void) { return(nelem); }
+    inline UINT    get_nmaxelem     (void) { return(nmax_elem); }
+    inline UINT    get_nelemNotNull (void) { return(nelemNotNull); }
+    inline UINT    get_nitens       (void) { return(nelemNotNull); }
+    inline void *  get_table        (void) { return(ptable); }
+
+    void kill       (void);
+    void reset      (void);
+    void set_pos    (UINT new_pos);
+    UINT get_pos    (void);
+    UINT insert     (T obj, UINT indForced=0, BOOL flSearchEmpSlot=FALSE);
+
+    T    popFirst   (void);
+    T    popLast    (void);
+
+    T    get_elem   (UINT ind);
+    T    first      (void);
+    T    last       (void);
+    T    next       (void);
+    T    prev       (void);
+    BOOL end        (void);
+    UINT search     (T obj);
+    BOOL remove     (UINT ind, BOOL _flKill);
+    BOOL erase      (T obj);
+    BOOL erase      (UINT ind);
+
+    T    operator[] (UINT ind) const;
+    T   &operator[] (UINT ind);
+};
+
+
+Implementa um vetor de objetos. Na criacao do vetor eh alocado o espaco
+necessario para o armazenamento de <_wInitSize> objetos. Se o numero de objetos
+incluidos exceder este valor, a area de armazenamento de objetos eh realocada.
+Eh possivel inserir elementos no vetor randomicamente, sem seguir a indexacao
+de forma sequencial 1..N (default). Sendo assim, caso o indice a ser incluido 
+ultrapasse o numero maximo de itens que cabem no espaco alocado, a area de 
+armazenamento de objetos tambem eh realocada.
+
+Pelo descrito observa-se que o vetor implementado forca que os objetos sejam
+armazenados diretamente na posicao de memoria fisica relativa ao inicio do vetor,
+de acordo com seu indice e tamanho. Se necessario pode-se atraves da
+funcao get_table() obter o ponteiro para o bloco de memoria alocado e acessar
+diretamente os elementos utilizando a formula:
+pItem = pTable + (sizeof(T) * (indice-1)), onde indice = 1..N
+
+
+Metodos da classe:
+
+. VectorT (int _flKill=TRUE, UINT _wInitSize=VECT_STEP_ALLOC);
+
+_flKill : Se TRUE : No ato da destruicao de cada elemento do vetor eh
+          executada a funcao kill_elem(T obj) no objeto correspondente (default).
+          Sendo assim, caso seja necessaria a chamada de rotina para a destruicao
+          dos elementos incluidos, esta deve ser redefinida em uma classe derivada 
+          de VectorT e utilizar a forma: void kill_elem(T obj) (da mesma forma
+          que em HashT - ver exemplo acima).
+          Se FALSE: A destruicao dos objetos serah de responsabilidade de quem
+          os alocou.
+
+_wInitSize: Define o numero maximo inicial de objetos que poderao ser armazenados
+            no vetor sem a necessidade de realocacao de memoria. Sempre que
+            for necessaria realocacao de memoria para o vetor suportar mais itens,
+            o espaco de memoria realocado passarah a ter o tamanho:
+            Tamanho anterior + (VECT_STEP_ALLOC * sizeof(T)).
+            Se for necessaria a alocacao de mais espaco que VECT_STEP_ALLOC * sizeof(T)
+            para o caso em que seja forcado um indice bem superior ao ultimo
+            incluido, o tamanho realocado seguirah a formula: 
+            Tamanho anterior + (nBlocos * VECT_STEP_ALLOC * sizeof(T)),
+            onde nBlocos eh o numero de blocos de tamanho VECT_STEP_ALLOC * sizeof(T)
+            necessarios para que seja possivel a inclusao do novo item com o
+            indice forcado.
+
+
+. UINT get_nitens(void)
+. UINT get_nelemNotNull(void)
+
+Retornam numero de itens nao nulos incluidos no vetor.
+
+
+. UINT get_nelem(void)
+
+Retorna o indice do elemento de maior indice incluido no vetor ateh o momento.
+
+
+. UINT get_nmaxelem(void)
+
+Retorna o numero maximo de elementos que podem ser armazenados no vetor sem a
+necessidade de alocacao de mais memoria.
+
+
+. void * get_table(void)
+
+Retorna o ponteiro para o bloco de memoria alocado para o armazenamento dos
+objetos do vetor.
+
+O tamanho desde bloco pode ser obtido atraves da formula:
+get_nmaxelem() * sizeof(T)
+
+Assim, os item poderao ser acessado diretamente atraves da formula:
+pItem = pTable + (sizeof(T) * (indice-1)), onde indice = 1..N, N = get_nmaxelem()
+
+
+. void reset(void)
+
+Atribui a todos os elementos do vetor o valor NULO (porem nao desaloca a area
+de armazenamento dos objetos). Se for o caso, a funcao kill_elem(T obj) eh
+executada para cada item.
+
+
+. void kill(void)
+
+Zera o vetor e desaloca area de memoria correspondente. Apos a chamada desta
+funcao o vetor nao poderah mais ser utilizado. Se for o caso, a funcao kill_elem(T obj) eh
+executada para cada item antes de sua desalocacao.
+
+
+. UINT insert(T obj, UINT indForced=0, BOOL flSearchEmpSlot=FALSE)
+
+Inclui o objeto <obj> no vetor. Se necessario pode ser especificado o indice
+em que o objeto deve ser incluido <indForced>. Se for forcado um indice no qual
+jah houver um elemento nao nulo armazenado, a funcao kill_elem(T obj) eh
+executada para este item antes de sua substituicao.
+Se indForced=0 e flSearchEmpSlot=TRUE, a funcao irah percorrer o vetor (1..N),
+procurando o 1a posicao vaga (cujo objeto eh nulo). Ao encontrar, o novo objeto
+eh inserido nesta posicao.
+
+Se necessario, eh alocada mais memoria para a inclusao do novo elemento.
+
+O retorno desta funcao eh o indice do elemento recem incluido. Se houver erro
+o retorno eh 0.
+
+
+. T first(void)
+. T last(void)
+. T next(void)
+. T prev(void)
+
+Funcoes para percorrer o vetor.
+Retornam primeiro / ultimo / proximo / anterior elemento nao nulo armazenado
+no vetor. Se o retorno destas funcoes for NULL => erro (se o objeto correspondente
+nao for um ponteiro deve-se redefinir os operadores necessarios para o uso destas
+funcoes - ver Redefinicao de Operadores mais acima neste documento).
+
+
+. BOOL end(void)
+
+Ao percorrer o vetor, pode-se utilizar esta funcao para verificar se for atingido
+ou nao o indice do ultimo elemento incluido no vetor.
+
+Se retornar TRUE => Nao ha mais objetos a serem encontrados (fim do vetor atingido).
+senao retorna FALSE.
+
+
+. UINT get_pos(void)
+
+Retorna indice do elemento corrente do cursor de controle de first() / next().
+
+Obs.: Esta funcao nao foi implementada para last() / prev()!!!
+
+
+. void set_pos(UINT new_pos)
+
+Posiciona cursor de controle de first() / next() no elemento de indice <new_pos>,
+sendo assim, next() retornarah o elemento seguinte.
+
+Obs.: Esta funcao nao foi implementada para last() / prev()!!!
+
+
+. T get_elem(UINT ind)
+
+Retorna elemento do vetor de indice <ind>, onde ind=1..N
+
+Caso queira pode-se tambem acessar randomicamente os elementos do vetor atraves
+de MyVector[ind].
+
+
+. UINT search(T obj)
+
+Busca objeto <obj> no vetor e retorna seu respectivo indice (se encontrado)
+senao retorna 0.
+
+Obs.: Como esta funcao realiza comparacao de objetos da classe T, se utilizada
+eh necessaria a redefinicao do operador == para a classe de objeto correspondente
+(ver Redefinicao de Operadores mais acima neste documento).
+
+
+. BOOL erase(T obj)
+
+Remove do vetor objeto <obj> atribuindo o valor NULL a posicao do vetor correspondente.
+Se Ok retorna TRUE senao FALSE. Se for o caso, a funcao kill_elem(T obj) eh
+executada antes da exclusao do item.
+
+Obs.: Como esta funcao realiza comparacao de objetos da classe T, se utilizada
+eh necessaria a redefinicao do operador == para a classe de objeto correspondente
+(ver Redefinicao de Operadores mais acima neste documento).
+
+
+. BOOL erase(UINT ind)
+
+Remove do vetor objeto de indice <ind>, onde ind=1..N atribuindo o valor NULL
+a posicao do vetor correspondente. Se Ok retorna TRUE senao FALSE. Se for o caso,
+a funcao kill_elem(T obj) eh executada antes da exclusao do item.
+
+
+. BOOL remove(UINT ind, BOOL _flKill)
+
+Remove do vetor objeto de indice <ind>, onde ind=1..N. Diferentemente de erase(),
+esta funcao suprime do vetor o elemento de indice  <ind>, movendo todos os elementos
+de indices superiores uma posicao abaixo (ind = ind - 1).
+
+Se Ok retorna TRUE senao FALSE. Sendo <_flKill=TRUE>, a funcao kill_elem(T obj) eh
+executada antes da exclusao do item.
+
+
+. T popFirst(void)
+
+Retorna o 1o elemento encontrado em first(), removendo-o do vetor em seguida
+com remove(). A aplicacao deverah encarregar-se de deleta-lo apos o uso.
+
+
+. T popLast(void)
+
+Retorna o ultimo elemento do vetor, obtido por last(), removendo-o do vetor
+em seguida com remove(). A aplicacao deverah encarregar-se de deleta-lo apos
+o uso.
+
+
+StackT
+------
+
+
+template <class T> class StackT
+{
+   public:
+
+   Stack (UINT maxelem);
+  ~Stack (void);
+
+   int   push (T obj);
+   T     pop  (void);
+   void  kill (void);
+   void  reset(void);
+
+   T     get_elem(UINT nivel);
+   UINT  get_nitens(void) { return level; }
+};
+
+
+Implementa uma pilha de objetos (Last In; First Out). A versao atual desta classe
+necessita que os objetos tratados sejam ponteiros para estruturas.
+
+Ex.: StackT<MyStruct *> MyStack;
+
+Se nao for este o caso, ou seja, for necessario o tratamento de pilha de objetos
+do tipo: StackT<MyStruct> MyStack, deve-se redefinir os operadores de atribuicao
+<=>, comparacao <==> / <!=> e o operador <delete> da classe informada (ver
+Redefinicao de Operadores mais acima neste documento).
+
+. Stack(UINT maxelem, BOOL _KillRegs=TRUE)
+
+maxelem: Numero maximo de elementos (ponteiros) que podem ser incluidos (atraves
+         da funcao push()) no stack.
+
+_flKillRegs: Se TRUE : No ato da destruicao de cada elemento da pilha eh dado 
+                       delete no objeto correspondente automaticamente (default).
+             Se FALSE: A destruicao dos objetos serah de responsabilidade de quem
+                       os alocou.
+
+
+. UINT get_nitens(void)
+
+Retorna numero de itens incluidos na pilha.
+
+
+. void reset(void)
+
+Remove da pilha todos os elementos incluidos, e se for o caso <_flKillRegs=TRUE>
+deleta os objetos correspondentes.
+
+
+. void kill(void)
+
+Zera a pilha (atraves da funcao reset()) e desaloca area de memoria correspondente.
+Apos a chamada desta funcao a pilha nao poderah mais ser utilizada.
+
+
+. int push(T obj)
+
+Inclui objeto na pilha. Se Ok retorna o indice do objeto na pilha. Caso contrario
+retorna 0 (erro).
+
+
+. T pop(void)
+
+Retorna o ultimo objeto incluido (LIFO), removendo-o da pilha em seguida.
+A desalocacao do objeto serah de responsabilidade da aplicacao.
+
+No caso de erro retorna NULL (se a pilha tratar diretamente estruturas ao inves
+de seus ponteiros, ou seja, StackT<MyStruct> MyStack eh necessaria a redefinicao
+dos operadores = / == e != para fins de atribuicao e verificacao se houve erro
+no retorno da funcao).
+
+
+. T get_elem(UINT nivel)
+
+Retorna objeto de indice <nivel> (o indice de cada objeto incluido eh informado
+no retorno da funcao push()). O objeto retornado nao eh retirado da pilha.
+Caso nao haja objeto de indice <nivel> a funcao retorna NULL (da mesma forma que
+a funcao pop()).
+
+
+
+Expr
+----
+
+class Expr
+{
+public:
+
+   char token[TAM_LBUFFER+1];
+
+   Expr(LPCSTR _pstr=NULL, LPCSTR _pdelims=NULL, LPCSTR _psimbols=NULL);
+
+   void reset          (void);
+   void set_expr       (LPCSTR _pstr);
+   void set_delimiters (LPCSTR _delims);
+   void set_simbols    (LPCSTR _simbols);
+   int  get_token_expr (void);   // Retorna tok_type e atribui token
+   long get_offset     (void)  { return (expr - expr0); }
+};
+
+Permite a implementacao de Parser de uma expressao.
+
+. Expr(LPCSTR _pstr=NULL, LPCSTR _pdelims=NULL, LPCSTR _psimbols=NULL)
+
+_pstr: Ponteiro para a expressao a ser avaliada. A expressao pode ser definida
+       a posteriori utilizando a funcao set_expr().
+
+_pdelims: Ponteiro para uma string contendo os delimitadores a serem utilizados.
+          Define-se por delimitadores os caracteres que se encontrados determinam
+          o encerramento do token corrente
+
+Delimitadores default:
+
+#define DEF_DELIMITERS  "#:$()!*/<>=&,;?"
+
+_psimbols: Ponteiro para uma string contendo os simbolos a serem utilizados.
+           Define-se por simbolos os caracteres que se encontrados na 1a
+           posicao de um token, o mesmo eh encerrado retornando o proprio
+           simbolo como token. Embora um simbolo nao seja obrigatoriamente
+           um delimitador, normalmente o conjunto de simbolos estah contido
+           no conjunto de delimitadores.
+
+Simbolos default:
+
+#define DEF_SIMBOLS     "<>=,;?"
+
+
+. void set_expr(LPCSTR _pstr)
+
+Define nova expressao a ser avaliada <_pstr>, em substituicao a definida no
+construtor da classe.
+
+
+. void reset(void)
+
+Recomeca a avaliacao da expressao corrente, retornando o cursor para o inicio
+da mesma.
+
+
+. void set_delimiters(LPCSTR _delims)
+
+Substitui os delimitadores correntes pelos contidos na string <_delims> (ver definicao
+de delimitadores acima, no construtor da classe).
+
+
+. void set_simbols(LPCSTR _simbols)
+
+Substitui os simbolos correntes pelos contidos na string <_simbols> (ver definicao
+de simbolos acima, no construtor da classe).
+
+
+. long get_offset(void)
+
+Retorna o deslocamento do cursor de avaliacao da expressao, relativamente
+ao 1o caractere da mesma. O cursor fica sempre posicionado antes do proximo token
+a ser obtido da expressao.
+
+Ex.: Se esta funcao for executada antes de get_token_expr(), seu retorno serah
+0, dado que o cursor fica localizado inicialmente no 1o caractere da expressao.
+
+
+. int get_token_expr(void)
+
+Percorre expressao a partir da posicao corrente do cursor, ateh a finalizacao
+de um token. Se um token for encontrado com sucesso, este serah atribuido a
+variavel <token> membro da classe Expr, e o retorno da funcao serah o tipo do
+token encontrado. Se nenhum token for encontrado, a funcao retornarah 0.
+
+Para obter o token encontrado, deve-se utilizar diretamente this.token.
+
+Relacao de tipos de tokens:
+
+enum ex_tokens
+{
+    EX_NULL = 0,
+    EX_DELIMITER,
+    EX_NEWLINE,
+    EX_CR,
+    EX_VARIABLE,
+    EX_NUMBER,
+    EX_HEXA,
+    EX_ALFA,
+    EX_FUNCTION,
+    EX_LABEL,
+    EX_VECTOR,
+    EX_REMARK0,
+    EX_REMARK1,
+    EX_DIRET,
+    EX_ERROR,
+    EX_CHANNEL,
+    EX_LBUFFER,
+    EX_HOST,
+    EX_FLAGS,
+    EX_SIGNAL,
+    EX_SIMBOL
+};
+
+EX_NULL     : Nao foram encontrados tokens
+EX_SIMBOL   : Simbolo
+EX_NEWLINE  : LF ou CR+LF
+EX_CR       : CR
+EX_NUMBER   : Valor numerico (0..9 / .)
+EX_HEXA     : Valor numerico podendo conter no meio (a..f / A..F) 
+EX_VARIABLE : Iniciado por (A..Z a..z  _ \ [ ] | @)
+EX_FUNCTION : EX_VARIABLE seguida de (
+EX_CHANNEL  : Iniciado por #
+EX_HOST     : Iniciado por : no 1o caractere da expressao ou iniciado por *
+EX_LABEL    : Iniciado por : (contanto que nao seja o 1o caractere da expressao)
+EX_LBUFFER  : Iniciado por $ e seguindo a forma: $nbytes byte[1]...byte[nbytes]
+EX_SIGNAL   : + / -
+EX_FLAGS    : +string / -string
+EX_ALFA     : "string" ou 'string'
+EX_DELIMITER: delimitador (e se nao enquadrar-se nos casos anteriores)
+
+
+
+ExprParser
+----------
+
+
+class ExprParser
+{
+    public:
+
+    ExprParser(UINT _nmaxParam=NMAX_PARAM, UINT _tmaxBuf=TAM_LBUFFER, LPCSTR _delims=NULL, LPCSTR _simbols=NULL);
+   ~ExprParser(void);
+
+    UINT   GetnParam (void)        { return nParam; }
+    void   SetDelims (LPCSTR _delims);
+    void   SetSimbols(LPCSTR _simbols);
+    LPCSTR GetParam  (UINT n, LPSTR pType=NULL);
+    LPCSTR GetBuffer (unsigned int *pBytes);
+    UINT   parse     (LPCSTR _pData, ULONG tdata, unsigned long *texpr=NULL);
+    UINT   parseColon(LPCSTR _pData);
+};
+
+Implementa parser em uma expressao de uma soh vez, armazenando em buffers
+internos seus tokens para acesso rapido posterior. Esta funcao considera
+que o tamanho maximo de um token eh TAM_BUFFER (default=512 bytes).
+A expressao poderah ser finalizada por um campo binario de tamanho <_tmaxBuf>.
+
+
+. ExprParser(UINT _nmaxParam=NMAX_PARAM, UINT _tmaxBuf=TAM_LBUFFER, LPCSTR _delims=NULL, LPCSTR _simbols=NULL)
+
+_nmaxParam: Numero maximo de tokens que a expressao pode conter.
+_tmaxBuf: Tamanho maximo do campo binario que poderah estar associado a expressao
+_delims: Ver definicao de delimitadores em Expr (no texto mais acima)
+_simbols: Ver definicao de simbolos em Expr (no texto mais acima)
+
+
+. UINT parse(LPCSTR _pData, ULONG tdata, unsigned long *texpr=NULL)
+
+_pData: Ponteiro para a expressao a ser avaliada
+tdata : Tamanho total da expressao (incluindo o campo binario se houver)
+
+Retorna o numero de tokens obtidos da expressao
+
+No caso de parametros binarios ($binsize bindata) tdata poderah ser maior
+que a expressao completa. Neste caso apenas $binsize eh considerado
+texpr retornarah o tamanho real da expressao lida (area de comandos de 
+texto + bindata) o qual deverah ser igual ou inferior a tdata
+
+Testes de consistencia em campos binarios:
+A area de dados binarios deve situar-se antes do fim da expressao
+O tamanho da area de dados binarios especificado por <$binsize bindata> 
+  deverah ser igual ou inferior a area total de dados remanescente
+O tamanho da area de dados binarios deverah ser inferior ao tamanho
+  maximo permitido <tmaxBuf>
+
+Para obter os tokens individualmente deve-se utilizar a funcao GetParam()
+Para obter o campo binario (se for o caso) deve-se utilizar GetBuffer()
+
+
+. UINT GetnParam (void)
+
+Retorna numero de tokens encontrados na expressao (o mesmo que retornou de parse())
+
+
+. void SetDelims (LPCSTR _delims)
+
+Define os delimitadores a serem utilizados (ver na definicao de Expr).
+
+
+. void SetSimbols(LPCSTR _simbols)
+
+Define os simbolos a serem utilizados (ver na definicao de Expr).
+
+
+. LPCSTR GetParam  (UINT n, LPSTR pType=NULL)
+
+Retorna o n-esimo token (0..GetnParam()-1)
+Se pType for especificado, retorna o tipo do token encontrado.
+Se nao existir o token de indice <n> retorna NULL.
+
+
+. LPCSTR GetBuffer (unsigned int *pBytes)
+
+Se o parse identificar a presenca de um campo binario na expressao avaliada,
+retorna o ponteiro para a area de dados do campo binario obtido, e *pBytes
+retornarah o numero de bytes contidos nesta area. Se nao for encontrado
+campo binario na expressao o retorno desta funcao serah NULL.
+
+
+. UINT parseColon(LPCSTR _pData)
+
+Avalia expressao considerando que a mesma contem o seguinte formato:
+parm1:parm2:parm3:...:parmN
+
+Retorna o numero de tokens encontrados.
+
+Na versao 1.1.9 foi incluido suporte para:
+
+'\\' => \
+'\:' => :
+'\r' => 0x0d
+'\n' => 0x0a
+
+
+
+SVectorT
+--------
+
+template <class K, class T> class SVectorT
+{
+    public:
+
+    virtual void kill_elem(K key, T pobj) { }
+    virtual int compare(K elem1, K elem2);
+
+    SVectorT (int _flKill=true, UINT _wInitSize=STEP_ALLOC);
+   ~SVectorT (void);
+
+    UINT get_nitens (void) { return(nelemNotNull); }
+
+    void init       (BOOL _flKill, UINT _wInitSize);
+    void kill       (void);
+    void reset      (void);
+    void set_pos    (UINT new_ind, int _flAscend=-1);
+    UINT get_pos    (void);
+    UINT insert     (K key, T obj);
+    BOOL update     (K key, T obj);
+    BOOL updateIndex(UINT ind, T obj);
+
+    T    get_elem   (UINT ind);
+    T    first      (void);
+    T    last       (void);
+    T    next       (void);
+    T    prev       (void);
+    BOOL end        (void);
+    UINT search     (K key, T *pobj=NULL);
+    BOOL erase      (K key);
+    BOOL eraseIndex (UINT ind);
+    BOOL eraseCur   (void);
+
+    T   operator[]  (UINT ind) const;
+    T  &operator[]  (UINT ind);
+};
+
+
+Implementa um Vetor ordenado por uma chave (key), com pesquisa rapida a seus
+elementos atraves de pesquisa binaria, atraves desta chave.
+
+Os metodos desta classe sao semelhantes aos da classe VectorT, com algumas diferencas.
+A seguir serao discutidas apenas estas diferencas. O que for omitido aqui ver em 
+VectorT o seu detalhamento.
+
+Caso a classe T nao seja definida atraves de seu ponteiro (ver HashT), deve-se
+redefinir os operadores necessarios para o funcionamento correto da classe (ver
+Redefinicao de Operadores).
+
+. SVectorT<K, T> (int _flKill=true, UINT _wInitSize=STEP_ALLOC)
+K: classe da chave de ordenacao aos elementos
+T: classe da estrutura dos elementos
+
+Funcoes que devem ser redefinidas para a adequacao as classes K e T:
+
+virtual void kill_elem(K key, T pobj) { }
+
+Se for necessaria a destruicao do objeto ao ser removido o elemento do vetor
+deve ser redefinida esta funcao.
+Ex.:
+
+void MySVector::kill_elem(K key, T pobj)
+{
+    if (pobj)
+        delete pobj;
+}
+
+virtual int compare(K elem1, K elem2)
+
+Funcao de comparacao entre as chaves.
+A funcao default eh a descrita a seguir:
+
+virtual int compare(K elem1, K elem2)
+{
+    int ret;
+
+    if (elem1 < elem2)
+        ret = -1;
+    else if (elem1 > elem2)
+        ret = 1;
+    else
+        ret = 0;
+
+    return ret;
+}
+
+Caso a chave definida nao se enquadre na rotina acima, deve-se redefini-la, seguindo
+o padrao de retorno visto acima. Se a chave for numerica, nao ha necessidade de
+alterar o seu funcionamento default.
+
+
+. UINT insert(K key, T obj)
+
+Insere o objeto <obj> no Vetor, mantendo-o ordenado pela chave <key>.
+Se Ok retorna o indice do elemento incluido (1..N); Senao retorna 0.
+
+Eh importante observar que como o vetor eh frequentemente re-ordenado, o indice
+retornado nesta rotina poderah nao ser mais valido apos nova insercao ou delecao
+de registros.
+
+
+. BOOL update(K key, T obj)
+
+Atualiza o objeto <obj> associado a chave <key>.
+
+
+. BOOL updateIndex(UINT ind, T obj)
+
+Atualiza o objeto <obj> associado ao elemento de indice <ind>.
+
+Eh importante observar que como o vetor eh frequentemente re-ordenado, o indice
+retornado nesta rotina poderah nao ser mais valido apos nova insercao ou delecao
+de registros.
+
+Antes de atualizar o objeto associado a <ind>, executa o procedimento
+de kill_elem(key, obj) se for o caso.
+
+
+. UINT get_pos(void)
+
+Retorna o indice do registro corrente (1..N) obtido por first() / last() / 
+next() / prev()
+
+
+. void set_pos(UINT new_ind, int _flAscend=-1)
+
+Seta nova posicao do cursor de forma que a proxima chamada de next() ou prev()
+retornem o elemento seguinte ou o anterior respectivamente.
+_flAscend = -1 : Mantem sequencia corrente (default = ascendente)
+_flAscend =  0 : Indica que o proximo registro serah obtido pelo comando prev()
+_flAscend =  1 : Indica que o proximo registro serah obtido pelo comando next()
+
+
+. BOOL erase(K key)
+
+Remove do vetor o elemento de chave <key>. Ao remover o elemento o vetor eh
+compactado, e re-indexado.
+
+
+. BOOL eraseIndex(UINT ind)
+
+Remove do vetor o elemento de indice <ind>. Ao remover o elemento o vetor eh
+compactado e re-indexado.
+
+
+. BOOL eraseCur(void)
+
+Remove do vetor o elemento corrente (obtido atraves de first() / last() / 
+next() / prev()). Esta funcao atualiza o cursor de controle, ou seja, mesmo
+apos a chamada desta funcao pode-se continuar percorrendo o vetor (next() / prev()).
+Ao remover o elemento o vetor eh compactado e re-indexado.
+
+
+
+CLBuffer
+--------
+
+
+class CLBuffer
+{
+public:
+
+    CLBuffer  (ULONG _MaxPacketSize, ULONG _nSlots=CLBUF_NITENS_STEP_ALLOC, BOOL _flOverwrite=TRUE, BOOL _flOnePacketPerSlot=FALSE, BOOL _flFragPacket=FALSE, BOOL _flAutoId=FALSE, ULONG _IncSlots=0);
+   ~CLBuffer  (void);
+
+    BOOL  IsOk(void) { return flOk; }
+
+    ULONG get_nitens(void);
+    ULONG getszdata (ULONG _id);
+
+    //BOOL  newid    (ULONG _id, ULONG _maxbufsize, long _userdata, CLCtrlData &LCtrlData);
+    ULONG insert   (ULONG _id, LPCSTR _pdata, ULONG _szdata, ULONG _maxbufsize, LPCSTR *_pBuffer=NULL, long _userdata=0, CLDataBuf **_pSlot=NULL, BOOL _flMustNewSlot=FALSE, CLDataBuf *_pSlotMain=NULL, BOOL _flAppendSlotMain=TRUE, BOOL _flMustNotFragPacket=FALSE);
+
+    BOOL  search   (ULONG _id, LPSTR _pdata=NULL, ULONG *_pszdata=NULL, long *_puserdata=NULL);
+    BOOL  erase    (ULONG _id);
+    void  erase_all(void);
+
+    BOOL  set_pos  (ULONG _id);
+    ULONG first    (LPSTR _pdata=NULL, ULONG *_pszdata=NULL);
+    ULONG last     (LPSTR _pdata=NULL, ULONG *_pszdata=NULL);
+    ULONG next     (LPSTR _pdata=NULL, ULONG *_pszdata=NULL);
+    ULONG prev     (LPSTR _pdata=NULL, ULONG *_pszdata=NULL);
+
+    ULONG popfirst (LPSTR _pdata=NULL, ULONG *_pszdata=NULL);
+    ULONG poplast  (LPSTR _pdata=NULL, ULONG *_pszdata=NULL);
+
+    BOOL  first    (ULONG _id, LPSTR _pdata=NULL, ULONG *_pszdata=NULL, long *_puserdata=NULL, BOOL flPop=FALSE, BOOL *_pflPktRemoved=NULL);
+    void  poplastop(ULONG _id, ULONG _nbytes);
+};
+
+
+Implementa um Buffer com gerenciamento proprio de memoria, evitando
+possiveis fragmentacoes. Os pacotes a serem armazenados no buffer devem
+sempre estar associados a um Id. Podem haver varios pacotes associados a
+um mesmo Id.
+
+
+. CLBuffer(ULONG _MaxPacketSize, ULONG _nSlots=CLBUF_NITENS_STEP_ALLOC, BOOL _flOverwrite=TRUE, BOOL _flOnePacketPerSlot=FALSE, BOOL _flFragPacket=FALSE, BOOL _flAutoId=FALSE, ULONG _IncSlots=0)
+
+Construtor da classe.
+
+_MaxPacketSize : Tamanho dos slots do Vetor (o tamanho do pacote nao poderah
+                 exceder este valor)
+_nSlots      : Numero de slots inicial do Vetor
+_flOverwrite : Se for atingido tamanho maximo de bytes na lista associada a um dado
+               id, apaga primeiro registro da lista e reutiliza seu espaco
+_flOnePacketPerSlot : Permite colocar mais de 1 pacote em um slot
+_flFragPacket: Se um slot estiver full, quebra o pacote de forma a ocupar mais de 1 slot
+
+_flAutoId: Ao incluir novo pacote, se id=0 => id=lastid
+_IncSlots: Quando nao houver mais espaco disponivel no vetor corrente
+           eh alocado um novo bloco de memoria com <IncSlots> slots
+
+
+. ULONG insert(ULONG _id, LPCSTR _pdata, ULONG _szdata, ULONG _maxbufsize, LPCSTR *_pBuffer=NULL, long _userdata=0, CLDataBuf **_pSlot=NULL, BOOL _flMustNewSlot=FALSE, CLDataBuf *_pSlotMain=NULL, BOOL _flAppendSlotMain=TRUE, BOOL _flMustNotFragPacket=FALSE)
+
+_id     : Identificador do pacote (ou lista de pacotes)
+_pdata  : Buffer de dados
+_szdata : Tamanho do Buffer de dados (deve ser <= MaxPacketSize)
+          esta rotina permite a gravacao de ateh MaxPacketSize bytes
+_maxbufsize: Numero maximo de bytes permitido somando-se todos os 
+             dados de todos os Slots associados a _id
+
+_pBuffer: Retorna ponteiro para area de dados do Slot onde os dados foram gravados
+          no caso de fragmentacao retorna o ponteiro do ultimo Slot
+
+_userdata: Dado adicional a ser associado a id
+_pSlot: Retorna o ponteiro do ultimo Slot onde o pacote foi gravado
+_flMustNewSlot: Forca a criacao de um novo slot para a gravacao dos dados
+_pSlotMain: Se _flMustNewSlot==TRUE: indica que o novo slot a ser criado deve ser linkado a _pSlotMain
+            Se _flMustNewSlot==FALSE: o pacote deve ser inserido em _pSlotMain
+_flAppendSlotMain: Deve ser utilizado em conjunto com _pSlotMain
+                  Indica que o novo pacote deve ser appended em _pSlotMain
+                  Se utilizado em conjunto com _flMustNewSlot ou se for necessaria
+                  a criacao de um novo slot:
+                  Se TRUE indica se o novo Slot deve ser linkado apos _pSlotMain (pSlotMain->pSlot)
+                  se FALSE, o novo Slot eh linkado antes de _pSlotMain (pSlot->pSlotMain)
+_flMustNotFragPacket: Este flag se TRUE forca que o pacote a ser incluido NAO
+                      seja fragmentado, independente da variavel de inicializacao
+                      do construtor da classe flFragPacket. Se FALSE respeita
+                      o valor de flFragPacket especificado no construtor.
+
+Retorno : Numero de bytes efetivamente inseridos
+
+
+. BOOL search (ULONG _id, LPSTR _pdata=NULL, ULONG *_pszdata=NULL, long *_puserdata=NULL)
+
+Verifica a existencia de slot com identificador _id.
+Se encontrar retorna o 1o slot associado.
+
+
+. ULONG get_nitens(void)
+
+Retorna o numero de itens com diferentes IDs contidos
+no buffer. Os itens incluidos com o mesmo ID nao sao contabilizados.
+
+
+. ULONG getszdata(ULONG _id)
+
+Retorna o numero de bytes associados a <_id>
+
+
+. BOOL erase  (ULONG _id)
+
+Apaga todos os slots associados ao identificador _id.
+
+
+. void erase_all(void)
+
+Apaga todo o conteudo do buffer.
+
+
+. BOOL set_pos(ULONG _id)
+
+Posiciona ponteiro para percorrer buffer no primeito slot correspondente
+ao identificador _id.
+
+
+. Funcoes para percorrer buffer:
+
+ULONG first(LPSTR _pdata=NULL, ULONG *_pszdata=NULL)
+ULONG last (LPSTR _pdata=NULL, ULONG *_pszdata=NULL)
+ULONG next (LPSTR _pdata=NULL, ULONG *_pszdata=NULL)
+ULONG prev (LPSTR _pdata=NULL, ULONG *_pszdata=NULL)
+
+Obtem primeiro / ultimo / proximo / anterior identificador, e retorna
+o primeiro slot associado.
+
+
+ULONG popfirst (LPSTR _pdata=NULL, ULONG *_pszdata=NULL);
+ULONG poplast  (LPSTR _pdata=NULL, ULONG *_pszdata=NULL);
+
+Obtem primeiro / ultimo identificador, retorna o primeiro slot associado,
+e apaga em seguida todos os slots associados a este identificador.
+
+
+. Funcoes para tratamento de slots associados a um identificador:
+
+ULONG first    (ULONG _id, LPSTR _pdata=NULL, ULONG *_pszdata=NULL, long *_puserdata=NULL, BOOL flPop=FALSE, BOOL *_pflPktRemoved)
+void  poplastop(ULONG _id, ULONG _nbytes)
+
+
+A funcao first retorna o primeiro slot associado ao identificador _id.
+Se _id = 0 => Retorna o primeiro slot associado ao primeiro identificador
+encontrado. O retorno da funcao serah o proprio identificador se Ok.
+Caso nao seja encontrado nenhum registro retorna 0.
+
+Apos a utilizacao dos dados retornados por first(), eh possivel forcar
+que estes sejam totalmente ou parcialmente descartados do buffer.
+Para isto deve-se utilizar o parametro flPop=TRUE.
+
+Pode-se tambem utilizar a funcao poplastop(), indicando o _id da ultima
+operacao first() executada, e o numero de bytes a serem descartados (o
+qual serah sempre <= *_pszdata).
+
+Para saber se o pacote foi completamente descartado do buffer utilizar
+o parametro *_pflPktRemoved da funcao first().
+
+
+. ULONG getszdata(ULONG _id)
+
+Retorna o numero de bytes associados ao identificador _id.
+Se _id = 0 => considera o primeiro pacote.
+
+
+
+JitterBuffer
+------------
+
+
+Classe que encapsula clbuffer para facilitar a utilizacao de buffer
+circular.
+
+JitterBuffer( ULONG _nMaxPackets, ULONG _MaxPacketSize )
+
+_nPackets     : Numero de Pacotes pre-alocados na inicializacao do buffer
+_MaxPacketSize: Tamanho do pacote
+
+
+void flush( void )
+
+Apaga todo o conteudo do jitter buffer
+
+
+BOOL insert( ULONG _seq, LPCSTR _pdata, ULONG _szdata )
+
+_seq   : Sequencial do pacote
+_pdata : buffer de dados do pacote
+_szdata: tamanho do pacote (deve ser <= _MaxPacketSize)
+ 
+
+Insere no buffer o pacote com o numero de sequencia _seq.
+Este metodo ira percorrer a posicao correta no buffer de tal maneira
+a encaixa-lo na posicao correta. Pacotes de SEQUENCIA iguais serao
+substituidos.
+
+
+BOOL search( ULONG _seq, LPSTR _pdata, ULONG *_pszdata )
+
+_seq   : Sequencial do pacote
+_pdata : buffer de dados do pacote
+_szdata: tamanho do pacote (deve ser <= _MaxPacketSize)
+
+Retorna dados associados ao numero de sequencia _seq.
+ 
+
+BOOL remove( ULONG _seq = 0 )
+
+Remove do buffer pacote de sequencial _seq. Caso _seq = 0, remove
+o mais antigo presente no buffer ( o proximo da fila ).
+
+
+ULONG first   ( LPSTR _pdata, ULONG *_pszdata )
+
+Obtem os dados do primeiro pacote do buffer. Retorna seu identificador.
+Se houver erro retorna 0.
+
+
+ULONG popfirst( LPSTR _pdata, ULONG *_pszdata )
+
+Obtem os dados do primeiro pacote do buffer. Retorna seu identificador.
+Apos obter dados do pacote, remove-o do buffer.
+Se houver erro retorna 0.
+
+
+ULONG popbytes( LPSTR _pdata, ULONG *_pszdata )
+
+Obtem os *_pszdata bytes do primeiro pacote do buffer. Retorna seu identificador.
+Apos obter os bytes requisitados dados do pacote, remove-os do buffer.
+Se houver erro retorna 0.
+
+
+ULONG GetnPacketsLeft    (void)
+ULONG GetPercFull        (void)
+ULONG GetnPacketsLost    (void)
+ULONG GetnPacketsInserted(void)
+ULONG GetnPacketsRemoved (void)
+ULONG GetnBytesLeft      (void)
+
+ou
+
+BOOL GetInfo( ULONG *_pnPacketsLeft, ULONG *_ppercFull, ULONG *_pnPacketsLost,
+              ULONG *_pnPacketsInserted, ULONG *_pnPacketsRemoved )
+_pnPacketsLeft    : [out] Numero de Pacotes disponiveis
+_ppercFull        : [out] Porcentagem de preenchimento
+_pnPacketsLost    : [out] Numero de Pacotes perdidos
+_pnPacketsInserted: [out] Numero de Pacotes inseridos no buffer
+_pnPacketsRemoved : [out] Numero de Pacotes removidos do buffer
+
+Pega as estatisticas do buffer de tal forma a podermos fazer uma
+inicializacao com mais feedback ao usuario.
+
+
+
+
+BufVectorT / BufSVectorT
+------------------------
+
+
+Implementa um vetor de buffers (VectorT ou SVectorT).
+
+_maxlines: numero maximo de buffers permitido para a classe.
+_maxblen : numero maximo de bytes permitidos em cada buffer.
+
+Os buffers criados podem ser acessados atraves de seu identificador.
+
+reset () : Exclui todos os buffers criados
+append() : Inclui novo buffer
+erase () : Exclui buffer com id informado
+search() : Retorna ponteiro para buffer com id informado
+first () : Obtem primeiro buffer do vetor
+next  () : Obtem proximo buffer do vetor
+
+
+template <class T> class BufVectorT
+{
+
+public:
+
+    BufVectorT (UINT _maxlines, ULONG _maxblen);
+   ~BufVectorT (void);
+
+    BOOL IsOk  (void) { return flOk; }
+
+    void reset (void);
+    UINT append(void);
+    BOOL erase (UINT _ind);
+    T *  search(UINT _ind);
+    T *  first (void);
+    T *  next  (void);
+
+    BOOL SaveData (UINT _ind, LPVOID _pdataBuf, ULONG _szdata);
+    BOOL GetData  (UINT _ind, LPVOID _pdataBuf, ULONG *_szdataBuf);
+};
+
+template <class K, class T> class BufSVectorT
+{
+
+public:
+
+    BufSVectorT (UINT _maxlines, ULONG _maxblen);
+   ~BufSVectorT (void);
+
+    BOOL IsOk  (void) { return flOk; }
+
+    void reset (void);
+    UINT append(K _id);
+    BOOL erase (K _id);
+    T *  search(K _id);
+    T *  first (void);
+    T *  next  (void);
+
+    BOOL SaveData (K _id, LPVOID _pdataBuf, ULONG _szdata);
+    BOOL GetData  (K _id, LPVOID _pdataBuf, ULONG *_szdataBuf);
+};
+
+
+No construtor de BufVectorT / BufSVectorT eh criado o vetor de buffers correspondente, assim como
+um vetor para armazenamento dos ponteiros dos buffers excluidos para reaproveitamento.
+
+template <class T> class BufVect : public VectorT<T *>
+{
+
+public:
+
+     BufVect(UINT _maxlines) : VectorT<T *>(TRUE, _maxlines) {}
+    ~BufVect(void) { VectorT<T *>::kill(); }
+
+protected:
+    void kill_elem(T *_pReg) { if (_pReg) delete _pReg; }
+
+};
+
+
+template <class K, class T> class BufSVect : public SVectorT<K, T *>
+{
+
+public:
+
+     BufSVect(UINT _maxlines) : SVectorT<K, T *>(TRUE, _maxlines) {}
+    ~BufSVect(void) { SVectorT<K, T *>::kill(); }
+
+protected:
+    void kill_elem(K _id, T *_pReg) { if (_pReg) delete _pReg; }
+
+};
+
+
+Os buffers a serem criados devem derivar da classe <BufVectorReg>, definindo os metodos
+de sua interface. Caberah a esta classe a responsabilidade pela alocacao, desalocacao  e
+tratamento dos buffers individualmente (construtor / destrutor / SaveData e GetData).
+
+class BufVectorReg
+{
+public:
+    virtual ~BufVectorReg(void) {}
+
+    virtual BOOL IsOk (void) = 0;
+    virtual void reset(void) = 0;
+
+    virtual BOOL SaveData(LPVOID _pdataBuf, ULONG _szdata) = 0;
+    virtual BOOL GetData (LPVOID _pdataBuf, ULONG *_szdataBuf) = 0;
+};
+
+
+
+
+

@@ -1,0 +1,255 @@
+HOW TO BUILD THE IP.TV CROSS-PLATFORM CLIENT
+============================================
+Version 0.1 (Jan 23 2009)
+
+1 SUPPORTED CONFIGURATIONS
+        1.1 Win32
+        1.2 Linux
+
+2 PREREQUISITES
+        2.1 Common
+                2.1.1 wxWidgets 2.8
+                2.1.2 OpenGL
+        2.2 Win32
+                2.2.1 Windows SDK
+                2.2.2 DirectX SDK
+        2.3 Linux
+                2.3.1 cmake
+                2.3.2 ALSA
+                2.3.3 Kernel headers
+                2.3.4 Speex
+                2.3.5 x264
+                2.3.6 faac and faad
+                2.3.7 zlib
+
+3 BUILD PROCEDURES
+        3.1 Subversion
+        3.2 Win32
+        3.3 Linux
+
+4 SUMMARY
+        4.1 Win32 setup
+        4.2 Linux setup
+
+5 VERSION HISTORY
+
+================================================================================
+
+1 SUPPORTED CONFIGURATIONS
+==========================
+        The  process of  building the  software has  been  tested in  a selected
+range  of  operating  systems  and  compilers.  It  is  supported on  32-bit x86
+processors and operating  systems only.  64-bit support  is not planned  for the
+near future,  neither is  support  for non-x86  platforms (such as PowerPC-based
+Macs), although one can create a setup to cross-compile the software.
+
+1.1 Win32
+---------
+        Compiling the software in Microsoft Windows requires Windows XP with at 
+least  Service  Pack  2  installed,  or Windows Vista. The  officially supported
+compiler is Microsoft Visual C++ 2005.  It may work with newer versions, but it
+has not been tested.
+
+1.2 Linux
+---------
+        While the software may work with different distributions and/or versions
+of a distribution,  the officially supported  distribution is Ubuntu 8.04 "Hardy
+Heron" and  variants (Kubuntu/ Xubuntu). The basic development packages must be
+installed.   They are:  "libc6-dev"  (the standard C Library),  "libstdc++6-dev"
+(the standard C++ library), "gcc" (GNU C compiler), g++ (GNU C++ compiler), make
+(GNU make). Installing the  "build-essential" package  is a quick way of getting
+some of them.
+
+
+2 PREREQUISITES
+===============
+        In addition to  the operating  system and development  environment,  the
+build  process  requires  additional  software  to  be  installed.  Installation
+instructions will be given for each operating system, where appropriate.
+
+2.1 COMMON PREREQUISITES
+------------------------
+
+2.1.1 wxWidgets 2.8
+        While it has  been most exhaustively  tested with version  2.8.7, it may
+work well with other (older or newer) versions.
+INSTALLATION INSTRUCTIONS:
+        Win32:  you will have to compile  the library yourself. Make sure OpenGL
+support  is  enabled  when  compiling.  See  the  wxWidgets  official  web  site
+(http://www.wxwidgets.org) for source  downloads and build  instructions. After
+compiling, place the resulting wxWidgets DLL file(s) somewhere on your PATH, and
+set the WXWIN environment variable to the folder on your filesystem where the 
+library resides. We prefer (and have adjusted the MSVC project settings to)
+"monolithic" single DLL builds.
+        Linux:  install the corresponding development package using your package
+manager. For Ubuntu (may be the same for other Debian-based distros) the package
+name is "libwxgtk2.8-dev". You can get it from the Ubuntu package repositories,
+or from a  repository  maintained by the  wxWidgets team  if you want the latest
+version (see official web site, mentioned above, for details). Please note that
+in Ubuntu (and most Debian-based systems) the package manager will also download
+and install packages on which wxWidgets depends automatically.
+
+2.1.2 OpenGL
+        The software  does not use  any advanced OpenGL  features, so any set of
+OpenGL  libraries / headers  may  work  well.  For optimal  performance,  it  is
+recommended to use hardware-accelerated OpenGL.
+        Win32:  the set of OpenGL headers  provided with Microsoft Visual Studio
+2005 will suffice.  Make sure your video card driver provides OpenGL functions;
+even though the drivers for most  current video cards do, there's always the odd
+case.
+        Linux:  generally you will need to install the Mesa set of libraries and
+headers.    For   Ubuntu,   the   package   names   are  "libgl1-mesa-dev"   and
+"libglu1-mesa-dev".  In case you own a NVIDIA video card,  you will also have to
+install the  header set provided  with the NVIDIA driver  (most installations do
+that;  for Ubuntu, the headers are provided in separate packages,  for different
+versions of the drivers:
+        -  install  "nvidia-glx-legacy-dev"  if you  have a  GeForce 4  or older
+series card.
+        -  install  "nvidia-glx-dev" for  GeForce FX,  GeForce 6  and  GeForce 7
+series cards.
+        -  install  "nvidia-glx-new-dev" for GeForce 8 and newer series cards.
+        You can also install this library/header set manually in case you need a
+particular version of the drivers other than those that are distro-packaged; go 
+to http://www.nvidia.com for details.
+        This procedure is only needed for NVIDIA graphics cards. For other video
+card  brands the  Mesa library  set is sufficient,  even with ATI's  proprietary
+drivers  (currently only recommended for  Radeon HD 3xxx/4xxx series.  For older
+cards,  use the open-source  drivers which  are already shipped  with most major
+Linux distributions including Ubuntu).  Please note also that some current video
+chipsets  (namely SiS 671/672/771/772) currently do not  have accelerated OpenGL
+drivers available.
+
+2.2 PREREQUISITES FOR MICROSOFT WINDOWS
+---------------------------------------
+
+        To compile  the software for  Microsoft Windows,  the following software
+packages are also required:
+
+2.2.1 Windows SDK
+        The Microsoft Windows SDK  is needed to build.  You can download it from
+Microsoft's  web site  (http://www.microsoft.com).  Search for  it there.  After
+installation, set the MS_WIN_SDK environment variable to the install path.
+
+2.2.2 DirectX SDK
+        The Microsoft DirectX SDK is also needed, as video input in Windows uses
+DirectShow.  Get it also at Microsoft's site. It may require you to have a valid
+licensed copy of  Microsoft  Windows (Windows  Genuine  Advantage)  to download.
+After installation, set the MS_DX_SDK environment variable to the install path.
+
+
+2.3 PREREQUISITES FOR LINUX
+---------------------------
+
+        To compile the  software on GNU/Linux,  the following  software packages
+are also required:
+
+2.3.1 cmake
+        cmake 2.4  is required  to build OpenAL Soft,  the OpenAL implementation
+used in the project. To install on Ubuntu, install the "cmake" package.
+
+2.3.2 ALSA
+        The client's audio playback works best with ALSA.  To have ALSA support,
+you   must  have   the  ALSA   headers  installed.   For  Ubuntu,   install  the
+"libasound2-dev" package.  NOTE: please install cmake  and libasound2-dev BEFORE
+attempting to  build.  This is due  to a limitation in  the current build scheme
+that causes some OpenAL Soft files to not clean up properly.
+
+2.3.3 Linux kernel headers
+        The client uses Video for Linux for video input. The support headers are
+part of the Linux kernel, so you must have Linux 2.6 kernel headers installed in
+order to build the software. For Ubuntu, install the "linux-headers" package.
+
+2.3.4 Speex
+        This  project  uses the  Speex audio  codec. You must  install the Speex
+support library development package "libspeex-dev".
+
+2.3.5 libx264
+        You must install the libx264 library for  ITU H.264 video codec support.
+The package name is "libx264-dev".
+
+2.3.6 faac and faad
+        You must  also install  the AAC support  libraries libfaac  and libfaad.
+Install packages "libfaac-dev" and "libfaad-dev".
+
+2.3.7 zlib
+        The software  needs the  zlib development  package to  build. On Ubuntu,
+install the "zlib1g-dev" package.
+
+
+3 BUILD PROCEDURES
+==================
+        Although the setup  looks complicated,  building the  software is fairly
+straight-forward.  Below are instructions  to get the source,  and build in each
+target OS:
+
+3.1 SUBVERSION
+--------------
+        Get the  source  code  from the  Subversion  repository.  Currently,  an
+"iptv_root" repository is set up to depend on (and thus, download automatically)
+all of the  separate components  that make up  this project.  Use the Subversion
+tool of your choice,  we recommend TortoiseSVN for Windows and alternatively you
+can use the official Subversion command-line tool.  To install it in Ubuntu, get
+the "subversion" package.
+
+3.2 WINDOWS BUILD INSTRUCTIONS
+------------------------------
+        Open the "IPTV.sln" file located in the iptv_root folder with the Visual
+Studio IDE and build the entire solution.
+
+3.3 LINUX BUILD INSTRUCTIONS
+----------------------------
+        Open a  terminal.  Change  to the  "iptv_root"  directory  and  run  the
+"rebuild_all.sh" script located there.  If you have a multi-core/hyper-threading
+processor and a SMP enabled kernel  (Ubuntu kernels generally have SMP enabled),
+you can add "-j N"  to the command line,  where N is the  number of simultaneous
+compile jobs you want  the script to run.  This will speed up  the build process
+N-fold, to the maximum limit of the number of logical cores available.
+
+
+4 SUMMARY
+=========
+        Here is  a summary  of the  steps  needed to build  the software on each
+target operating system. See detailed instructions in chapter 2 above.
+
+4.1 MICROSOFT WINDOWS
+---------------------
+        - You must have Microsoft Visual Studio 2005 installed. SP1 optional.
+        - Install the Windows SDK  (May require system reboot).  Set MS_WIN_SDK
+to the install path.
+        - Install the DirectX SDK (May require system reboot).  Set MS_DX_SDK to
+the install path.
+        - Compile the wxWidgets library and put the generated DLL in your PATH.
+Set WXWIN to the path where the library resides.
+        - Get the project source from the Subversion repository.
+        - Open the IPTV.sln solution file in Visual Studio 2005 and build it.
+
+4.2 LINUX
+---------
+        - Installation of  all needed packages  can be done in  a single step in
+Ubuntu: enter "sudo apt-get install build-essential libstdc++6-dev libwxgtk2.8-d
+ev libgl1-mesa-dev libglu1-mesa-dev linux-headers libasound2-dev libspeex-dev li
+bx264-dev libfaac-dev libfaad-dev zlib1g-dev cmake subversion"  in  the  command
+line  (all in a single line,  without the quotation marks).  Enter your password
+and the  system will  download and install  all needed packages.  It may be best
+(or even needed) to do a full update on the system before installing packages.
+        - Get the project source from the Subversion repository.
+        - Run the rebuild_all.sh script in iptv_root.
+	- The ChartDirector shared object and other supporting data files are in
+          the "ChartDirector/lib" subdirectory. To ensure your runtime linker can
+          locate ChartDirector, copy *everything* (recursive copy) in "ChartDirector/lib"
+          (including the fonts subdirectories for Linux, FreeBSD and Solaris versions)
+          to "/usr/lib". This is by first changing to the "ChartDirector" directory, then use:
+
+		cp -R lib/* /usr/lib
+
+	  You may also put the "ChartDirector/lib" files in other location if you
+          use the proper compiler/linker flags (the -R flag for Linux, FreeBSD and
+	  Solaris, and the -L flag for Mac OS X) to build your application. Please
+          refer to the compiler/linker documentation of your system for details.
+
+5 VERSION HISTORY
+=================
+        0.1 090123: Added a description of the Windows environment variables.
+Removed section on OpenAL for Win32 as the repository contains a copy and that
+needs no setup at all.
+        0.0 090122: Initial revision

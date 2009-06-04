@@ -1,0 +1,50 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual Studio 2005
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test_audio_encoder", "test_audio_encoder.vcproj", "{3BCE26FC-ED4B-455A-9F44-9AB51CD6FB8E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{30CC2DD4-DFBA-4A24-B174-36E9A59F0E6D} = {30CC2DD4-DFBA-4A24-B174-36E9A59F0E6D}
+		{CB7088E2-C380-4FA3-9F11-4C94559118DB} = {CB7088E2-C380-4FA3-9F11-4C94559118DB}
+		{AED68646-D122-464A-874E-2C7BB1B5DDBA} = {AED68646-D122-464A-874E-2C7BB1B5DDBA}
+		{69ECEA66-1E11-428F-A515-810471CBB8AE} = {69ECEA66-1E11-428F-A515-810471CBB8AE}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "iptv_audio_capture", "..\..\iptv_audio_capture\iptv_audio_capture.vcproj", "{30CC2DD4-DFBA-4A24-B174-36E9A59F0E6D}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SharedLib", "..\..\iptv_shared\shared\SharedLib.vcproj", "{69ECEA66-1E11-428F-A515-810471CBB8AE}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "iptv_media_util", "..\..\iptv_media_util\iptv_media_util.vcproj", "{AED68646-D122-464A-874E-2C7BB1B5DDBA}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "iptv_media", "..\iptv_media.vcproj", "{CB7088E2-C380-4FA3-9F11-4C94559118DB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3BCE26FC-ED4B-455A-9F44-9AB51CD6FB8E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3BCE26FC-ED4B-455A-9F44-9AB51CD6FB8E}.Debug|Win32.Build.0 = Debug|Win32
+		{3BCE26FC-ED4B-455A-9F44-9AB51CD6FB8E}.Release|Win32.ActiveCfg = Release|Win32
+		{3BCE26FC-ED4B-455A-9F44-9AB51CD6FB8E}.Release|Win32.Build.0 = Release|Win32
+		{30CC2DD4-DFBA-4A24-B174-36E9A59F0E6D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{30CC2DD4-DFBA-4A24-B174-36E9A59F0E6D}.Debug|Win32.Build.0 = Debug|Win32
+		{30CC2DD4-DFBA-4A24-B174-36E9A59F0E6D}.Release|Win32.ActiveCfg = Release|Win32
+		{30CC2DD4-DFBA-4A24-B174-36E9A59F0E6D}.Release|Win32.Build.0 = Release|Win32
+		{69ECEA66-1E11-428F-A515-810471CBB8AE}.Debug|Win32.ActiveCfg = Debug|Win32
+		{69ECEA66-1E11-428F-A515-810471CBB8AE}.Debug|Win32.Build.0 = Debug|Win32
+		{69ECEA66-1E11-428F-A515-810471CBB8AE}.Release|Win32.ActiveCfg = Release|Win32
+		{69ECEA66-1E11-428F-A515-810471CBB8AE}.Release|Win32.Build.0 = Release|Win32
+		{AED68646-D122-464A-874E-2C7BB1B5DDBA}.Debug|Win32.ActiveCfg = Debug|Win32
+		{AED68646-D122-464A-874E-2C7BB1B5DDBA}.Debug|Win32.Build.0 = Debug|Win32
+		{AED68646-D122-464A-874E-2C7BB1B5DDBA}.Release|Win32.ActiveCfg = Release|Win32
+		{AED68646-D122-464A-874E-2C7BB1B5DDBA}.Release|Win32.Build.0 = Release|Win32
+		{CB7088E2-C380-4FA3-9F11-4C94559118DB}.Debug|Win32.ActiveCfg = Debug|Win32
+		{CB7088E2-C380-4FA3-9F11-4C94559118DB}.Debug|Win32.Build.0 = Debug|Win32
+		{CB7088E2-C380-4FA3-9F11-4C94559118DB}.Release|Win32.ActiveCfg = Release|Win32
+		{CB7088E2-C380-4FA3-9F11-4C94559118DB}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

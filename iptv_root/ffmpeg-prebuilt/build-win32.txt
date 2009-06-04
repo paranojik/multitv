@@ -1,0 +1,11 @@
+FFMPEG Configure parameters:
+
+./configure --target-os=mingw32 --enable-memalign-hack \
+--extra-cflags="-mno-cygwin" --extra-ldflags="-mno-cygwin" \
+--enable-static --enable-shared --enable-gpl \
+--enable-swscale \
+
+After creating the DLLs, use these commands in VS Shell to create the respective LIBs:
+
+lib /machine:i386 /def:avutil-49.def /out:avutil-49.lib
+lib /machine:i386 /def:swscale-0.def /out:swscale-0.lib

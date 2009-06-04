@@ -1,0 +1,179 @@
+// main.cpp
+
+#include <iostream>
+using namespace std;
+
+#include "VBReportDll.h"
+#include "VBLib.h"
+using namespace br::com::sbVB::VBLib;
+
+
+/////////////////////
+
+void scanPathRecursive (VBString path, bool doRecursive) 
+{
+	const char *exportedNamesDllMustHave[] = {
+		"getBuildId","getBuildDate","getBuildStructDate","getVersion"
+	};
+	unsigned s = sizeof(exportedNamesDllMustHave)/sizeof(const char *);
+	
+
+	typedef int (*MyFunPtrType)(int);
+	MyFunPtrType myFunPtr;
+
+	try
+	{
+		VBCrossDLLContainer dllContainer;
+
+		dllContainer.loadDllsWithAllExportedNames(exportedNamesDllMustHave,s,path,"dll");
+		
+		unsigned n_dll = dllContainer.getNumberOfDlls();
+		cout << "DEBUG: getNumberOfDlls=" << n_dll << endl;
+
+		// VBAssert (n_dll==4); 
+		
+#if 0
+		unsigned i;
+		for (i = 0 ; i < n_dll ; i++)
+		{
+			myFunPtr = (MyFunPtrType) dllContainer[i].getAddress("plus_2");
+			VBAssert (myFunPtr(6)==8); 
+		}
+#endif
+	
+	}
+	catch(VBException_crossDLL & e)
+	{
+		VBAssert (false,e.getExplanation());
+	}
+	catch(VBException &)
+	{
+		cout << "other exception" << endl;
+	}
+}
+
+
+void scanPathRecursive2 (VBString path, bool doRecursive) 
+{
+	VBFileDirectory a;
+	VBString str;
+	unsigned i=0;
+	for (str = a.getFirst(path) ; !a.eolist() ; str=a.getNext()) 
+	{
+		// mark the ones that are directories
+		if (a.isDir()) 
+		{
+			// cout << "DEBUG: directory=" << str << endl;
+			if (doRecursive)
+				scanPathRecursive(a.getPath(),doRecursive); // recursive call
+		}
+		else
+		{
+			VBString ext = str.getFileExtension();
+			ext.toLower();
+			bool isDll = ext == "dll";
+			if (isDll)
+			{
+				// cout << "DEBUG: dll=" << str << endl;
+			}
+
+
+			const char *exportedNamesDllMustHave[] = {
+				"" // "getBuildId","getBuildDate","getBuildStructDate","getVersion"
+			};
+			unsigned s = sizeof(exportedNamesDllMustHave)/sizeof(const char *);
+			
+
+			typedef int (*MyFunPtrType)(int);
+			MyFunPtrType myFunPtr;
+
+			try
+			{
+				VBCrossDLLContainer dllContainer;
+
+				dllContainer.loadDllsWithAllExportedNames(exportedNamesDllMustHave,s,path,"dll");
+				
+				unsigned n_dll = dllContainer.getNumberOfDlls();
+				cout << "DEBUG: getNumberOfDlls=" << n_dll << endl;
+
+				// VBAssert (n_dll==4); 
+				
+#if 0
+				unsigned i;
+				for (i = 0 ; i < n_dll ; i++)
+				{
+					myFunPtr = (MyFunPtrType) dllContainer[i].getAddress("plus_2");
+					VBAssert (myFunPtr(6)==8); 
+				}
+#endif
+			
+			}
+			catch(VBException_crossDLL & e)
+			{
+				VBAssert (false,e.getExplanation());
+			}
+			catch(VBException &)
+			{
+				cout << "other exception" << endl;
+			}
+				
+		}
+	}
+}
+
+
+
+// comment below to get non test version
+#define TEST
+
+#ifdef TEST
+	int main()
+	{
+		unsigned argc;
+		char** argv;
+
+		VBProcessArgsTest a(
+			"myprog "
+	//		"-r "
+			"C:/_work/components/sbVB/addMeToPath " // path to report dll's
+			,argc,argv);
+
+
+#else
+	int main(unsigned argc, char **argv)
+	{
+
+#endif
+
+	// instantiate args outside the try, to be able to use it in catch
+	VBProcessArgs args;
+	try
+	{
+		// define myprog profile
+		args.clear();
+		args.defineArgs("path to report dll's"); // 1
+		// args.defineArgs("path to report dll's"); // 1
+		args.defineOption("r","recursivelly go into directories");
+		args.setArgs(argc,argv);
+		bool doRecursive = args.getOption("r");
+		VBString path = args.getArg(1);
+
+		cout << "path=" << path << endl;
+		scanPathRecursive(path,doRecursive);
+
+	}
+	catch (const VBException_ProcessArgs & e)
+	{
+		// print the help for the program
+		cout << "VBReportDll v" << BUILD_USER_VERSION << " - sbVB Reporter of DLL version" << endl;
+		cout << "BuildId=" << BUILD_ID << ", Build date-time: " << BUILD_DATETIME << endl;
+		cout << "by sbVB (www.sbvb.com.br)" << endl << endl;
+		cout << "Usage: VBReportDll [options] arguments (see explanation below)" << endl ;
+		cout << args.explanation() << endl;
+		cout << e.getExplanation() << endl;
+	}
+	
+	return 0;
+}
+
+

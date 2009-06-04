@@ -1,0 +1,3155 @@
+<html>
+<head>
+<title>
+Intel® Integrated Performance Primitives Sample Readme
+</title>
+<style>
+<!-- /* Font Definitions */ @font-face {font-family:Times; panose-1:2 2 6 3 5 4 5 2 3 4;} /* Style Definitions */ p.MsoNormal, li.MsoNormal, div.MsoNormal {margin:0in; margin-bottom:.0001pt; font-size:12.0pt; font-family:"Times New Roman"; color:black;} h1 {margin-right:0in; margin-left:0in; font-size:24.0pt; font-family:"Times New Roman"; color:black; font-weight:bold;} h2 {margin-right:0in; margin-left:0in; font-size:18.0pt; font-family:"Times New Roman"; color:black; font-weight:bold;} h5 {margin-right:0in; margin-left:0in; font-size:10.0pt; font-family:"Times New Roman"; color:black; font-weight:bold;} a:link, span.MsoHyperlink {color:blue;} a:visited, span.MsoHyperlinkFollowed {color:blue;} p {margin-right:0in; margin-left:0in; font-size:12.0pt; font-family:"Times New Roman"; color:black;} @page Section1 {size:595.3pt 841.9pt; margin:56.7pt 42.5pt 56.7pt 85.05pt;} div.Section1 {page:Section1;} /* List Definitions */ ol {margin-bottom:0in;} ul {margin-bottom:0in;} -->
+</style>
+</head>
+<body bgcolor=white lang=EN-US link=blue vlink=blue>
+<div class=Section1>
+<h1 align=center style='text-align:center'>
+<i>
+Intel
+<sup>
+®
+</sup>
+Integrated Performance Primitives
+<br>
+Speech Coding Samples for Linux*
+</i>
+</h1>
+<h5>
+<span lang=RU>
+<a href="#Disclaimer">
+<u>
+<span lang=EN-US>
+Disclaimer
+</span>
+</u>
+</a>
+</span>
+<br>
+<span lang=RU>
+<a href="#License_Definitions">
+<u>
+<span lang=EN-US>
+License Definitions
+</span>
+</u>
+</a>
+</span>
+<br>
+<span lang=RU>
+<a href="#Overview">
+<u>
+<span lang=EN-US>
+Overview
+</span>
+</u>
+</a>
+</span>
+<br>
+<span lang=RU>
+<a href="#System_Requirements">
+<u>
+<span lang=EN-US>
+System Requirements
+</span>
+</u>
+</a>
+</span>
+<br>
+<span lang=RU>
+<a href="#Package_Contents">
+<u>
+<span lang=EN-US>
+Package Contents
+</span>
+</u>
+</a>
+</span>
+<br>
+<span lang=RU>
+<a href="#Installation">
+<u>
+<span lang=EN-US>
+Installation
+</span>
+</u>
+</a>
+</span>
+<br>
+<span lang=RU>
+<a href="#How_to_Build_Source_Code">
+<u>
+<span lang=EN-US>
+How to Build Source Code
+</span>
+</u>
+</a>
+</span>
+<br>
+<span lang=RU>
+<a href="#Running_the_Software">
+<u>
+<span lang=EN-US>
+Running the Software
+</span>
+</u>
+</a>
+</span>
+<br>
+<span lang=RU>
+<a href="#Known_Limitations">
+<u>
+<span lang=EN-US>
+Known Limitations
+</span>
+</u>
+</a>
+</span>
+<br>
+<span lang=RU>
+<a href="#Support">
+<u>
+<span lang=EN-US>
+Technical Support and Feedback
+</span>
+</u>
+</a>
+</span>
+<br>
+&nbsp;
+</h5>
+<h2>
+<a name=Disclaimer>
+</a>
+Disclaimer
+</h2>
+<p class=MsoNormal>
+<span style='font-size:10.0pt;color:windowtext'>
+INFORMATION IN THIS DOCUMENT IS PROVIDED IN CONNECTION WITH INTEL
+<sup>
+®
+</sup>
+PRODUCTS. NO LICENSE, EXPRESS OR IMPLIED, BY ESTOPPEL OR OTHERWISE, TO ANY INTELLECTUAL PROPERTY RIGHTS IS GRANTED BY THIS DOCUMENT. EXCEPT AS PROVIDED IN INTEL'S TERMS AND CONDITIONS OF SALE FOR SUCH PRODUCTS, INTEL ASSUMES NO LIABILITY WHATSOEVER, AND INTEL DISCLAIMS ANY EXPRESS OR IMPLIED WARRANTY, RELATING TO SALE AND/OR USE OF INTEL PRODUCTS INCLUDING LIABILITY OR WARRANTIES RELATING TO FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR INFRINGEMENT OF ANY PATENT, COPYRIGHT OR OTHER INTELLECTUAL PROPERTY RIGHT.
+</span>
+</p>
+<p>
+Intel products are not intended for use in medical, life saving, life sustaining, critical control or safety systems, or in nuclear facility applications. Intel may make changes to specifications and product descriptions at anytime, without notice.
+</p>
+<h2>
+<a name="License_Definitions">
+</a>
+License Definitions
+</h2>
+<p>
+By downloading and installing this sample, you hereby agree that the accompanying Materials are being provided to you under the terms and conditions of the End User License Agreement for the Intel
+<sup>
+®
+</sup>
+Integrated Performance Primitives product previously accepted by you. Please refer to the file
+<b>
+ippEULA.txt
+</b>
+located in the root directory of your Intel
+<sup>
+®
+</sup>
+IPP product installation for more information.
+</p>
+<p>
+The G.168, G.167, G.711, G.722, G.722.1, G.722.2, AMRWB, Extended AMRWB (AMRWB+), G.723.1, G.726, G.728, G.729, iLBC, GSM AMR, GSM FR are international standards promoted by ITU (
+<span lang=RU>
+<a href="http://www.itu.int">
+<u>
+<span lang=EN-US>
+http://www.itu.int
+</span>
+</u>
+</a>
+</span>
+), ETSI (
+<span lang=RU>
+<a href="http://www.etsi.org">
+<u>
+<span lang=EN-US>
+http://www.etsi.org
+</span>
+</u>
+</a>
+</span>
+), 3GPP (
+<span lang=RU>
+<a href="http://www.3gpp.org">
+<u>
+<span lang=EN-US>
+http://www.3gpp.org
+</span>
+</u>
+</a>
+</span>
+), GIPS (
+<a href="http://www.ilbcfreeware.org">
+<u>
+http://www.ilbcfreeware.org
+</u>
+</a>
+) and other organizations. Implementations of these standards, or the standard enabled platforms may require licenses from various entities, including Intel Corporation.
+</p>
+<h2>
+<a name=Overview>
+</a>
+Overview
+</h2>
+<p class=MsoNormal>
+This package contains the echo canceller sample (./application/usc_ec), noise reduction and voice activity detector sample (./application/usc_nr), speech codec sample (./application/usc_speech_codec) and the tone detector sample (./application/usc_tones). &nbsp;
+</p>
+<p>
+The speech codec sample supports encoding and decoding compliant to the ITU-T G.711/I/II, G.722, G.722.1, G.723.1/A, G.726/A, G.728G//I/H, G.729/A/B/D/E/I/C/C+ recommendations, ETSI GSM 06.90-06.94, 06.10-06.12, 06.31-06.32 recommendations, RFC3951.
+</p>
+<p>
+The tone detection algorithm complies with ITU G.168-2002 specifications.
+</p>
+<p>
+The echo cancellation sample complies to the ITU-T G.168-2000 and G.167 recommendations.&nbsp;
+</p>
+<p>
+The samples have been implemented using the Intel
+<sup>
+®
+</sup>
+Integrated Performance Primitives (Intel
+<sup>
+®
+</sup>
+IPP) Speech Coding functions.&nbsp;They are command line based applications which process data given by one or more input PCM files and store the result into output bitstreams or PCM files. Both narrow band (8000 Hz)&nbsp; and wide band (16000 KHz) are supported.
+</p>
+<p>
+For more information refer to the specific sample readme.htm file.&nbsp;&nbsp;
+</p>
+<p>
+Additional information on this software as well as other Intel
+<sup>
+®
+</sup>
+Software Development Products is available at
+<span lang=RU>
+<a href="http://developer.intel.com/software/products/">
+<u>
+<span lang=EN-US>
+http://developer.intel.com/software/products/
+</span>
+</u>
+</a>
+</span>
+.
+</p>
+<h2>
+<a name="System_Requirements">
+</a>
+<span lang=RU>
+System Requirements
+</span>
+</h2>
+<p class=MsoNormal>
+<b>
+<span lang=RU style='font-size:10.0pt'>
+Recommended hardware:
+</span>
+</b>
+<span lang=RU style='font-size:10.0pt'>
+&nbsp;
+</span>
+<span lang=RU>
+</span>
+</p>
+<ul type=disc>
+<li class=MsoNormal>
+A system based on the Intel
+<sup>
+®
+</sup>
+Pentium
+<sup>
+®
+</sup>
+4 processor with 128 megabytes of RAM, or better.
+</li>
+</ul>
+<p class=MsoNormal>
+<b>
+<span style='font-size:10.0pt'>
+Hardware requirements:
+</span>
+</b>
+</p>
+<p class=MsoNormal>
+A system based on a Intel
+<sup>
+®
+</sup>
+Pentium
+<sup>
+®
+</sup>
+processor, Intel
+<sup>
+®
+</sup>
+Xeon
+<sup>
+®
+</sup>
+processor, or subsequent IA-32 processor
+</p>
+<p class=MsoNormal>
+A system based on a Intel® Itanium® 2 processor
+</p>
+<p class=MsoNormal>
+A system based on a Intel® Xeon
+<sup>
+®
+</sup>
+processor with Intel® Extended Memory 64 Technology (Intel® EM64T)
+</p>
+<p class=MsoNormal>
+<b>
+<span lang=RU style='font-size:10.0pt'>
+Software requirements:&nbsp;
+</span>
+</b>
+<span lang=RU>
+</span>
+</p>
+<ul type=disc>
+<li class=MsoNormal>
+Intel
+<sup>
+®
+</sup>
+IPP 5.3 for Linux*, or later
+</li>
+<li class=MsoNormal>
+<span lang=RU>
+Linux* distributions with 2.4.x kernels
+</span>
+</li>
+<li class=MsoNormal>
+Intel
+<sup>
+®
+</sup>
+C++ Compiler 8.1 for Linux*, or later
+</li>
+<li class=MsoNormal>
+<span lang=RU>
+GNU* Compiler g++ 2.96, or later
+</span>
+</li>
+<li class=MsoNormal>
+Red Hat* Linux release 7.2 or higher
+</li>
+</ul>
+<p>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<span lang=RU>
+A IXPP4XX product line system
+</span>
+</p>
+<ul type=disc>
+<li class=MsoNormal>
+<span lang=RU>
+MontaVista*Linux*3.0 CEE LE
+</span>
+</li>
+<li class=MsoNormal>
+<span lang=RU>
+&nbsp;&nbsp;&nbsp; MontaVista 3.0 CEE LE toolchain
+</span>
+</li>
+<li class=MsoNormal>
+&nbsp;&nbsp;&nbsp;&nbsp; iwmmxt_le-gcc (MontaVista*) C compiler for little endian application
+</li>
+<li class=MsoNormal>
+<span lang=RU>
+MontaVista*Linux*3.1 PRO BE
+</span>
+</li>
+<li class=MsoNormal>
+<span lang=RU>
+&nbsp;&nbsp;&nbsp; MontaVista 3.1 PRO BE toolchain
+</span>
+</li>
+<li class=MsoNormal>
+&nbsp;&nbsp;&nbsp;&nbsp; xscale_be-gcc (MontaVista*) C compiler for big endian application
+</li>
+</ul>
+<h2>
+<a name="Package_Contents">
+</a>
+Package Contents
+</h2>
+<p>
+The speech codec package contains the following files:
+</p>
+<table class=MsoNormalTable border=1 cellpadding=0 width="100%" style='width:100.0%' height=213 id=table1>
+<tr style='height:17.25pt'>
+<td width="100%" colspan=2 style='width:100.0%;background:silver;padding: .75pt .75pt .75pt .75pt;height:17.25pt'>
+<p class=MsoNormal>
+<b>
+./ipp_samples/speech-codecs
+</b>
+</p>
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width="50%" style='width:50.0%;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+readme.htm
+</p>
+</td>
+<td width="50%" style='width:50.0%;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+This file
+</p>
+</td>
+</tr>
+<tr style='height:19.5pt'>
+<td width=312 style='width:234.15pt;padding:.75pt .75pt .75pt .75pt; height:19.5pt'>
+<p class=MsoNormal>
+build_32.sh, build_64.sh, build_em64t.sh, buildiwmmxt_le.sh, buildxscale_be.sh
+</p>
+</td>
+<td width=313 style='width:235.1pt;padding:.75pt .75pt .75pt .75pt; height:19.5pt'>
+<p class=MsoNormal>
+Platform specific tools to build the samples
+</p>
+</td>
+</tr>
+<tr style='height:.25in'>
+<td width="50%" style='width:50.0%;padding:.75pt .75pt .75pt .75pt; height:.25in'>
+<p class=MsoNormal>
+ippEULA.txt
+</p>
+</td>
+<td width="50%" style='width:50.0%;padding:.75pt .75pt .75pt .75pt; height:.25in'>
+<p class=MsoNormal>
+End User License Agreement
+</p>
+</td>
+</tr>
+<tr style='height:21.0pt'>
+<td width="50%" style='width:50.0%;padding:.75pt .75pt .75pt .75pt; height:21.0pt'>
+<p class=MsoNormal>
+support.txt
+</p>
+</td>
+<td width="50%" style='width:50.0%;padding:.75pt .75pt .75pt .75pt; height:21.0pt'>
+<p class=MsoNormal>
+Contains information for technical support
+</p>
+</td>
+</tr>
+<tr style='height:19.5pt'>
+<td width="50%" style='width:50.0%;padding:0in 5.4pt 0in 5.4pt;height:19.5pt'>
+<table class=MsoNormalTable border=1 cellpadding=0 width="100%" style='width:100.0%' height=213 id=table4>
+<tr style='height:17.25pt'>
+<td width="100%" style='width:100.0%;background:silver;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+<b>
+<span style='color:windowtext'>
+./ipp_samples/
+</span>
+speech-codecs
+<span style='color:windowtext'>
+/application
+</span>
+</b>
+</p>
+</td>
+</tr>
+</table>
+<p class=MsoNormal>
+</p>
+</td>
+<td width="50%" style='width:50.0%;padding:0in 5.4pt 0in 5.4pt;height:19.5pt'>
+<table class=MsoNormalTable border=1 cellpadding=0 width="100%" style='width:100.0%' height=206 id=table5>
+<tr style='height:150.0pt'>
+<td width="100%" style='width:100.0%;background:silver;padding:.75pt .75pt .75pt .75pt; height:150.0pt'>
+<p class=MsoNormal>
+<span style='color:windowtext'>
+This folder contains 4 implementations of applications
+<br>
+<br>
+1) usc_ec :&nbsp; ITU G168 and G167 compliant implementation for Echo Canceller (EC) Sample
+<br>
+2) usc_nr:&nbsp; USC base Noise Reduction implementation
+<br>
+2) usc_speech_codec: USC base speech coding and Voice Activity Detector implementation
+<br>
+2) usc_tones: ITU G168 compliant implementation for Tone Detector Sample
+</span>
+</p>
+</td>
+</tr>
+</table>
+<p class=MsoNormal>
+</p>
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width="100%" colspan=2 style='width:100.0%;background:silver;padding: .75pt .75pt .75pt .75pt;height:17.25pt'>
+<p class=MsoNormal>
+<b>
+./ipp_samples/speech-codecs/application/usc_speech_codec
+</b>
+</p>
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=312 style='width:234.15pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+Readme.htm
+</p>
+</td>
+<td width=313 style='width:235.1pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+USC speech codec readme file
+</p>
+</td>
+</tr>
+<tr style='height:19.5pt'>
+<td width=312 style='width:234.15pt;padding:.75pt .75pt .75pt .75pt; height:19.5pt'>
+<p class=MsoNormal>
+linux32.ini, linux64.ini, linuxem64t.ini, iwmmxt_le.ini, xscale_be.ini
+</p>
+</td>
+<td width=313 style='width:235.1pt;padding:.75pt .75pt .75pt .75pt; height:19.5pt'>
+<p class=MsoNormal>
+Platform specific initialization files for build tools
+</p>
+</td>
+</tr>
+<tr style='height:19.5pt'>
+<td width=312 style='width:234.15pt;padding:.75pt .75pt .75pt .75pt; height:19.5pt'>
+<p class=MsoNormal>
+build32.sh, build64.sh, buildem64t.sh, buildiwmmxt_le.sh, buildxscale_be.sh
+</p>
+</td>
+<td width=313 style='width:235.1pt;padding:.75pt .75pt .75pt .75pt; height:19.5pt'>
+<p class=MsoNormal>
+Platform specific batch files to build the samples
+</p>
+</td>
+</tr>
+<tr style='height:19.5pt'>
+<td width=312 style='width:234.15pt;padding:.75pt .75pt .75pt .75pt; height:19.5pt'>
+<p class=MsoNormal>
+makefile
+</p>
+</td>
+<td width=313 style='width:235.1pt;padding:.75pt .75pt .75pt .75pt; height:19.5pt'>
+<p class=MsoNormal>
+Platform specific make file for build tools
+</p>
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width="100%" colspan=2 style='width:100.0%;background:silver;padding: .75pt .75pt .75pt .75pt;height:17.25pt'>
+<p class=MsoNormal>
+<b>
+./ipp_samples/speech-codecs/application/usc_speech_codec/include
+</b>
+</p>
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width="50%" style='width:50.0%;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+formats.h
+</p>
+</td>
+<td width="50%" style='width:50.0%;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+Format library API definition header files
+</p>
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width="50%" style='width:50.0%;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+uscfmt.h
+</p>
+</td>
+<td width="50%" style='width:50.0%;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+Format library API definition header files
+</p>
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width="50%" style='width:50.0%;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+loadcodec.h
+</p>
+</td>
+<td width="50%" style='width:50.0%;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+Plug-ins API definition header file
+</p>
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width="50%" style='width:50.0%;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+usc_cdcs.h
+</p>
+</td>
+<td width="50%" style='width:50.0%;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+USC function tables
+</p>
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width="50%" style='width:50.0%;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+usccodec.h
+</p>
+</td>
+<td width="50%" style='width:50.0%;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+USC wrapper definition header file
+</p>
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width="50%" style='width:50.0%;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+util.h
+</p>
+</td>
+<td width="50%" style='width:50.0%;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+Auxiliary functions
+</p>
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width="50%" style='width:50.0%;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+wavfile.h
+</p>
+</td>
+<td width="50%" style='width:50.0%;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+Wave file reading/writing API definition header file
+</p>
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width="100%" colspan=2 style='width:100.0%;background:silver;padding: .75pt .75pt .75pt .75pt;height:17.25pt'>
+<p class=MsoNormal>
+<b>
+./ipp_samples/speech-codecs/application/usc_speech_codec/src
+</b>
+</p>
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width="50%" style='width:50.0%;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+formats.c
+</p>
+</td>
+<td width="50%" style='width:50.0%;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+Format library functions file
+</p>
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width="50%" style='width:50.0%;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+loadcodec.c
+</p>
+</td>
+<td width="50%" style='width:50.0%;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+Plug-ins
+<span style='font-size:11.0pt;font-family:Times'>
+operation
+</span>
+functions.
+</p>
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width="50%" style='width:50.0%;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+player.c
+</p>
+</td>
+<td width="50%" style='width:50.0%;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+Main program file
+</p>
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width="50%" style='width:50.0%;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+timing.c
+</p>
+</td>
+<td width="50%" style='width:50.0%;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+Codec timing function
+</p>
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width="50%" style='width:50.0%;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+usccodec.c
+</p>
+</td>
+<td width="50%" style='width:50.0%;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+USC wrapper functions file
+</p>
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width="50%" style='width:50.0%;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+util.c
+</p>
+</td>
+<td width="50%" style='width:50.0%;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+Auxiliary functions
+</p>
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width="50%" style='width:50.0%;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+wavfile.c
+</p>
+</td>
+<td width="50%" style='width:50.0%;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+Wave file reading/writing&nbsp; functions file
+</p>
+</td>
+</tr>
+</table>
+<p class=MsoNormal>
+<span lang=RU style='color:windowtext;display:none'>
+&nbsp;
+</span>
+</p>
+<table class=MsoNormalTable border=1 cellpadding=0 width="110%" style='width:110.58%' height=214 id=table2>
+<tr style='height:17.25pt'>
+<td width=1406 colspan=2 style='width:1054.6pt;background:silver;padding: .75pt .75pt .75pt .75pt;height:17.25pt'>
+<p class=MsoNormal>
+<b>
+./ipp_samples/speech-codecs/application/usc_ec
+</b>
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+Readme.htm
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+Echo canceller readme file
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:19.5pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:19.5pt'>
+<p class=MsoNormal>
+linux32.ini, linux64.ini, linuxem64t.ini
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:19.5pt'>
+<p class=MsoNormal>
+Platform specific initialization files for build tools
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:19.5pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:19.5pt'>
+<p class=MsoNormal>
+build32.sh, build64.sh, buildem64t.sh
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:19.5pt'>
+<p class=MsoNormal>
+Platform specific batch files to build the samples
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:19.5pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:19.5pt'>
+<p class=MsoNormal>
+makefile
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:19.5pt'>
+<p class=MsoNormal>
+Platform specific make file for build tools
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=1406 colspan=2 style='width:1054.6pt;background:silver;padding: .75pt .75pt .75pt .75pt;height:17.25pt'>
+<p class=MsoNormal>
+<b>
+./ipp_samples/speech-codecs/application/usc_ec/include
+</b>
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+loadec.h
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+Plug-ins API definition header file
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+util.h
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+Auxiliary functions
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=1406 colspan=2 style='width:1054.6pt;background:silver;padding: .75pt .75pt .75pt .75pt;height:17.25pt'>
+<p class=MsoNormal>
+<b>
+./ipp_samples/speech-codecs/application/usc_ec/src
+</b>
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+loadec.c
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+Plug-ins
+<span style='font-size:11.0pt;font-family:Times'>
+operation
+</span>
+functions.
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+usc_ec.c
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+EC main program file
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+util.c
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+Auxiliary functions
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=1406 colspan=2 style='width:1054.6pt;background:silver;padding: .75pt .75pt .75pt .75pt;height:17.25pt'>
+<p class=MsoNormal>
+<b>
+./ipp_samples/speech-codecs/application/usc_nr
+</b>
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+Readme.htm
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+USC noise reduction and Voice Activity Detector readme file
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:19.5pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:19.5pt'>
+<p class=MsoNormal>
+linux32.ini, linux64.ini, linuxem64t.ini, iwmmxt_le.ini, xscale_be.ini
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:19.5pt'>
+<p class=MsoNormal>
+Platform specific initialization files for build tools
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:19.5pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:19.5pt'>
+<p class=MsoNormal>
+build32.sh, build64.sh, buildem64t.sh, buildiwmmxt_le.sh, buildxscale_be.sh
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:19.5pt'>
+<p class=MsoNormal>
+Platform specific batch files to build the samples
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:19.5pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:19.5pt'>
+<p class=MsoNormal>
+makefile
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:19.5pt'>
+<p class=MsoNormal>
+Platform specific make file for build tools
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=1406 colspan=2 style='width:1054.6pt;background:silver;padding: .75pt .75pt .75pt .75pt;height:17.25pt'>
+<p class=MsoNormal>
+<b>
+./ipp_samples/speech-codecs/application/usc_nr/include
+</b>
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+types.h
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+Auxiliary structures and functions header file
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=1406 colspan=2 style='width:1054.6pt;background:silver;padding: .75pt .75pt .75pt .75pt;height:17.25pt'>
+<p class=MsoNormal>
+<b>
+./ipp_samples/speech-codecs/application/usc_nr/src
+</b>
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+nr_exmp.c
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+NR main program file
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+util.c
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+Auxiliary functions
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=1406 colspan=2 style='width:1054.6pt;background:silver;padding: .75pt .75pt .75pt .75pt;height:17.25pt'>
+<p class=MsoNormal>
+<b>
+./ipp_samples/speech-codecs/application/usc_tones
+</b>
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+Readme.htm
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+USC tone detector readme file
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:19.5pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:19.5pt'>
+<p class=MsoNormal>
+linux32.ini, linux64.ini, linuxem64t.ini, iwmmxt_le.ini, xscale_be.ini
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:19.5pt'>
+<p class=MsoNormal>
+Platform specific initialization files for build tools
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:19.5pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:19.5pt'>
+<p class=MsoNormal>
+build32.sh, build64.sh, buildem64t.sh, buildiwmmxt_le.sh, buildxscale_be.sh
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:19.5pt'>
+<p class=MsoNormal>
+Platform specific batch files to build the samples
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:19.5pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:19.5pt'>
+<p class=MsoNormal>
+makefile
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:19.5pt'>
+<p class=MsoNormal>
+Platform specific make file for build tools
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=1406 colspan=2 style='width:1054.6pt;background:silver;padding: .75pt .75pt .75pt .75pt;height:17.25pt'>
+<p class=MsoNormal>
+<b>
+./ipp_samples/speech-codecs/application/usc_tones/include
+</b>
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+util.h
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+Auxiliary functions
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=1406 colspan=2 style='width:1054.6pt;background:silver;padding: .75pt .75pt .75pt .75pt;height:17.25pt'>
+<p class=MsoNormal>
+<b>
+./ipp_samples/speech-codecs/application/usc_tones/src
+</b>
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+td.c
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+Tone detector main program file
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+util.c
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+Auxiliary functions
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=1406 colspan=2 style='width:1054.6pt;background:silver;padding: .75pt .75pt .75pt .75pt;height:17.25pt'>
+<p class=MsoNormal>
+<b>
+./ipp_samples/speech-codecs/core/usc/include
+</b>
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+scratchmem.h
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+Local memory definition header file
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+usc.h
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+USC header file
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+usc_base.h
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+USC base header file
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+usc_ec.h
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+Unified Echo Canceller Interface header file.
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+usc_filter.h
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+Unified Filter Interface header file
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+usc_td.h
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+Unified Tones Detector Interface header file
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+uscreg.h
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+USC format tags header file
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+uscreg.h
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+USC format tags header file
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr>
+<td width=702 style='width:526.15pt;padding:0in 0in 0in 0in;height:19.5pt'>
+<table class=MsoNormalTable border=1 cellpadding=0 width="100%" style='width:100.0%' height=213 id=table13>
+<tr style='height:17.25pt'>
+<td width="100%" style='width:100.0%;background:silver;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+<b>
+<span style='color:windowtext'>
+./ipp_samples/
+</span>
+speech-codecs
+<span style='color:windowtext'>
+/codec/speech
+</span>
+</b>
+</p>
+</td>
+</tr>
+</table>
+<p class=MsoNormal>
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:0in 0in 0in 0in;height:19.5pt'>
+<table class=MsoNormalTable border=1 cellpadding=0 width="100%" style='width:100.0%' height=206 id=table14>
+<tr style='height:150.0pt'>
+<td width="100%" style='width:100.0%;background:silver;padding:.75pt .75pt .75pt .75pt; height:150.0pt'>
+<p class=MsoNormal>
+<span style='color:windowtext'>
+This folder contains implementation of a variety of USC interface based speech codecs
+</span>
+</p>
+</td>
+</tr>
+</table>
+<p class=MsoNormal>
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=1406 colspan=2 style='width:1054.6pt;background:silver;padding: .75pt .75pt .75pt .75pt;height:17.25pt'>
+<p class=MsoNormal>
+<b>
+./ipp_samples/speech-codecs/codec/speech/ec_int/include
+</b>
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+ah_api_int.h
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+Anti - howling API header file
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+ec_api_int.h
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+EC API header file
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+ecusc_int.h
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+USC EC integer functions table
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+ownah_int.h
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+EC integer Anti - howling header file
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+ec_td_int.h
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+Tone detect functions header file
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+ownec_int.h
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+EC integer internal header file
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+_ippnr_int.h
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+EC NR header file
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+nlp_api.h
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+EC NLP header file
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=1406 colspan=2 style='width:1054.6pt;background:silver;padding: .75pt .75pt .75pt .75pt;height:17.25pt'>
+<p class=MsoNormal>
+<b>
+./ipp_samples/speech-codecs/codec/speech/ec_int/src
+</b>
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+ah_int.c
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+Anti - howling functions
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;background:white;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+ec_fb_int.c
+</p>
+</td>
+<td width=703 style='width:526.95pt;background:white;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+<span style='font-family:Times'>
+EC
+</span>
+functions for fullband&nbsp;algorithm implementation
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;background:white;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+ec_sb_int.c
+</p>
+</td>
+<td width=703 style='width:526.95pt;background:white;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+<span style='font-family:Times'>
+EC
+</span>
+functions for subband&nbsp;algorithm implementation
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+ec_sbf_int.c
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+<span style='font-family:Times'>
+EC
+</span>
+functions for subband algorithm fast implementation
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+<span style='font-family:Times'>
+freqdist_int.c
+</span>
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+<span style='font-family:Times'>
+EC functions for noisy input preprocessing
+</span>
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+<span style='font-family:Times'>
+ec_td_int.c
+</span>
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+<span style='font-family:Times'>
+Tone detect functions implementation
+</span>
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+<span style='font-family:Times'>
+pscnri.c
+</span>
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+<span style='font-family:Times'>
+EC noise reduction algorithm functions
+</span>
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+nlp.c
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+EC NLP implementation
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+<span style='font-family:Times'>
+ecusc_int.c
+</span>
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+<span style='font-family:Times'>
+USC EC functions
+</span>
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=1406 colspan=2 style='width:1054.6pt;background:silver;padding: .75pt .75pt .75pt .75pt;height:17.25pt'>
+<p class=MsoNormal>
+<b>
+./ipp_samples/speech-codecs/codec/speech/amrwb/include
+</b>
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+amrwb_types.h, amrwbapi.h, amrwusc.h, ownarwb.h
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+AMRWB (G.722.2) codec header file
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=1406 colspan=2 style='width:1054.6pt;background:silver;padding: .75pt .75pt .75pt .75pt;height:17.25pt'>
+<p class=MsoNormal>
+<b>
+./ipp_samples/speech-codecs/codec/speech/amrwb/src
+</b>
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+decamrwb.c, dtxamrwb.c, encamrwb.c, ownamrwb.c, tabamrwb.c, uscamrwb.c, utilamrwb.c
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+AMRWB (G.722.2) codec implementation files
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=1406 colspan=2 style='width:1054.6pt;background:silver;padding: .75pt .75pt .75pt .75pt;height:17.25pt'>
+<p class=MsoNormal>
+<b>
+./ipp_samples/speech-codecs/codec/speech/amrwbe/include
+</b>
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+apiamrwbe.h, ownamrwbe.h, typesamrwbe.h, uscamrwbe.h
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+AMRWB+ codec header file
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=1406 colspan=2 style='width:1054.6pt;background:silver;padding: .75pt .75pt .75pt .75pt;height:17.25pt'>
+<p class=MsoNormal>
+<b>
+./ipp_samples/speech-codecs/codec/speech/amrwbe/src
+</b>
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+decamrwbe.c, encamrwbe.c, initwbe.c, tabamrwbe.c, uscamrwbe.c, utildecwbe.c, utilencwbe.c, utilswbe.c
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+AMRWB+ codec implementation files
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=1406 colspan=2 style='width:1054.6pt;background:silver;padding: .75pt .75pt .75pt .75pt;height:17.25pt'>
+<p class=MsoNormal>
+<b>
+./ipp_samples/speech-codecs/codec/speech/g711/include
+</b>
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+g711api.h, owng711.h
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+G.711 codec header file
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=1406 colspan=2 style='width:1054.6pt;background:silver;padding: .75pt .75pt .75pt .75pt;height:17.25pt'>
+<p class=MsoNormal>
+<b>
+./ipp_samples/speech-codecs/codec/speech/g711/src
+</b>
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+decg711.c, encg711.c, plcg711.c, uscg711.c
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+G.711 codec implementation files
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=1406 colspan=2 style='width:1054.6pt;background:silver;padding: .75pt .75pt .75pt .75pt;height:17.25pt'>
+<p class=MsoNormal>
+<b>
+./ipp_samples/speech-codecs/codec/speech/g722/include
+</b>
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+g722sb.h, g722sbapi.h, owng722sb.h
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+G.722 codec header file
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=1406 colspan=2 style='width:1054.6pt;background:silver;padding: .75pt .75pt .75pt .75pt;height:17.25pt'>
+<p class=MsoNormal>
+<b>
+./ipp_samples/speech-codecs/codec/speech/g722/src
+</b>
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+decg722sb.c, encg722sb.c, uscg722sb.c
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+G.722 codec implementation files
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=1406 colspan=2 style='width:1054.6pt;background:silver;padding: .75pt .75pt .75pt .75pt;height:17.25pt'>
+<p class=MsoNormal>
+<b>
+./ipp_samples/speech-codecs/codec/speech/g722.1/include
+</b>
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+g722.h, g722api.h, owng722.h
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+G.722.1 codec header file
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=1406 colspan=2 style='width:1054.6pt;background:silver;padding: .75pt .75pt .75pt .75pt;height:17.25pt'>
+<p class=MsoNormal>
+<b>
+./ipp_samples/speech-codecs/codec/speech/g722.1/src
+</b>
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+decg722.c, encg722.c, g722api.c, owng722.c, uscg722.c
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+G.722.1 codec implementation files
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=1406 colspan=2 style='width:1054.6pt;background:silver;padding: .75pt .75pt .75pt .75pt;height:17.25pt'>
+<p class=MsoNormal>
+<b>
+./ipp_samples/speech-codecs/codec/speech/g723.1/include
+</b>
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+g723api.h, g723ipp.h,owng723.h
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+G.723.1 codec header file
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=1406 colspan=2 style='width:1054.6pt;background:silver;padding: .75pt .75pt .75pt .75pt;height:17.25pt'>
+<p class=MsoNormal>
+<b>
+./ipp_samples/speech-codecs/codec/speech/g723.1/src
+</b>
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+decg723.c, encg723.c, owng723.c, uscg723.c
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+G.723.1 codec implementation files
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=1406 colspan=2 style='width:1054.6pt;background:silver;padding: .75pt .75pt .75pt .75pt;height:17.25pt'>
+<p class=MsoNormal>
+<b>
+./ipp_samples/speech-codecs/codec/speech/g726/src
+</b>
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+uscg726.c
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+G.726 codec implementation files
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=1406 colspan=2 style='width:1054.6pt;background:silver;padding: .75pt .75pt .75pt .75pt;height:17.25pt'>
+<p class=MsoNormal>
+<b>
+./ipp_samples/speech-codecs/codec/speech/g728/include
+</b>
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+g728.h, g728api.h, g728tables.h, owng728.h
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+G.728 codec header file
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=1406 colspan=2 style='width:1054.6pt;background:silver;padding: .75pt .75pt .75pt .75pt;height:17.25pt'>
+<p class=MsoNormal>
+<b>
+./ipp_samples/speech-codecs/codec/speech/g728/src
+</b>
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+adapters.c, consealg728.c, g728api.c, g728tables.c, owng728.c, pitchg728.c, pstg728.c, uscg728.c, vq.c
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+G.728 codec implementation files
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=1406 colspan=2 style='width:1054.6pt;background:silver;padding: .75pt .75pt .75pt .75pt;height:17.25pt'>
+<p class=MsoNormal>
+<b>
+./ipp_samples/speech-codecs/codec/speech/g729fp/include
+</b>
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+g729fpapi.h, owng729fp.h
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+G.729 floating-point codec header file
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=1406 colspan=2 style='width:1054.6pt;background:silver;padding: .75pt .75pt .75pt .75pt;height:17.25pt'>
+<p class=MsoNormal>
+<b>
+./ipp_samples/speech-codecs/codec/speech/g729fp/src
+</b>
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+decg729fp.c, encg729fp.c, owng729fp.c, usc729fp.c
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+G.729 floating-point codec implementation files
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=1406 colspan=2 style='width:1054.6pt;background:silver;padding: .75pt .75pt .75pt .75pt;height:17.25pt'>
+<p class=MsoNormal>
+<b>
+./ipp_samples/speech-codecs/codec/speech/g729i/include
+</b>
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+g729api.h, g729usc.h, owng729.h
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+G.729 codec header file
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=1406 colspan=2 style='width:1054.6pt;background:silver;padding: .75pt .75pt .75pt .75pt;height:17.25pt'>
+<p class=MsoNormal>
+<b>
+./ipp_samples/speech-codecs/codec/speech/g729i/src
+</b>
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+decg729.c, encg729.c, owng729.c, uscg729i.c
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+G.729 codec implementation files
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=1406 colspan=2 style='width:1054.6pt;background:silver;padding: .75pt .75pt .75pt .75pt;height:17.25pt'>
+<p class=MsoNormal>
+<b>
+./ipp_samples/speech-codecs/codec/speech/gsmamr/include
+</b>
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+gsmamr.h, gsmamr_types.h, gsmamrapi.h, gsmamrusc.h, owngsmamr.h
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+GSM 06.90 AMR codec header file
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=1406 colspan=2 style='width:1054.6pt;background:silver;padding: .75pt .75pt .75pt .75pt;height:17.25pt'>
+<p class=MsoNormal>
+<b>
+./ipp_samples/speech-codecs/codec/speech/gsmamr/src
+</b>
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+bitgsmamr.c, decgsmamr.c, dtxgsmamr.c, encgsmamr.c, gain_util.c, tabgsmamr.c, uscgsmamr.c, utilgsmamr.c
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+GSM 06.90 AMR codec implementation files
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=1406 colspan=2 style='width:1054.6pt;background:silver;padding: .75pt .75pt .75pt .75pt;height:17.25pt'>
+<p class=MsoNormal>
+<b>
+./ipp_samples/speech-codecs/codec/speech/gsmfr/include
+</b>
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+gsmfr_types.h, gsmfrapi.h, owngsmfr.h
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+GSM 06.10 codec header file
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=1406 colspan=2 style='width:1054.6pt;background:silver;padding: .75pt .75pt .75pt .75pt;height:17.25pt'>
+<p class=MsoNormal>
+<b>
+./ipp_samples/speech-codecs/codec/speech/gsmfr/src
+</b>
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+decgsmfr.c, encgsmfr.c, owngsmfr.c, uscgsmfr.c
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+GSM 06.10 codec implementation files
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=1406 colspan=2 style='width:1054.6pt;background:silver;padding: .75pt .75pt .75pt .75pt;height:17.25pt'>
+<p class=MsoNormal>
+<b>
+./ipp_samples/speech-codecs/codec/speech/nr_int/include
+</b>
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+nr.h
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+NR API header file
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=1406 colspan=2 style='width:1054.6pt;background:silver;padding: .75pt .75pt .75pt .75pt;height:17.25pt'>
+<p class=MsoNormal>
+<b>
+./ipp_samples/speech-codecs/codec/speech/nr_int/src
+</b>
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+nr.c
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+Functions implementing an Ephraim-Malah noise suppressor.
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;background:white;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+uscnr.c
+</p>
+</td>
+<td width=703 style='width:526.95pt;background:white;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+USC NR functions
+</p>
+</td>
+<td style='border:none;border-bottom:outset 1.0pt' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=1554 colspan=3 style='width:1165.55pt;background:#B3B3B3; padding:.75pt .75pt .75pt .75pt;height:17.25pt'>
+<p class=MsoNormal>
+<b>
+./
+</b>
+<b>
+ipp_samples/speech-codecs/codec/speech/vad/include
+</b>
+</p>
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;background:white;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+vadg723.h
+</p>
+</td>
+<td width=851 colspan=2 style='width:637.9pt;background:white;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+G723 VAD header file
+</p>
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;background:white;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+vadg729fp.h
+</p>
+</td>
+<td width=851 colspan=2 style='width:637.9pt;background:white;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+G729FP VAD header file
+</p>
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;background:white;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+vadg729i.h
+</p>
+</td>
+<td width=851 colspan=2 style='width:637.9pt;background:white;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+G729I VAD header file
+</p>
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=1554 colspan=3 style='width:1165.55pt;background:#B3B3B3; padding:.75pt .75pt .75pt .75pt;height:17.25pt'>
+<p class=MsoNormal>
+<b>
+./
+</b>
+<b>
+ipp_samples/speech-codecs/codec/speech/vad/src
+</b>
+</p>
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;background:white;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+uscvadg723.c
+</p>
+</td>
+<td width=851 colspan=2 style='width:637.9pt;background:white;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+USC VADG723 functions
+</p>
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;background:white;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+uscvadg729fp.c
+</p>
+</td>
+<td width=851 colspan=2 style='width:637.9pt;background:white;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+USC VADG729FP functions
+</p>
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;background:white;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+uscvadg729i.c
+</p>
+</td>
+<td width=851 colspan=2 style='width:637.9pt;background:white;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+USC VADG729I functions
+</p>
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;background:white;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+vadg723.c
+</p>
+</td>
+<td width=851 colspan=2 style='width:637.9pt;background:white;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+G723 VAD algorithm
+</p>
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;background:white;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+vadg729fp.c
+</p>
+</td>
+<td width=851 colspan=2 style='width:637.9pt;background:white;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+G729FP VAD algorithm
+</p>
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;background:white;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+vadg729i.c
+</p>
+</td>
+<td width=851 colspan=2 style='width:637.9pt;background:white;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+G729 VAD algorithm
+</p>
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=1554 colspan=3 style='width:1165.55pt;background:#B3B3B3; padding:.75pt .75pt .75pt .75pt;height:17.25pt'>
+<p class=MsoNormal>
+<b>
+./
+</b>
+<b>
+ipp_samples/speech-codecs/codec/speech/vad_sr/include
+</b>
+</p>
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;background:white;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+vad_uscsr.h, vadcommon.h, vadfiltr.h
+</p>
+</td>
+<td width=851 colspan=2 style='width:637.9pt;background:white;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+USC intelVAD header files
+</p>
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=1554 colspan=3 style='width:1165.55pt;background:#B3B3B3; padding:.75pt .75pt .75pt .75pt;height:17.25pt'>
+<p class=MsoNormal>
+<b>
+./
+</b>
+<b>
+ipp_samples/speech-codecs/codec/speech/vad_sr/src
+</b>
+</p>
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;background:white;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+uscvadsr.c, vad_energysr.c, vad_persr.c, vad_smsr.c
+</p>
+</td>
+<td width=851 colspan=2 style='width:637.9pt;background:white;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+USC intelVAD implementation files
+</p>
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=1406 colspan=2 style='width:1054.6pt;background:silver;padding: .75pt .75pt .75pt .75pt;height:17.25pt'>
+<p class=MsoNormal>
+<b>
+./ipp_samples/speech-codecs/codec/speech/td/src
+</b>
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+usc_ans_tones.c
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+USC ANS tones functions
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=1406 colspan=2 style='width:1054.6pt;background:silver;padding: .75pt .75pt .75pt .75pt;height:17.25pt'>
+<p class=MsoNormal>
+<b>
+./ipp_samples/speech-codecs/codec/speech/common/include
+</b>
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+aux_fnxs.h
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+USC auxiliary functions
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=1406 colspan=2 style='width:1054.6pt;background:silver;padding: .75pt .75pt .75pt .75pt;height:17.25pt'>
+<p class=MsoNormal>
+<b>
+./ipp_samples/speech-codecs/codec/speech/common/src
+</b>
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:17.25pt'>
+<td width=702 style='width:526.15pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+aux_tbls.c
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:.75pt .75pt .75pt .75pt; height:17.25pt'>
+<p class=MsoNormal>
+USC auxiliary tables
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:14.25pt'>
+<td width=1406 colspan=2 style='width:1054.6pt;background:#CCCCCC;padding: 0in 0in 0in 0in;height:14.25pt'>
+<p class=MsoNormal>
+<b>
+<span style='color:windowtext'>
+./ipp_samples/
+</span>
+speech-codecs
+<span style='color:windowtext'>
+/core/vm/include
+</span>
+</b>
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:14.25pt'>
+<td width=702 style='width:526.15pt;padding:0in 0in 0in 0in;height:14.25pt'>
+<p class=MsoNormal>
+<span style='color:windowtext'>
+vm_strings.h, vm_sys_info.h, vm_time.h, vm_types.h
+</span>
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:0in 0in 0in 0in;height:14.25pt'>
+<p class=MsoNormal>
+<span style='color:windowtext'>
+Header files
+</span>
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:14.25pt'>
+<td width=1406 colspan=2 style='width:1054.6pt;background:#CCCCCC;padding: 0in 0in 0in 0in;height:14.25pt'>
+<p class=MsoNormal>
+<b>
+<span style='color:windowtext'>
+./ipp_samples/
+</span>
+speech-codecs
+<span style='color:windowtext'>
+/core/vm/include/sys
+</span>
+</b>
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:14.25pt'>
+<td width=702 style='width:526.15pt;padding:0in 0in 0in 0in;height:14.25pt'>
+<p class=MsoNormal>
+<span style='color:windowtext'>
+vm_types_linux32.h
+</span>
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:0in 0in 0in 0in;height:14.25pt'>
+<p class=MsoNormal>
+<span style='color:windowtext'>
+Header file containing definition of cross platform types for IA-32 platforms running Linux*
+</span>
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:14.25pt'>
+<td width=1406 colspan=2 style='width:1054.6pt;background:#CCCCCC;padding: 0in 0in 0in 0in;height:14.25pt'>
+<p class=MsoNormal>
+<b>
+<span style='color:windowtext'>
+./ipp_samples/
+</span>
+speech-codecs
+<span style='color:windowtext'>
+/core/vm/src
+</span>
+</b>
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+<tr style='height:14.25pt'>
+<td width=702 style='width:526.15pt;padding:0in 0in 0in 0in;height:14.25pt'>
+<p class=MsoNormal>
+<span style='color:windowtext'>
+vm_sys_info_linux32.c vm_time_linux32.c
+</span>
+</p>
+</td>
+<td width=703 style='width:526.95pt;padding:0in 0in 0in 0in;height:14.25pt'>
+<p class=MsoNormal>
+<span style='color:windowtext'>
+Source files&nbsp; for IA-32 platforms running Linux*
+</span>
+</p>
+</td>
+<td style='border:none;padding:0in 0in 0in 0in' width=146>
+<p class='MsoNormal'>
+&nbsp;
+</td>
+</tr>
+</table>
+<h2>
+&nbsp;
+</h2>
+<h2>
+<a name=Installation>
+</a>
+Installation
+</h2>
+<p class=MsoNormal>
+Extract all files in l_ipp-sample_*.
+<span class=trkfieldvalue>
+tgz
+</span>
+to a desired folder. Please make sure to preserve the directory structure. The files for the USC Speech Codec and USC Echo Cancellation sample will be found in the ./ipp_samples/speech-codecs folder.
+</p>
+<h2>
+<a name="How_to_Build_Source_Code">
+</a>
+<span lang=RU>
+How to Build Source Code
+</span>
+</h2>
+<ul style='margin-top:0in' type=disc>
+<li class=MsoNormal>
+Set up your build environment by creating an environment variable named
+<b>
+IPPROOT
+</b>
+that points to the root directory of your Intel
+<sup>
+®
+</sup>
+IPP installation.
+<span lang=RU>
+For example:
+<b>
+/opt/intel/IPP/5.
+</b>
+</span>
+<b>
+3
+<span lang=RU>
+/ia32/
+</span>
+</b>
+<span lang=RU>
+</span>
+</li>
+</ul>
+<ul style='margin-top:0in' type=disc>
+<ul style='margin-top:0in' type=disc>
+<li class=MsoNormal>
+To build for an IA-32 system:
+</li>
+<ul style='margin-top:0in' type=disc>
+<li class=MsoNormal>
+<span lang=RU>
+Run build
+</span>
+_32
+<span lang=RU>
+.sh.
+</span>
+</li>
+</ul>
+<li class=MsoNormal>
+To build for an Intel
+<sup>
+®
+</sup>
+Xeon
+<sup>
+®
+</sup>
+Processor with Intel
+<sup>
+®
+</sup>
+Extended Memory 64 Technology system:
+</li>
+<ul style='margin-top:0in' type=disc>
+<li class=MsoNormal>
+<span lang=RU>
+Run build
+</span>
+_
+<span lang=RU>
+em64t.sh.
+</span>
+</li>
+</ul>
+<li class=MsoNormal>
+To build for an Intel
+<sup>
+®
+</sup>
+Itanium
+<sup>
+®
+</sup>
+processor based system:
+</li>
+<ul style='margin-top:0in' type=disc>
+<li class=MsoNormal>
+<span lang=RU>
+Run build
+</span>
+_
+<span lang=RU>
+64.sh.
+</span>
+</li>
+</ul>
+<li class=MsoNormal>
+To build for an IXP4xx product line system with MontaVista* Linux* 3.0 CEE LE:
+</li>
+<ul style='margin-top:0in' type=disc>
+<li class=MsoNormal>
+<span lang=RU>
+Run buildiwmmxt_le.sh
+</span>
+</li>
+</ul>
+<li class=MsoNormal style='color:windowtext'>
+To build for an IXP4xx product line system with MontaVista* Linux* 3.1 PRO BE:
+</li>
+<ul style='margin-top:0in' type=disc>
+<li class=MsoNormal>
+<span lang=RU>
+Run buildxscale_be.sh
+</span>
+</li>
+</ul>
+</ul>
+</ul>
+<p>
+The easiest way to build all application is to simply run buil.sh located under directory ./ipp_samples/speech-codecs if the target system is based on Intel® Pentium® Processor system. The build*.sh will build the USC speech codec library and four samples, namely the unified echo canceller and&nbsp;the unified speech codec, noise reduction and tone detector. If build is successful all relevant .obj files and .a files are created and stored under directory ./ipp_samples/speech-codecs/bin/ia32/obj/* and&nbsp; ./ipp_samples/speech-codecs/bin/ia32/lib/* respectively. The .exe files will be placed in ./ipp_samples/speech-codecs/bin/ia32.
+</p>
+<p>
+The USC library and samples can be built separately for desired platform using build*.sh batch files located in specific folders:
+</p>
+<ol start=1 type=1>
+<li class=MsoNormal style='color:windowtext'>
+./ipp_samples/speech-codecs/codec/speech/build*.sh - to build the USC library&nbsp;&nbsp;
+</li>
+<li class=MsoNormal style='color:windowtext'>
+./ipp_samples/speech-codecs/application/usc_speech_codec/build*.sh - to build USC Speech Codec sample. The USC library must be built prior to the USC speech codec separate build.
+</li>
+<li class=MsoNormal style='color:windowtext'>
+&nbsp;./ipp_samples/speech-codecs/application/usc_ec/build*.sh - to build USC Echo Canceller sample.
+</li>
+<li class=MsoNormal style='color:windowtext'>
+&nbsp;./ipp_samples/speech-codecs/application/usc_nr/build*.sh - to build the Noise Reduction and Voice Activity Detector sample.
+</li>
+<li class=MsoNormal style='color:windowtext'>
+&nbsp;./ipp_samples/speech-codecs/application/usc_tones/build*.sh - to build the Tone Detector sample.
+</li>
+</ol>
+<p>
+Note, with default settings it will build the sample with Intel C++ compiler. To change defaults see the Makefile for a brief description of the available variables and additional options.
+</p>
+<p>
+Echo canceller sample (./application/usc_ec)
+<span lang=RU>
+</span>
+doesn't support
+<span lang=RU>
+IXPP4XX product line system
+</span>
+s.
+</p>
+<h2>
+<a name="Running_the_Software">
+</a>
+Running the Software
+</h2>
+<p>
+Read the specific sample readme.htm file to learn how to build and run the sample (to locate see the table above).&nbsp;
+<span style='color:red'>
+&nbsp;
+</span>
+</p>
+<p>
+After building, be sure that the
+<b>
+LD_LIBRARY_PATH
+</b>
+environment variable includes the directories of the .so files from the Intel
+<sup>
+®
+</sup>
+IPP installation. This can be accomplished by entering the following at the command prompt:&nbsp;&nbsp;&nbsp;for examples&nbsp;
+</p>
+<p>
+export IPPROOT=/opt/intel/ipp/5.3/ia32
+</p>
+<p>
+export LD_LIBRARY_PATH=$IPPROOT/sharedlib:$LD_LIBRARY_PATH
+</p>
+<p>
+or by running the shell script
+<b>
+ippvars32.sh
+</b>
+from the Intel
+<sup>
+®
+</sup>
+IPP installation (located in /opt/intel/ipp/5.3/ia32/tools/env/ by default).
+</p>
+<h2>
+<a name="Known_Limitations">
+</a>
+Known Limitations
+</h2>
+<p class=MsoNormal>
+The is no known limitation.
+</p>
+<h2>
+<a name=Support>
+</a>
+Technical Support and Feedback
+</h2>
+<p class=MsoNormal>
+<span style='color:windowtext'>
+To receive support or provide feedback for speech coding sample, please refer to the
+<i>
+&quot;Technical Support and Feedback&quot;
+</i>
+section of the release notes (
+<b>
+ReleaseNotes.htm
+</b>
+) provided in the Intel
+<sup>
+®
+</sup>
+IPP product installation.
+</span>
+</p>
+<p class=MsoNormal>
+<span style='color:windowtext'>
+Your feedback on the Intel IPP samples is very important to us and your input will be considered for future releases. The Intel IPP sample code is intended only as an example of how to use the APIs to implement algorithms in different development environments. Please submit problems with installation, compiling, linking, runtime errors or incorrect output to
+</span>
+<span lang=RU style='color:windowtext'>
+<a href="https://premier.intel.com/">
+<u>
+<span lang=EN-US>
+Intel® Premier Support
+</span>
+</u>
+</a>
+</span>
+<span style='color:windowtext'>
+.
+</span>
+</p>
+<p>
+&nbsp;
+</p>
+<p>
+You can also share and discuss the experience of IPP sample usage with other developers at
+<span lang=RU>
+<a href="http://softwareforums.intel.com/ids">
+<u>
+<span lang=EN-US>
+Intel Software Developer Forum
+</span>
+</u>
+</a>
+</span>
+.
+</p>
+<p>
+<span style='font-size:7.5pt'>
+Intel, the Intel logo, Intel SpeedStep, Intel NetBurst, Intel NetStructure, MMX, i386, i486, Intel386, Intel486, Intel740, IntelDX2, IntelDX4, IntelSX2,Celeron, Intel Centrino, Intel Xeon, Intel XScale, Itanium, Pentium, Pentium II Xeon, Pentium III Xeon, Pentium M, and VTune are trademarks or registered trademarks of Intel Corporation or its subsidiaries in the United States and other countries.
+</span>
+</p>
+<p>
+<span style='font-size:7.5pt'>
+<br>
+* Other names and brands may be claimed as the property of others.
+<br>
+&nbsp;
+<br>
+</span>
+<span lang=RU style='font-size:7.5pt'>
+Copyright (c) 2005-2008 Intel Corporation. All rights reserved.
+</span>
+</p>
+</div>
+</body>
+</html>

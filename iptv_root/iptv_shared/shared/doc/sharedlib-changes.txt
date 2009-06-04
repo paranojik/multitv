@@ -1,0 +1,2828 @@
+SharedLib - changes
+-------------------
+
+
+
+shared-1.1.0
+------------
+
+Novos modulos:
+. clbuffer: Buffer circular onde cada item aponta para uma lista de slots
+. cbuffer: Buffer circular onde cada item aponta para um slot
+
+. SocketCtrl:
+=> Implementacao de Send Queue (para desabilitar comentar _SENDQ_SLOTS em compat.h)
+=> Funcao write() modificada para suportar Send Queue
+=> Vetor de Sock Options adicionado a SocketCtrl: SVectorT<SOCKET, SockOptions> *pSockOptions
+
+. expr.cpp:
+=> Implementado conceito de simbolo em Expr / Expr Parser
+=> delimitadores: Determinam final de um Token
+=> Simbolos: Caso o 1o caractere do Token seja um simbolo, o Token eh imediatamente
+finalizado, e o simbolo retorna em Token (todo simbolo deve ser a principio um delimiter).
+
+
+
+shared-1.1.1
+------------
+
+.SocketCtrl
+=> Permite mais de uma forma de conexao em um unico objeto 
+(multiplos listen / multiplos connect)
+=> Funcao connect() e listen() passam a aceitar como parametro *pNewSock
+o qual retorna o socket associado a operacao correspondente
+=> O socket principal passou a ser associado a primeira conexao estabelecida
+Caso esta seja encerrada, o socket do proximo connect / listen a ser executado
+irah ser atribuido a socketMain
+=> Funcoes para fechamento de sockets: close (soh deve ser utilizada fora de acceptCallback)
+e closeSSock (funciona em harmonia com acceptCallback)
+=> Inclusao de semaforo para controlar concorrencia entre connect() / listen() / accept() / ...
+
+.cmd_base
+=> Novo comando para busca da string do comando a partir do seu codigo:
+LPCSTR search_cmd_code_seq(UINT code, Cmd_str *pcmdVect)
+
+
+shared-1.1.2
+------------
+
+. cbuffer: Retirado da sharedlib
+
+. clsbuffer:
+=> Novo modulo criado (derivado de clbuffer) para controle dos pacotes individualmente
+indexados pelo seu identificador (sequencial). Neste eh criado um vetor de tabelas de
+pacotes. Cada tabela de pacotes eh acessada atraves de seu identificador, e nesta
+eh possivel acessar diretamente cada pacote a partir do identificador do pacote (sequencial).
+
+. socketctrl
+=> Corrigido deadlock gerado por semaforo de controle de multiplos connect / listen
+na mesma classe (implementado em shared-1.1.1). Para isto foi removido Wait() / Signal()
+de closeSSock()
+
+
+shared-1.1.3
+------------
+
+. clbuffer.cpp
+
+=> ULONG CLBuffer::insert(ULONG _id, LPCSTR _pdata, ULONG _szdata, ULONG _maxbufsize, LPCSTR *_pBuffer, long _userdata, CLDataBuf **_pSlot, BOOL _flMustNewSlot, CLDataBuf *_pSlotMain, BOOL _flAppendSlotMain, BOOL _flMustNotFragPacket)
+
+Acrescentado novo parametro para a inclusao de objetos em CLBuffer:
+
+_flMustNotFragPacket: Este flag se TRUE forca que o pacote a ser incluido NAO
+                      seja fragmentado, independente da variavel de inicializacao
+                      do construtor da classe flFragPacket. Se FALSE respeita
+                      o valor de flFragPacket especificado no construtor.
+
+
+. clsbuffer.cpp
+
+=> Correcao de bugs em AddPacket():
+Tratamento adequado para o caso de ser o 1o pacote do respectivo id => Nesse caso
+nao precisa verificar se devem ser descartados Slots para liberar espaco para o
+pacote a ser incluido.
+Quando LCtrlData eh alterado na rotina eh executado pTable->update(_id, LCtrlData)
+
+
+. socketctrl.cpp
+
+=> Funcao writeto() alterada para _writeto()
+
+
+=> BOOL SocketCtrl::SetMaxSendQueue(ULONG _sz, BOOL _flUDP, SOCKET clientSock)
+
+Adicionado parametro flUDP para definicao da Send Queue associada a um dado socket
+Sendo este UDP, nao serah permitida a fragmentacao de pacotes em SendQueue.
+
+
+=> void SocketCtrl::SetDefSin(sockaddr_in *fsin)
+=> void SocketCtrl::SetDefSin(LPCSTR _ip, int _port)
+
+Atribui endereco default para o envio de pacotes UDP.
+Esta funcao eh especialmente util para transmissoes em Multicast, pois
+o comando listen() nao inicializa sin_conn
+Obs: a funcao connect() quando utilizada, seta automaticamente o sin
+default (sin_conn) para o endereco / porta de conexao, sendo assim nao
+necessita obrigatoriamente que se utilize esta funcao.
+
+
+=> Implementada Send Queue para UDP
+
+
+=> ULONG SocketCtrl::_write(LPCSTR buf, unsigned int sz, SOCKET clientSock, BOOL flDebug, BOOL flMustSendAll, BOOL flKillSockOnError, BOOL flKillSockOnNoBuf, int *pErrorCode, BOOL flUDP)
+
+Adicionado suporte para o envio de pacotes UDP
+
+/**
+ * _write()
+ * =======
+ *
+ * Este método escreve (transmite) um buffer de caracteres 
+ * binários (buf) de tamanho (sz) na stream de saida do
+ * socket. 
+ *
+ * O método write retorna o número de caracteres efetivamente
+ * enviados.
+ *
+ * Se ao enviar pacote UDP nao houver buffer suficiente, mesmo
+ * que o pacote tenha sido enviado parcialmente desconsidera os
+ * bytes enviados (!) => Em UDP o retorno eh sempre 0 ou sz.
+ *
+ * Caso algum erro de comunicação tenha ocorrido *pErrorCode = erro
+ */
+
+
+=> int SocketCtrl::write(LPCSTR buf, unsigned int sz, SOCKET clientSock, BOOL flDebug, BOOL flMustSendAll, BOOL flUDP)
+
+Adicionado suporte para o envio de pacotes UDP (suportando Send Queue)
+
+
+/**
+ * write()
+ * =======
+ *
+ * Este método escreve (transmite) um buffer de caracteres 
+ * binários (buf) de tamanho (sz) na stream de saida do
+ * socket. 
+ *
+ * O método write retorna o número de caracteres efetivamente
+ * enviados, ou -1 caso algum erro de comunicação tenha ocorrido.
+ * Caso haja Send Queue definida, esta rotina a utiliza se necessario
+ *
+ * Se flUDP = TRUE => Utiliza o endereco default (sin_conn) para enviar os dados
+ * sin_conn eh atribuido automaticamente em um connect bem sucedido ou atraves
+ * do metodo SetDefSin()
+ *
+ * Se for utilizado SetDefSin(), apos enviar dados via write() nao se deve mais
+ * alterar o valor de sin_conn, pois isto geraria inconsistencia na SendQueue
+ * associada ao socket (a nao ser que SendQueue esteja vazia para este socket)
+ * caso contrario os dados em fila nao seriam enviado para o antigo endereco,
+ * e sim para o novo atribuido em SetDefSin()
+ *
+ * Para transmissoes via Multicast tem-se obrigatoriamente que utilizar a funcao
+ * SetDefSin(), pois nao utiliza connect(), e assim sin_conn nao recebe valor
+ * automaticamente.
+ */
+
+
+shared-1.1.4 (Em desenvolvimento)
+------------
+
+
+=> Compatibilidade com Linux
+
+
+shared-1.1.5
+------------
+
+
+=> Compatibilidade com Linux (Ok)
+
+
+. SocketCtrl.cpp
+
+=> void SocketCtrl::SetDefSin(sockaddr_in *fsin)
+=> void SocketCtrl::SetDefSin(LPCSTR _ip, int _port)
+
+Atribui endereco default para o envio de pacotes UDP.
+Esta funcao eh especialmente util para transmissoes em Multicast, pois
+o comando listen() nao inicializa sin_conn
+Obs: a funcao connect() quando utilizada, seta automaticamente o sin
+default (sin_conn) para o endereco / porta de conexao, sendo assim nao
+necessita obrigatoriamente que se utilize esta funcao.
+
+
+=> Alterado o semaforo de conexao (pConnectSemaph) de MUTEX para NORMAL.
+
+
+Novos Modulos:
+
+. fd_set.cpp
+
+=> Para compatibilizacao das rotinas da shared_lib com as funcoes
+   FD_SET, FD_ZERO, FD_CLR, FD_ISSET do Linux.
+
+
+. locked_inc.cpp
+
+=> Implementa as funcoes LockedIncrement() e LockedDecrement()
+   independente do sistema operacional (Windows / Linux)
+
+
+
+shared-1.1.6
+------------
+
+. SocketCtrl.cpp
+
+=> Adicionado recurso para a contabilizacao dos bytes enviados para um dado
+   socket (TCP ou UDP).
+
+struct SockOptions
+{
+    ULONG maxsendq;     // Tamanho maximo da fila de bytes a serem enviados ao socket
+    BOOL  flUDP;
+
+    long  ctime;        // Se !=0 => Tempo inicial da contagem do numero de bytes enviados
+    ULONG nBytesSent;   // Numero de bytes enviados a partir de ctime
+};
+
+BOOL  SetBytesCount(BOOL _flOn, SOCKET clientSock=INVALID_SOCKET);
+
+Liga/Desliga  a contagem de bytes enviados para clientSock
+
+
+ULONG GetBitRate(BOOL _flBytes=FALSE, SOCKET clientSock=INVALID_SOCKET);
+
+Obtem o numero de bits/sec (_flBytes=FALSE) ou bytes/sec (_flBytes=TRUE)
+enviados para clientSock contados a partir do instante em que SetBytesCount()
+foi inicializado.
+
+Obs.: Os bytes sao contabilizados a partir do momento em que sao enviados para
+o buffer do TCP/UDP. Enquanto estiverem na SendQueue (se for o caso), a contagem
+nao eh efetivada.
+
+
+
+shared-1.1.7
+------------
+
+. compat.cpp
+
+Nova rotina implementada para Linux (para compatibilidade com Windows):
+
+DWORD GetTickCount(void)
+
+Retorna o numero de mili-segundos corridos desde a 1a chamada da mesma.
+Em Windows esta rotina retorna o numero de mili-segundos desde a 
+inicializacao do sistema.
+
+
+
+shared-1.1.8
+------------
+
+. compat.h
+
+Novas macros definidas:
+
+#define _MIN( a, b ) ( (a) > (b) ? (b) : (a) )
+#define _MAX( a, b ) ( (a) > (b) ? (a) : (b) )
+
+Memory Manager: Para ativar definir o simbolo _MM_ entre as diretivas
+de compilacao
+
+//#if defined(_DEBUG) && !defined(_AFXDLL)
+//    #define _MM_
+//#endif
+
+
+. SocketCtrl.cpp
+
+=> Alteracao na funcao connect()
+
+O Socket passou a ser incluido na lista de sockets ativos logo apos
+a sua criacao, antes da execucao da funcao ::connect().
+Assim, caso se queira cancelar um connect em andamento basta executar
+close() neste socket.
+Na versao anterior esta inclusao era realizada apenas apos a funcao
+::connect() retornar com sucesso.
+
+NewSock = ::socket( PF_INET, ptype, ppe->p_proto );
+
+if (NewSock != INVALID_SOCKET)
+{
+    pConnectSemaph->Wait();
+
+    if ( AddActiveSock(NewSock) )
+    ...
+    ...
+
+
+. CStr.cpp / CStr.h
+
+Novas classes implementadas para tratamento de strings.
+
+template <UINT32 TSIZE=TSTR_STATIC> class CStrStatic : public CStr
+{
+private:
+    char m_Str[TSTR_STATIC+1];
+
+public:
+	CStrStatic( UINT32 _uiMaxSize=0 );
+	CStrStatic( const CStr& _refstr );
+    CStrStatic( LPCSTR _pstr );
+
+	void Assign( LPCSTR _pstr );
+    void Append( LPCSTR _pstr );
+
+	~CStrStatic(void);
+};
+
+class CStrDyn : public CStr
+{
+private:
+	UINT32 m_uiBlockSize;
+
+    void Alloc  ( UINT32 _uiSize );
+    void Release( void );
+
+public:
+	CStrDyn( UINT32 _uiMaxSize=0 );
+	CStrDyn( const CStr& _refstr );
+	CStrDyn( LPCSTR _pstr );
+
+	void Assign( LPCSTR _pstr );
+    void Append( LPCSTR _pstr );
+
+	~CStrDyn(void);
+};
+
+=> CStrStatic: Possibilita a definicao de strings estaticas (vetor de
+chars) na pilha do caller.
+
+CStrStatic<MAXSIZE> MyStr : Instancia string estatica cujo tamanho 
+maximo permitido serah MAXSIZE. Neste caso eh alocado fisicamente vetor
+com tamanho MAXSIZE.
+
+ou
+
+Tamanho maximo default permitido para strings estaticas:
+#define TSTR_STATIC     255
+
+CStrStatic<> MyStr(MAXSIZE) : Instancia string estatica cujo tamanho 
+maximo permitido serah MAXSIZE (onde 0 < MAXSIZE <= TSTR_STATIC).
+Neste caso o vetor criado eh de tamanho TSTR_STATIC, porem o limite
+de caracteres a serem atribuidos a string eh de MAXSIZE.
+
+CStrStatic<MAXSIZE> MyStr(MAXSIZE) : Instancia string estatica cujo
+tamanho maximo permitido serah MAXSIZE. Neste caso ocorre redundancia
+de dados de controle, ou seja, alem do tamanho fisico do vetor ser de
+MAXSIZE, o seu limite logico de caracteres tambem eh de MAXSIZE.
+Nao ha necessidade de definir-se os 2 parametros. Bastaria utilizar
+CStrStatic<MAXSIZE> MyStr ou CStrStatic<> MyStr(MAXSIZE), de acordo
+com a necessidade da aplicacao.
+
+
+=> CStrDyn: Possibilita a definicao de strings dinamicas, com tamanhos
+variaveis, utilizando funcoes de gerenciamento de memoria para o seu
+armazenamento (malloc / free / realloc).
+
+Tamanho inicial default para strings dinamicas:
+#define TSTR_DYN         30
+
+CStrDyn MyStr(MAXSIZE) : Instancia string dinamica cujo tamanho maximo
+permitido serah MAXSIZE. Caso MAXSIZE = 0 => nao ha limite logico.
+
+
+Apos a criacao do objeto atraves de CStrStatic ou CStrDyn pode-se passar
+a trata-lo atraves da classe base CStr.
+
+Operadores redefinidos: ==, !=, =, +, +=, type cast (LPCSTR).
+Com estes pode-se utilizar operandos de classe CStr& ou LPCSTR.
+
+
+. XResult.h
+. XException.h
+
+Novas classes definidas para o tratamento de excecoes.
+
+
+. XObjFactory.h
+
+Classe para facilitar a criacao de proxies.
+
+
+
+shared-1.1.9
+------------
+
+. compat.cpp
+
+=> DWORD GetTickCount(void)
+
+Retirado BUG na versao para Linux.
+
+// Verifica se contador virou
+if (msecs < MsecsBase)
+{
+    SecsBase  = tv.tv_sec;
+    MsecsBase = 0L;
+    msecs     = 0L;
+}
+else                     <== Linha adicionada
+    MsecsBase = msecs;   <== Linha adicionada
+
+
+. compat.h
+
+=> Alteracao no nome de _MIN / _MAX para XMIN / XMAX
+
+#define XMIN( a, b ) ( (a) > (b) ? (b) : (a) )
+#define XMAX( a, b ) ( (a) > (b) ? (a) : (b) )
+
+
+=> Inclusao de novos tipos de dados
+
+ULONG64 / INT64 / INT8 / INT16 / etc...
+
+
+. date.cpp / date.h
+
+Novo modulo incluido.
+
+=> LPCSTR GetFormatDate(long _ctime, LPSTR _saida, UINT _size, LPCSTR _format)
+
+Formata a data/hora <_ctime) de acordo com <_format>.
+Caso <_format=NULL> retorna uma string do tipo:
+
+Fri Apr 29 12:25:12 1994
+
+Caso <_ctime=0> => obtem a data/hora do sistema
+
+
+=> LPCSTR GetSysTime(LPSTR _saida, UINT _size, LPCSTR _format)
+
+Retorna a data/hora do sistema formatada com <_format>.
+Caso <_format=NULL> retorna uma string do tipo:
+
+Fri Apr 29 12:25:12 1994
+
+
+LPCSTR GetUptime(long _reftime, LPSTR _saida, UINT _size)
+
+Retorna string indicando quanto tempo decorreu desde <_reftime>.
+
+
+. debug.cpp
+
+=> void PrintError(DEBUG_LEVEL level, LPCTSTR szBuff)
+
+Passou a utilizar GetSysTime() para a obtencao da data/hora do sistema.
+
+
+. def_ap.h
+
+=> Aumantado o tamanho de TAM_LBUFFER para 16k
+
+#define TAM_LBUFFER   16384
+
+
+. expr.cpp
+
+=> UINT ExprParser::parseColon(LPCSTR _pData)
+
+Adicionado suporte para:
+
+'\\' => \
+'\:' => :
+'\r' => 0x0d
+'\n' => 0x0a
+
+
+. file_x.cpp
+
+=> long GetFileLength(LPCSTR path)
+
+Funcao corrigida para WIN32
+
+
+. HashT.h
+
+
+=> BOOL lsearch(LPCSTR nome, T *pobj = NULL, BOOL flKill = FALSE, BOOL flKillReg = TRUE)
+
+Adicionado novo parametro <BOOL flKillReg = TRUE> o qual indica se o
+registro deverah ou nao ser excluido (caso flKillRegs=TRUE).
+
+
+=> BOOL remove(LPCSTR nome)
+
+Nova funcao.
+Remove do hash elemento de identificador <nome>, porem NAO destroi o objeto
+correspondente (independente de flKillRegs).
+
+
+. semaphore.cpp / semaphore.h
+
+=> BOOL _SEMAPHORE::Wait( BOOL flWait, LPCSTR _DebugStr )
+=> BOOL _SEMAPHORE::Signal( LPCSTR _DebugStr )
+
+Adicionado parametro para debug <_DebugStr>.
+Caso esta string seja informada, as respectivas chamadas de Wait() / 
+Signal() sao logadas em debug.out.
+
+
+. str_ap.cpp / str_cp.h
+
+=> void FilterChar (LPCSTR _ent, LPSTR _saida, char c)
+
+Filtra todas as ocorrencias do caractere <c> em <_ent>.
+A string resultado eh atribuida a <_saida>.
+
+
+=> void FilterChars(LPCSTR _ent, LPSTR _saida, LPCSTR _pchars)
+
+Filtra todas as ocorrencias dos caracteres contidos em <_pchars> em
+<_ent>. A string resultado eh atribuida a <_saida>.
+
+
+. SVectorT.h
+
+=> BOOL updateIndex(UINT ind, T  obj)
+
+Antes de atualizar o objeto associado a <ind>, executa o procedimento
+de kill_elem(key, obj) se for o caso.
+
+...
+if (flKillRegs && ptable[ind-1].obj!=objNull)
+    kill_elem(ptable[ind-1].key, ptable[ind-1].obj);
+...
+
+
+. xversion.cpp / xversion.h
+
+=> LPCSTR GetFileVersion( LPSTR _filename, LPSTR _pversion, UINT _szversion )
+
+Obtem a versao <FileVersion> especificada no arquivo de recursos associado
+a <_filename>.
+
+
+. socketctrl.h
+
+
+=> Alterado tipo da variavel de contagem do numero de bytes enviados
+para ULONG64
+
+struct SockOptions
+{
+    ULONG   maxsendq;     // Tamanho maximo da fila de bytes a serem enviados ao socket
+    BOOL    flUDP;
+
+    long    ctime;        // Se !=0 => Tempo inicial da contagem do numero de bytes enviados
+    ULONG64 nBytesSent;   // Numero de bytes enviados a partir de ctime
+
+    SockOptions(void);
+    SockOptions& operator= (const SockOptions& obj);
+    bool  operator!=  (const SockOptions& obj) const;
+    //bool  operator==  (const SockOptions& obj) const;
+};
+
+
+
+. socketctrl.cpp
+
+=> listen()
+
+Alteracao para que seja possivel re-utilizar porta em caso
+de UDP / Multicast
+
+if (ptype == SOCK_DGRAM)
+{
+    int one = 1;
+    setsockopt(NewSock, SOL_SOCKET, SO_REUSEADDR, (char *)&one, sizeof(one));
+}
+
+
+=> Correcao de problemas de deadlock relacionados com <pConnectSemaph>
+
+Rotinas alteradas:
+
+=> accept()
+
+<flExecutingAccept = TRUE> movido para depois do Wait()
+
+...
+pConnectSemaph->Wait();
+
+flExecutingAccept = TRUE;
+
+
+=> acceptUDP()
+
+Passou a utilizar tambem <flExecutingAccept> e a executar ProcessCloseSSocks()
+na sua finalizacao
+
+
+=> close()
+
+Funcao ajustada para evitar deadlock em <pConnectSemaph>
+
+
+=> read()
+
+No caso de UDP se fsin nao for informado assume o endereco default
+da conexao <sin_conn> para a leitura de pacotes.
+
+...
+if ( !fsin && flDefUDP )
+    fsin = &sin_conn;
+
+
+=> _write()
+
+...
+// Se ao enviar pacote UDP nao houver buffer suficiente, mesmo
+// que o pacote tenha sido enviado parcialmente desconsidera os
+// bytes enviados (!) => Em UDP o retorno deve ser sempre 0 ou sz
+if (t>=0 && t<(int)(sz-ret))
+{
+    t = SOCKET_ERROR;
+    errCode = ENOBUFS;
+    ret = 0;
+    break;
+}
+
+Adicionado TRACE() para o caso de erro na transmissao de pacotes TCP e UDP.
+
+
+. clbuffer.cpp
+
+=> BOOL CLBuffer::reset(void)
+
+Passou a retornar BOOL ao inves de void e tornou-se metodo publico.
+
+
+=> ULONG CLBuffer::get_nitens(void)
+
+Nova funcao para obter o numero de itens com diferentes IDs contidos
+no buffer. Os itens incluidos com o mesmo ID nao sao contabilizados.
+
+
+=> ULONG CLBuffer::getszdata(ULONG _id)
+
+Retorna o numero de bytes associados a <_id>
+
+
+=> ULONG CLBuffer::first(ULONG _id, LPSTR _pdata, ULONG *_pszdata, long *_puserdata, BOOL flPop, BOOL *_pflPktRemoved)
+
+Acrescentado novo parametro <BOOL *_pflPktRemoved> para que seja informado
+se apos o retorno dos bytes requisitados o pacote foi removido (caso
+<flPop = TRUE> e nao hajam mais dados associados a <_id> este eh
+automaticamente removido).
+
+
+=> BOOL CLBuffer::erase(CLCtrlData *_pLCtrlData)
+
+Nova funcao criada para dar suporte a erase_all() e erase()
+No final release da 1.1.9 foi corrigido um bug que surgiu na primeira
+versao desta funcao.
+
+...
+//if ( pTable->eraseIndex(_pLCtrlData->id) ) <== BUG
+if ( pTable->erase(_pLCtrlData->id) )        <== Ok
+    ret = TRUE;
+
+
+=> BOOL CLBuffer::erase(ULONG _id)
+
+Passou a utilizar erase(CLCtrlData *_pLCtrlData)
+
+
+=> void CLBuffer::erase_all(void)
+
+Nova funcao para zerar todo o conteudo do buffer.
+
+
+
+. jitterbuffer.h / .cpp
+
+Classe que encapsula clbuffer para facilitar a utilizacao de buffer
+circular.
+
+JitterBuffer( ULONG _nMaxPackets, ULONG _MaxPacketSize )
+
+_nPackets     : Numero de Pacotes pre-alocados na inicializacao do buffer
+_MaxPacketSize: Tamanho do pacote
+
+
+void flush( void )
+
+Apaga todo o conteudo do jitter buffer
+
+
+BOOL insert( ULONG _seq, LPCSTR _pdata, ULONG _szdata )
+
+_seq   : Sequencial do pacote
+_pdata : buffer de dados do pacote
+_szdata: tamanho do pacote (deve ser <= _MaxPacketSize)
+ 
+
+Insere no buffer o pacote com o numero de sequencia _seq.
+Este metodo ira percorrer a posicao correta no buffer de tal maneira
+a encaixa-lo na posicao correta. Pacotes de SEQUENCIA iguais serao
+substituidos.
+
+ 
+BOOL remove( ULONG _seq = 0 )
+
+Remove do buffer pacote de sequencial _seq. Caso _seq = 0, remove
+o mais antigo presente no buffer ( o proximo da fila ).
+
+
+ULONG first   ( LPSTR _pdata, ULONG *_pszdata )
+
+Obtem os dados do primeiro pacote do buffer. Retorna seu identificador.
+Se houver erro retorna 0.
+
+
+ULONG popfirst( LPSTR _pdata, ULONG *_pszdata )
+
+Obtem os dados do primeiro pacote do buffer. Retorna seu identificador.
+Apos obter dados do pacote, remove-o do buffer.
+Se houver erro retorna 0.
+
+
+ULONG popbytes( LPSTR _pdata, ULONG *_pszdata )
+
+Obtem os *_pszdata bytes do primeiro pacote do buffer. Retorna seu identificador.
+Apos obter os bytes requisitados dados do pacote, remove-os do buffer.
+Se houver erro retorna 0.
+
+
+ULONG GetnPacketsLeft    (void)
+ULONG GetPercFull        (void)
+ULONG GetnPacketsLost    (void)
+ULONG GetnPacketsInserted(void)
+ULONG GetnPacketsRemoved (void)
+ULONG GetnBytesLeft      (void)
+
+ou
+
+BOOL GetInfo( ULONG *_pnPacketsLeft, ULONG *_ppercFull, ULONG *_pnPacketsLost,
+              ULONG *_pnPacketsInserted, ULONG *_pnPacketsRemoved )
+_pnPacketsLeft    : [out] Numero de Pacotes disponiveis
+_ppercFull        : [out] Porcentagem de preenchimento
+_pnPacketsLost    : [out] Numero de Pacotes perdidos
+_pnPacketsInserted: [out] Numero de Pacotes inseridos no buffer
+_pnPacketsRemoved : [out] Numero de Pacotes removidos do buffer
+
+Pega as estatisticas do buffer de tal forma a podermos fazer uma
+inicializacao com mais feedback ao usuario.
+
+
+. XJitterCtrl.h / .cpp
+
+Utiliza a classe jitterbuffer permitindo a inclusao e leitura de
+pacotes atraves de threads diferentes. Esta classe cria uma nova thread
+para controlar a leitura de pacotes a serem incluidos no buffer.
+
+
+XJitterCtrl       ( void );
+
+BOOL  IsOk        ( void ) { return m_flOk; }
+BOOL  IsStarted   ( void ) { return m_flStarted; }
+BOOL  IsBufEmpty  ( void );
+BOOL  IsBufFull   ( void );
+void  ResetBufFull( void ) { m_flBufferFull = FALSE; }
+void  Flush       ( BOOL _flNotifyBuffFull=TRUE );
+
+BOOL  Initialize  ( ULONG _nSlots, ULONG _uPktSize, ULONG _uPktMaxSize, IJitterBufferEvents *_pIEvents );
+BOOL  Start       ( void );
+BOOL  Resume      ( void );
+void  Stop        ( void );
+void  Lock        ( void );
+void  Unlock      ( void );
+
+BOOL  Insert      ( ULONG _seq, LPCSTR _pdata, ULONG _szdata );
+BOOL  Remove      ( ULONG _seq );
+ULONG GetPacket   ( LPSTR _pdata , ULONG _szdata, ULONG *_pbytesread, BOOL _flBlock, BOOL _flMustFillBuf=FALSE );
+ULONG GetNextSeq  ( void );
+
+void  GetInfo     ( ULONG *_pnPacketsLeft, ULONG *_ppercFull, ULONG *_pnPacketsLost,
+                    ULONG *_pnPacketsInserted, ULONG *_pnPacketsRemoved );
+
+ULONG GetnPacketsLeft( void );
+
+
+
+shared-1.1.10
+-------------
+
+. file_x.cpp
+
+=> Nova funcao para separacao do path e filename
+
+LPSTR sep_path(LPCSTR ent, LPSTR path, LPSTR filename)
+
+
+. XJitterCtrl.cpp
+
+=> Alteracao em XJitterCtrl::Stop( void )
+
+...
+
+if (pReadThread)
+{
+    //pReadThread->WaitForMe(WAITFORENDTHREADSTIME);
+    pReadThread->WaitForMe(INFINITE);
+    delete pReadThread;
+}
+
+...
+
+
+. SocketCtrl.cpp
+
+=> Desvinculo de TAM_LBUFFER
+
+Para alterar o tamanho maximo do pacote redefinir em SocketCtrl.h
+
+#define MAXPKTSIZE      65535
+
+
+=> Novas funcoes para obter o ip associado a um socket ou sockaddr_in
+
+ULONG GetClientIP        (SOCKET clientSock, LPSTR pIPStr=NULL, UINT IPMaxlen=IPSTR_MAXLEN);
+ULONG GetSinIP           (struct sockaddr_in *_psin, LPSTR pIPStr=NULL, UINT IPMaxLen=IPSTR_MAXLEN);
+ULONG GetIP              (SOCKET clientSock, struct sockaddr_in *_psin=NULL, LPSTR pIPStr=NULL, UINT IPMaxLen=IPSTR_MAXLEN);
+
+
+
+shared-1.1.12
+-------------
+
+
+. SocketCtrl.cpp
+
+=> Alteracao no closesocket()
+
+#ifdef _WIN32
+int _closesocket(SOCKET s)
+{
+    shutdown(s, SD_BOTH);
+    return ::closesocket(s);
+}
+#else
+int _closesocket(SOCKET s)
+{
+    shutdown(s, SHUT_RDWR);
+    return ::close(s);
+}
+#endif
+
+
+=> Novas funcoes:
+
+// Verifica se o conjunto _ip:_port eh valido se Ok preenche _psin e retorna
+// o ipaddr correspondente. Caso contrario retorna INADDR_NONE.
+ULONG SetSockAddrIn(sockaddr_in *_psin, LPCSTR _ip, int _port)
+
+BOOL SocketCtrl::set_dont_linger(SOCKET clientSock)
+
+
+=> Alteracao em readall()
+
+int SocketCtrl::readall(LPSTR buf, unsigned int sz, BOOL flMustFillBuf, BOOL _flAccept, long _timeout, SOCKET *_psock )
+{
+	...
+
+    nSocksReady = select(FD_SETSIZE, prfdSel, NULL, NULL, ptimeout);
+
+    pConnectSemaph->Wait();
+
+    flExecutingAccept = TRUE;
+
+    switch (nSocksReady)
+    {
+        case 0:
+            ret = 0;
+            break;
+
+        case SOCKET_ERROR:
+            flError = TRUE;
+            _TRACEL(LOGLEVEL3, "Erro no comando select");    
+            break;
+    }
+
+	...
+}
+
+
+. XJitterCtrl.cpp
+
+=> Correcao de possivel deadlock em Stop(). Ao executar Stop() a partir de uma thread diferente da
+qual chama ReadThreadFund() (thread criada pelo XJitterCtrl), apos o semaforo entrar em estado de Wait()
+a funcao passa a aguardar pelo fim da thread < pReadThread->WaitForMe(INFINITE) >. Porem se a funcao
+Insert() estiver a ponto de executar Wait() neste instante ocorreria deadlock (!!!). Para evitar tal
+situacao sinalizei o semaforo <m_Semaph> antes de esperar pelo termino da thread.
+
+
+int XJitterCtrl::ReadThreadFunc(void)
+{
+    while ( IsStarted() && pIEvents->OnReadPacket() )
+    {
+    }
+
+    m_EventEndOfData.Wait  ( TRUE, "XJitterCtrl - ReadThreadFunc - m_EventEndOfData");
+    m_EventEndOfData.Signal( "XJitterCtrl - ReadThreadFunc - m_EventEndOfData");
+
+    pIEvents->OnAbort();
+
+    return 0;
+}
+
+
+BOOL XJitterCtrl::Insert( ULONG _seq, LPCSTR _pdata, ULONG _szdata )
+{
+    BOOL  ret;
+    ULONG uPercFull;
+
+
+    if ( m_flAbort )
+        return FALSE;
+
+    ret = FALSE;  <=====
+
+    m_Semaph.Wait( TRUE, "XJitterCtrl - Insert" );
+
+    if ( IsOk() && pJitterBuffer && pJitterBuffer->IsOk() && !m_flAbort )
+    {
+        ret = pJitterBuffer->insert( _seq, _pdata, _szdata );
+
+	...
+}
+
+void XJitterCtrl::Stop( void )
+{
+	...
+
+    m_Semaph.Wait( TRUE, "XJitterCtrl - Stop 2");
+
+    m_flStarted = FALSE;
+
+    if ( pIEvents )
+        pIEvents->OnTerminate();
+
+    if (pReadThread)
+    {
+        if ( m_flReadThreadRunning )
+        {
+			// Colocado para evitar possivel deadlock 
+            m_Semaph.Signal( "XJitterCtrl - Stop 2");
+
+            //pReadThread->WaitForMe(WAITFORENDTHREADSTIME);
+            pReadThread->WaitForMe(INFINITE);
+
+            m_Semaph.Wait( TRUE, "XJitterCtrl - Stop 3");
+
+            m_flReadThreadRunning = FALSE;
+        }
+
+        delete pReadThread;
+    }
+
+    if ( pJitterBuffer )
+        delete pJitterBuffer;
+
+    pReadThread   = NULL;
+    pJitterBuffer = NULL;
+
+    m_Semaph.Signal( "XJitterCtrl - Stop 2/3" );
+}
+
+
+shared-1.1.13
+-------------
+
+
+. XJitterCtrl.cpp
+
+=> Maior protecao em diversas funcoes para casos em que o Stop() eh executado
+
+
+=> Protecao contra reentranca na funcao Stop()
+
+void XJitterCtrl::Stop( void )
+{
+    _TRACEL(LOGLEVEL3, "XJitterCtrl - Stop() called");
+
+    // Aguarda para evitar reentranca em Stop()
+    m_Semaph.Wait( TRUE, "XJitterCtrl - Stop 1");
+
+    if ( !IsStarted() || m_flAbort )
+    {
+        m_Semaph.Signal( "XJitterCtrl - Stop 1" );
+        _TRACEL(LOGLEVEL3, "XJitterCtrl - Stop() - engine not started or already stopped - stop aborted!");
+        return;
+    }
+
+    m_flAbort = TRUE;
+
+    m_Semaph.Signal( "XJitterCtrl - Stop 1" );
+
+    // Aguarda para garantir a finalizacao de possiveis chamadas a Insert()
+    m_Semaph.Wait( TRUE, "XJitterCtrl - Stop 1a");
+    m_Semaph.Signal( "XJitterCtrl - Stop 1a" );
+
+	...
+}
+
+
+. expr.cpp
+
+=> + e - deixaram de ser delimitadores automaticos
+
+int Expr::get_token_expr(void)
+{
+	...
+
+    else if (*expr=='+' || *expr=='-')
+    {
+       *temp++=*expr++;
+
+       //while (!isctrlchar(*expr) && *expr!='+' && *expr!='-' && !is_in(*expr, delimiters))
+       while (!isctrlchar(*expr) && !is_in(*expr, delimiters))
+   	      *temp++=*expr++;
+
+       if (*(expr-1)=='+' || *(expr-1)=='-')
+	      tok_type = EX_SIGNAL;
+       else
+	      tok_type = EX_FLAGS;
+
+       *temp='\0';
+   }
+
+	...
+}
+
+
+shared-1.1.14
+-------------
+
+
+. XJitterCtrl.cpp
+
+=> Coloquei mais traces (Lock, Unlock, Resume, OnBufferEmpty, Remove, GetNextSeq)
+
+
+. XException.h
+
+=> Acrescentados traces para logar os throws e eliminados os asserts
+
+#define XTHROWM(msg)            { _TRACE3L(LOGLEVEL1, "EXCEPTION (%s), at line %d in %s", res, msg, __LINE__, __FILE__ ); _XTHROW( XE_FAIL, XStrStatic<>(msg), __FILE__, __LINE__ ); }
+#define XTHROWC(res)            { _TRACE3L(LOGLEVEL1, "EXCEPTION (%d), at line %d in %s", res, __LINE__, __FILE__ ); _XTHROW( res, XStrStatic<>(), __FILE__, __LINE__ ); }
+#define XTHROW(res, msg)        { _TRACE4L(LOGLEVEL1, "EXCEPTION (%d): %s, at line %d in %s", res, msg, __LINE__, __FILE__ ); _XTHROW( res, XStrStatic<>(msg), __FILE__, __LINE__ ); }
+
+//#define XASSERT(expr)           { if ( !( expr ) ) { XTHROWC( XE_ASSERT_FAILED ); } }
+//#define XASSERTM(expr, msg)     { if ( !( expr ) ) { XTHROW( XE_ASSERT_FAILED, msg ); } }
+
+
+. XObjFactory.h
+
+=> Ajustado para XException.h
+
+
+. SocketCtrl.cpp
+
+=> Correcao no retorno de BOOL set_dont_linger(SOCKET clientSock)
+
+=> Alterei pConnectSemaph para MUTEX
+
+
+=> Coloquei mais informacoes de log a nivel de entrada e saida de close() e semaforos
+
+=> Aumentei o escopo de pConnectSemaph->Wait() e pConnectSemaph->Signal()
+Sendo pConnectSemaph MUTEX, nao ha mais necessidade de evitar Wait() no caso de flExecutingAccept==TRUE,
+o que garante maior robustez no codigo.
+
+
+void SocketCtrl::close(SOCKET clientSock)
+{
+    UINT i;
+    SOCKET ssock;
+
+
+    if (clientSock==INVALID_SOCKET)
+    {
+        // Fecha todos os sockets ativos
+
+        _TRACE1L(LOGLEVEL5, "close(ALL) starting: Executing Accept = %d", flExecutingAccept);
+
+        //if (!flExecutingAccept)
+        //    pConnectSemaph->Wait();
+        pConnectSemaph->Wait(TRUE, "SocketCtrl - close(1)");
+
+
+        if (pafds)
+        {
+            for (i=0; i<pafds->fd_count; i++)
+            {
+                ssock = pafds->fd_array[i];
+
+                _TRACE1L(LOGLEVEL3, "close(ALL): Eliminando socket: %d", ssock);
+
+                if (flExecutingAccept)
+                    closeSSock(pafds->fd_array[i]);
+                else
+                    _closesocket(pafds->fd_array[i]);
+            }
+        }
+
+        if (!flExecutingAccept)
+        {
+            //_TRACEL(LOGLEVEL5, "close(ALL): Todos os sockets fechados com sucesso.");
+            //pConnectSemaph->Wait();
+            //_TRACEL(LOGLEVEL5, "close(ALL): Reseting fd_sets.");
+
+            //FD_ZERO(pafds);
+            ResetActiveSocks();
+
+            if (pefds)
+                pefds->zero();
+
+            if (pewfds)
+                pewfds->zero();
+
+            //_TRACEL(LOGLEVEL5, "close(ALL): fd_sets cleared.");
+
+            socketMain = INVALID_SOCKET;
+
+            //pConnectSemaph->Signal();
+        }
+
+        pConnectSemaph->Signal("SocketCtrl - close(1)");
+    }
+    else
+    {
+        // Fecha socket <clientSock>
+
+        _TRACE2L(LOGLEVEL5, "close(%d) starting: Executing Accept = %d", clientSock, flExecutingAccept);
+
+        pConnectSemaph->Wait(TRUE, "SocketCtrl - close(2)");
+
+        // Para evitar inconsistencias na funcao accept() chama closeSSock()
+        if (flExecutingAccept)
+            closeSSock(clientSock);
+        else
+        {
+            //pConnectSemaph->Wait();
+
+            if (pafds && pafds->isset(clientSock))
+            {
+                //_TRACE1L(LOGLEVEL3, "close(): (E) Eliminando socket: %d", clientSock);
+                _closesocket(clientSock);
+                _TRACE2L(LOGLEVEL5, "close(%d): Socket %d closed.", clientSock, clientSock);
+
+                RemoveActiveSock(clientSock);
+            }
+
+            if (pefds)
+                pefds->clr(clientSock);
+
+            if (pewfds)
+                pewfds->clr(clientSock);
+
+            if (socketMain == clientSock)
+                socketMain = INVALID_SOCKET;
+
+            //pConnectSemaph->Signal();
+        }
+
+        pConnectSemaph->Signal("SocketCtrl - close(2)");
+    }
+
+    _TRACEL(LOGLEVEL5, "close() ended.");
+}
+
+
+=> Liberei Mutex antes da leitura do socket para evitar eventuais
+deadlocks em close() no caso de flMustFillBuf==TRUE
+
+int SocketCtrl::readall(LPSTR buf, unsigned int sz, BOOL flMustFillBuf, BOOL _flAccept, long _timeout, SOCKET *_psock )
+{
+    ...
+
+        // Percorre todos os sockets ativos
+        for (i=0; i<pafds->fd_count; i++)
+        {
+            ssock = pafds->fd_array[i];
+
+            // Verifica se o socket tem requisicao pendente
+            if ( FD_ISSET(ssock, prfdSel) )
+            {
+                // Verifica se o socket a ser processado nao estah em
+                // estado de listen e estah na lista de conexoes ativas
+                // ou esta funcao nao estah aceitando novas conexoes => neste
+                // caso processa todos os sockets
+                if ( !_flAccept || !IsListenSock(ssock) )
+                {
+                    // Libera Mutex para evitar possivel travamento
+                    // em close() no caso de flMustFillBuf==TRUE
+                    flWait = FALSE;
+                    flExecutingAccept = FALSE;
+                    pConnectSemaph->Signal();
+
+                    // Retorna dados lidos do 1o socket ativo encontrado
+                    if ( _psock )
+                        *_psock = ssock;
+
+                    // Caso nao seja passado buffer para a leitura dos dados
+                    // retorna 0 (a leitura deverah ser realizada pelo caller
+                    // pela funcao read() 
+
+                    if ( buf && sz )
+                        ret = read(buf, sz, NULL, ssock, flMustFillBuf);
+                    else
+                        ret = 0;
+
+                    break;
+                }
+            }
+        }
+    }
+
+    if (flWait)
+    {
+        flExecutingAccept = FALSE;
+
+        pConnectSemaph->Signal();
+    }
+
+    ...
+}
+
+
+. XStr.cpp / XStr.h
+
+=> Retirei XTHROW na funcao At()
+
+const char& XStr::At ( UINT32 _ind ) const
+{
+    static LPCSTR pNull = "";
+    
+    if ( _ind >= GetSize() ) 
+	{
+        //XTHROW( XE_ARRAY_OUTOFBOUNDS, ( "array index our of bounds %d >= %d", _ind, GetSize() ) );
+        return pNull[0];
+	}
+    else
+    	return GetStr() [ _ind ];
+}
+
+
+=> Acrescentados Copy constructors para XStrDyn e XStrStatic (jah
+que XStrStatic(const XStr& _refstr) e XStrDyn(const XStr& _refstr)
+nao eram considerados copy constructor pelo VC++)
+
+
+XStrStatic( const XStrStatic& _refstr );
+XStrDyn   ( const XStrDyn& _refstr );
+
+
+shared-1.1.15
+-------------
+
+. compat.cpp / compat.h
+
+=> Acrescentada funcao GetCurrentThreadId() para compatibilidade
+com Linux. No caso de Linux obtem o PID da thread.
+
+DWORD GetCurrentThreadId(void)
+
+
+. Debug.cpp
+
+=> Acrescentada informacao da thread corrente nos traces.
+
+
+. semaphore.cpp
+
+=> Correcao no tratamento de mutex para linux (troquei a inicializacao
+para PTHREAD_MUTEX_RECURSIVE_NP - para que o mutex nao fique lockado
+se o Wait() for chamado recursivamente dentro de uma mesma thread).
+
+_SEMAPHORE::_SEMAPHORE( int _SType, int _nMaxRes, DWORD _WaitTime, DWORD _timeout, int _nInitCount )
+{
+    ...
+ 
+        case SEMAPH_MUTEX:
+        case SEMAPH_INVERSE:
+#if defined( _WIN32 )
+            InitializeCriticalSection( &m_cs );
+            flOk = TRUE;
+#elif defined( _LINUX )
+            if( ( pThreadMutex = new pthread_mutex_t )!=0 && 
+                ( pThreadCond  = new pthread_cond_t  )!=0 )
+            {
+                pthread_mutexattr_t mutexattr;
+
+                if ( pthread_mutexattr_init   ( &mutexattr )==0 &&
+                     pthread_mutexattr_settype( &mutexattr, PTHREAD_MUTEX_RECURSIVE_NP )==0 &&
+                     pthread_mutex_init( pThreadMutex, &mutexattr )==0 &&
+                     pthread_cond_init ( pThreadCond , NULL )==0 )
+                {
+                    flOk = TRUE;
+                }
+            }
+#endif
+
+    ...
+}
+
+
+. SocketCtrl.cpp
+
+=> Criei diretiva de compilacao para indicar se o mutex
+pConnectSemaph deverah ou nao ser logado nas funcoes accept()
+
+#define _DEBUG_ACCEPT
+
+
+=> Acrescentei novo parametro na funcao close()
+
+void SocketCtrl::close(SOCKET clientSock, BOOL flWaitEndSelect)
+
+Caso flWaitEndSelect=TRUE => passa a chamar sempre closeSSock() ao
+inves de closesocket(), para evitar que sockets sejam fechados
+estando dentro de um select().
+
+=> Acrescentei novo parametro na funcao connect()
+
+BOOL SocketCtrl::connect( LPCSTR addr, LPCSTR _protocol, int port, LPCSTR _service=NULL, SOCKET *pNewSock=NULL, LPCSTR _localaddr=NULL )
+{
+    ...
+
+    NewSock = ::socket( PF_INET, ptype, ppe->p_proto );
+
+    // Se o endereco local for informado eh realizado bind antes
+    // de efetuar a conexao
+    if (NewSock!=INVALID_SOCKET && (iplocaladdr = IPStrToLong( _localaddr ))!=INADDR_NONE)
+    {
+        memset( &localsin, 0, sizeof(localsin) );
+
+        localsin.sin_family = AF_INET;
+
+        localsin.sin_addr.s_addr = iplocaladdr;
+
+        if ( ::bind(NewSock, (struct sockaddr*) &localsin, sizeof(localsin)) != SOCKET_ERROR )
+        {
+            _TRACE2L(LOGLEVEL3, "Connect: Socket %d bound to local address %s", NewSock, _localaddr);
+        }
+        else
+        {
+            _TRACE1L(LOGLEVEL3, "Connect: Erro no bind (Local IP:%s)", _localaddr);
+        }
+    }
+
+    ...
+}
+
+
+
+shared-1.1.16
+-------------
+
+
+. SocketCtrl.cpp
+
+=> Alterei o tratamento de flAccept na funcao readall()
+
+/*
+    Executa select() verificando dentre os sockets ativos quais contem dados
+    a serem lidos. Se positivo efetua leitura do primeiro socket da lista
+    com dados pendentes.
+    _flAccept: Indica se esta funcao aceita novas conexoes em sockets em estado de listen (TCP)
+               Caso _flAccept=TRUE, ao ocorrer nova conexao o socket recem
+               criado eh retornado em _psock e a funcao retornarah 0
+    _timeout = SELECT_BLOCK => select fica bloqueado ateh a chegada de pacotes
+    _psock: Retorna o socket cujos dados foram lidos
+    Se retornar < 0 deve-se executar close() no socket retornado em *_psock caso
+    este seja != INVALID_SOCKET
+
+    Caso buf==NULL ou sz==0 => executa apenas o comando select(),
+    retornando 0. O socket com dados a serem lidos serah atribuido
+    a _psock (se != NULL)
+*/
+
+int SocketCtrl::readall(LPSTR buf, unsigned int sz, BOOL flMustFillBuf, BOOL _flAccept, long _timeout, SOCKET *_psock )
+
+
+
+shared-1.1.17
+-------------
+
+. Debug.cpp
+
+=> Substituicao por todas as chamadas a fprintf() por fputs().
+Utilizando a funcao fprintf(fd, str) podia causar GPF em caso de
+<str> conter caracteres que ao serem interpretados exigiam a existencia
+de novos parametros a serem passados para a funcao (ex. %). Como estes
+parametros nao eram passados ocorria SIGSEGV (!).
+
+
+. XStr.cpp / XStr.h
+
+=> Os construtores que tinham como parametro (...) foram desativados
+para evitar GPF em caso de inicializacao com string que continha
+caracteres especiais para o vsprintf() (ex. %).
+
+///XStrStatic( LPCSTR _pstr, ... ) : XStr( m_Str, TSIZE )
+XStrStatic( LPCSTR _pstr ) : XStr( m_Str, TSIZE )
+
+///XStrDyn( LPCSTR _pstr, ... );
+XStrDyn( LPCSTR _pstr );
+
+
+
+shared-1.1.18
+-------------
+
+
+. semaphore.cpp
+
+=> Protecao na funcao Signal() em SEMAPH_NORMAL para o caso de ser executado
+Signal() quando o semaforo nao estiver em estado de Wait() (apenas na
+a versao Linux).
+
+BOOL _SEMAPHORE::Signal( LPCSTR _DebugStr )
+{
+    BOOL ret;
+
+    ret = FALSE;
+
+    if( flOk )
+    {
+        if ( _DebugStr )
+        {
+            _TRACE1L(LOGLEVEL3, "Semaphore - Signal (%s)", _DebugStr);
+        }
+
+        switch( SType )
+        {
+            case SEMAPH_NORMAL:
+#if defined( _WIN32 )
+                ret = ReleaseSemaphore(hSemaphObj, 1, NULL);
+#elif defined( _LINUX )
+                pthread_mutex_lock( pThreadMutex );
+
+                if (nRes<nMaxRes)
+                {
+                    nRes++;
+
+                    pthread_cond_signal( pThreadCond );
+                }
+                else
+                {
+                    if ( _DebugStr )
+                    {
+                        _TRACE2L(LOGLEVEL3, "Semaphore - Signal (%s) error! : Too many Signals : <nMaxRes:%u> already reached", _DebugStr, nMaxRes);
+                    }
+                    else
+                    {
+                        _TRACE1L(LOGLEVEL3, "Semaphore - Signal error! : Too many Signals : <nMaxRes:%u> already reached", nMaxRes);
+                    }
+                }
+
+                pthread_mutex_unlock( pThreadMutex );
+                ret = TRUE;
+#endif
+                break;
+
+    ...
+}
+
+
+shared-1.1.19
+-------------
+
+
+=> Protecao na funcao Signal() em SEMAPH_MUTEX para o caso de ser executado
+Signal() quando o semaforo nao estiver em estado de Wait(). Protecao e
+mensagens de erro em SEMAPH_NORMAL e SEMAPH_MUTEX implantadas nas versoes
+Linux e Windows.
+
+=> Correcao de bug na funcao Signal() no caso de SEMAPH_NORMAL em linux. O
+semaforo condicional soh deve ser sinalizado se o mesmo estiver em estado de
+Wait (!). Quando pthread_cond_signal() eh executado nao se pode garantir o
+que serah executado em seguida - seja a continuidade da execucao do Signal()
+ou a liberacao do pthread_cond_wait() pendente. Sendo assim, passei a computar
+a alocacao e desalocacao de recursos imediatamente antes da execucao de 
+pthread_cond_signal() para evitar o bug anterior o qual gerava inconsistencias
+graves no tratamento de semaforos (!!!) - e o decremento de nRes quando o
+semaforo estah em estado de pthread_cond_wait() foi transferido para a 
+funcao Signal().
+
+
+. semaphore.h
+
+=> Acrescentada variavel para controlar o numero de waits pendentes.
+=> Acrescentada funcao para definir o nivel de mensagens de debug
+
+#define SEMAPH_DBGLVL_NONE      0
+#define SEMAPH_DBGLVL_NORMAL    1
+#define SEMAPH_DBGLVL_FULL      2
+
+
+class _SEMAPHORE
+{
+    private:
+        int   SType,        // Tipo do semaforo
+              DbgLvl;       // Debug level
+
+        UINT  nRes,         // Numero de recursos disponiveis no momento
+              nWaitsPend,   // Numero de Waits pendentes
+              nMaxRes;      // Numero maximo de recursos
+
+
+    public:
+
+        void SetDbgLevel( int _val    )   { DbgLvl          = _val;  }
+
+    ...
+}
+
+
+. semaphore.cpp
+
+_SEMAPHORE::_SEMAPHORE( int _SType, int _nMaxRes, DWORD _WaitTime, DWORD _timeout, int _nInitCount )
+{
+    ...
+
+    nWaitsPend = 0;
+
+    ...
+        case SEMAPH_MUTEX:
+            nRes    = 1;
+            nMaxRes = 1;
+        case SEMAPH_INVERSE:
+    ...
+}
+
+
+BOOL _SEMAPHORE::Signal( LPCSTR _DebugStr )
+{
+    ...
+
+        switch( SType )
+        {
+            case SEMAPH_NORMAL:
+#if defined( _WIN32 )
+                ret = ReleaseSemaphore(hSemaphObj, 1, NULL);
+
+                if (ret)
+                    nRes++;
+                else
+                {
+                    if ( _DebugStr )
+                    {
+                        _TRACE2L(LOGLEVEL3, "Semaphore - Signal (%s) error! : Too many Signals : <nMaxRes:%u> already reached", _DebugStr, nMaxRes);
+                    }
+                    else
+                    {
+                        _TRACE1L(LOGLEVEL3, "Semaphore - Signal error! : Too many Signals : <nMaxRes:%u> already reached", nMaxRes);
+                    }
+                }
+
+#elif defined( _LINUX )
+                pthread_mutex_lock( pThreadMutex );
+
+                if (nRes<nMaxRes)
+                {
+                    ret = TRUE;
+
+                    nRes++;
+
+                    // Caso o semaforo condicional esteja em estado de Wait => executa Signal
+                    // liberando uma das threads suspensas. Se nao for o caso simplesmente
+                    // incrementa o numero de recursos disponiveis
+                    if (nWaitsPend > 0)
+                    {
+                        nWaitsPend--;
+                        nRes--;
+
+                        if ( _DebugStr && DbgLvl>=SEMAPH_DBGLVL_FULL )
+                        {
+                            _TRACE3L(LOGLEVEL3, "Semaphore - Signal (%s) : pthread_cond_signal() executed - nRes=%u  WaitsPend=%u", _DebugStr, nRes, nWaitsPend);
+                        }
+
+                        pthread_cond_signal( pThreadCond );
+
+                        if ( _DebugStr && DbgLvl>=SEMAPH_DBGLVL_FULL )
+                        {
+                            _TRACE3L(LOGLEVEL3, "Semaphore - Signal (%s) : pthread_cond_signal() passed - nRes=%u  WaitsPend=%u", _DebugStr, nRes, nWaitsPend);
+                        }
+                    }
+                }
+                else
+                {
+                    if ( _DebugStr )
+                    {
+                        _TRACE2L(LOGLEVEL3, "Semaphore - Signal (%s) error! : Too many Signals : <nMaxRes:%u> already reached", _DebugStr, nMaxRes);
+                    }
+                    else
+                    {
+                        _TRACE1L(LOGLEVEL3, "Semaphore - Signal error! : Too many Signals : <nMaxRes:%u> already reached", nMaxRes);
+                    }
+                }
+
+                pthread_mutex_unlock( pThreadMutex );
+#endif
+                break;
+
+            case SEMAPH_MUTEX:
+
+                if (nRes<nMaxRes)
+                {
+                    ret = TRUE;
+                    nRes++;
+                }
+                else
+                {
+                    if ( _DebugStr )
+                    {
+                        _TRACE2L(LOGLEVEL3, "Semaphore - Signal (%s) error! : Too many Signals : <nMaxRes:%u> already reached", _DebugStr, nMaxRes);
+                    }
+                    else
+                    {
+                        _TRACE1L(LOGLEVEL3, "Semaphore - Signal error! : Too many Signals : <nMaxRes:%u> already reached", nMaxRes);
+                    }
+                }
+
+                if (ret)
+                {
+#if defined( _WIN32 )
+                    LeaveCriticalSection( &m_cs );
+#elif defined( _LINUX )
+                    pthread_mutex_unlock( pThreadMutex );
+#endif
+                }
+
+            break;
+
+    ...
+}
+
+
+BOOL _SEMAPHORE::Wait( BOOL flWait, LPCSTR _DebugStr )
+{
+    ...
+
+        switch( SType )
+        {
+            case SEMAPH_NORMAL:
+
+                if( flWait )
+                {
+                    if( dwTimeout == SEMAPH_BLOCK )
+                        dwTime = INFINITE;
+                    else
+                        dwTime = dwTimeout;
+                }
+                else
+                {
+                    if( dwTimeout == SEMAPH_BLOCK )
+                        dwTime = 0;
+                    else
+                        dwTime = dwTimeout;
+                }
+#if defined( _WIN32 )
+                nWaitsPend++;
+
+                switch( WaitForSingleObject( hSemaphObj, dwTime ) )
+                {
+                    case WAIT_OBJECT_0:
+                        nRes--;
+                        ret = TRUE;
+                    break;
+
+                    case WAIT_ABANDONED:
+                    case WAIT_TIMEOUT:
+                    default:
+                        ret = FALSE;
+                }
+
+                nWaitsPend--;
+
+#elif defined( _LINUX )
+                pthread_mutex_lock( pThreadMutex );
+
+                if( nRes <= 0 && dwTime == INFINITE )
+                {
+                    nWaitsPend++;
+
+                    if ( _DebugStr && DbgLvl>=SEMAPH_DBGLVL_FULL )
+                    {
+                        _TRACE3L(LOGLEVEL3, "Semaphore - Wait (%s) : pthread_cond_wait() executed  - nRes=%u  WaitsPend=%u", _DebugStr, nRes, nWaitsPend);
+                    }
+
+                    pthread_cond_wait( pThreadCond, pThreadMutex );
+
+                    if ( _DebugStr && DbgLvl>=SEMAPH_DBGLVL_FULL )
+                    {
+                        _TRACE3L(LOGLEVEL3, "Semaphore - Wait (%s) : pthread_cond_wait() passed  - nRes=%u  WaitsPend=%u", _DebugStr, nRes, nWaitsPend);
+                    }
+
+                    ret = TRUE;
+                }
+                else if( nRes <= 0 )
+                {
+                    ts.tv_sec  = time( NULL ) + (dwTime / 1000L);
+                    ts.tv_nsec = (dwTime % 1000L) * 100000L;
+
+                    nWaitsPend++;
+
+                    if ( _DebugStr && DbgLvl>=SEMAPH_DBGLVL_FULL )
+                    {
+                        _TRACE3L(LOGLEVEL3, "Semaphore - Wait (%s) : pthread_cond_timedwait() executed  - nRes=%u  WaitsPend=%u", _DebugStr, nRes, nWaitsPend);
+                    }
+
+                    if( pthread_cond_timedwait( pThreadCond, pThreadMutex, &ts ) == ETIMEDOUT )
+                    {
+                        nWaitsPend--;
+                        nRes--;
+                        ret = FALSE;
+                    }
+                    else
+                        ret = TRUE;
+
+                    if ( _DebugStr && DbgLvl>=SEMAPH_DBGLVL_FULL )
+                    {
+                        _TRACE4L(LOGLEVEL3, "Semaphore - Wait (%s) : pthread_cond_timedwait() passed - ret=%d  nRes=%u  WaitsPend=%u", _DebugStr, ret, nRes, nWaitsPend);
+                    }
+                }
+                else
+                {
+                    ret = TRUE;
+                    nRes--;
+                }
+
+                pthread_mutex_unlock( pThreadMutex );
+#endif
+            break;
+
+            case SEMAPH_MUTEX:
+                nWaitsPend++;
+
+#if defined( _WIN32 )
+                EnterCriticalSection(&m_cs);
+#elif defined( _LINUX )
+                pthread_mutex_lock( pThreadMutex );
+#endif
+
+                nWaitsPend--;
+
+                nRes--;
+                ret = TRUE;
+            break;
+
+    ...
+}
+
+
+. compat.cpp / compat.h
+
+=> Novas funcoes disponiveis para Windows:
+
+LONG  random (void);
+void  srandom(UINT seed);
+
+
+As funcoes rand() e srand() funcionam para Windows e Linux.
+
+
+. unixthread.cpp
+
+=> Correcao de bug na funcao WaitForMe (em Linux).
+
+// Por enquanto nao utilizei time (timeout)
+int UnixThread::WaitForMe(unsigned long time)
+{
+   int ret;
+
+
+   ret = -1;
+
+   if ( flOk && pthread_join(hThread, (void **)&ret)!=0 )
+      ret = -1;
+
+   return ret;
+}
+
+
+shared-1.1.20
+-------------
+
+. semaphore.h
+
+=> Alterei o tipo de nRes e nMaxRes para <int> - para evitar possivel
+situacao de erro em Windows.
+
+class _SEMAPHORE
+{
+    private:
+        int   SType,        // Tipo do semaforo
+              DbgLvl;       // Debug level
+
+        int   nRes,         // Numero de recursos disponiveis no momento
+              nMaxRes;      // Numero maximo de recursos   
+        UINT  nWaitsPend;   // Numero de Waits pendentes
+
+    ...
+}
+
+
+. semaphore.cpp
+
+=> Correcao no tratamento do valor inicial do semaforo
+
+_SEMAPHORE::_SEMAPHORE( int _SType, int _nMaxRes, DWORD _WaitTime, DWORD _timeout, int _nInitCount )
+{
+    SType      = _SType;
+    flOk       = FALSE;
+    nMaxRes    = _nMaxRes;
+    nWaitsPend = 0;
+
+    if ( nMaxRes <=0 )
+        nMaxRes = 1;
+
+    if( _nInitCount == SEMAPH_INITCOUNTDEF )
+    {
+        if (SType == SEMAPH_INVERSE)
+            _nInitCount = 0;
+        else
+            _nInitCount = nMaxRes;
+    }
+    else if ( _nInitCount < 0 )
+        _nInitCount = 0;
+    else if ( _nInitCount > nMaxRes )
+        _nInitCount = nMaxRes;
+
+    nRes = _nInitCount;
+
+    ...
+}
+
+
+=> Otimizacao em Signal: Quando nWaitsPend==0 nao ha necessidade de
+incrementar nRes para decrementa-lo em seguida.
+
+BOOL _SEMAPHORE::Signal( LPCSTR _DebugStr )
+{
+    ...
+
+        switch( SType )
+        {
+            case SEMAPH_NORMAL:
+#if defined( _WIN32 )
+                ret = ReleaseSemaphore(hSemaphObj, 1, NULL);
+
+                if (ret)
+                    nRes++;
+                else
+                {
+                    if ( _DebugStr )
+                    {
+                        _TRACE2L(LOGLEVEL3, "Semaphore - Signal (%s) error! : Too many Signals : <nMaxRes:%u> already reached", _DebugStr, nMaxRes);
+                    }
+                    else
+                    {
+                        _TRACE1L(LOGLEVEL3, "Semaphore - Signal error! : Too many Signals : <nMaxRes:%u> already reached", nMaxRes);
+                    }
+                }
+
+#elif defined( _LINUX )
+                pthread_mutex_lock( pThreadMutex );
+
+                if ( nRes<nMaxRes )
+                {
+                    ret = TRUE;
+
+                    //nRes++;
+
+                    // Caso o semaforo condicional esteja em estado de Wait => executa Signal
+                    // liberando uma das threads suspensas. Se nao for o caso simplesmente
+                    // incrementa o numero de recursos disponiveis
+                    if (nWaitsPend > 0)
+                    {
+                        nWaitsPend--;
+                        //nRes--;
+
+                        if ( _DebugStr && DbgLvl>=SEMAPH_DBGLVL_FULL )
+                        {
+                            _TRACE3L(LOGLEVEL3, "Semaphore - Signal (%s) : pthread_cond_signal() executed - nRes=%u  WaitsPend=%u", _DebugStr, nRes, nWaitsPend);
+                        }
+
+                        pthread_cond_signal( pThreadCond );
+
+                        if ( _DebugStr && DbgLvl>=SEMAPH_DBGLVL_FULL )
+                        {
+                            _TRACE3L(LOGLEVEL3, "Semaphore - Signal (%s) : pthread_cond_signal() passed - nRes=%u  WaitsPend=%u", _DebugStr, nRes, nWaitsPend);
+                        }
+                    }
+                    else
+                        nRes++;
+                }
+                else
+                {
+                    if ( _DebugStr )
+                    {
+                        _TRACE2L(LOGLEVEL3, "Semaphore - Signal (%s) error! : Too many Signals : <nMaxRes:%u> already reached", _DebugStr, nMaxRes);
+                    }
+                    else
+                    {
+                        _TRACE1L(LOGLEVEL3, "Semaphore - Signal error! : Too many Signals : <nMaxRes:%u> already reached", nMaxRes);
+                    }
+                }
+
+                pthread_mutex_unlock( pThreadMutex );
+#endif
+                break;
+
+    ...
+}
+
+
+shared-1.1.21
+-------------
+
+. VectorT.h
+
+=> Alteracao do nome da funcao de 
+
+BOOL erase(UINT ind);
+
+para 
+
+BOOL eraseIndex (UINT ind);
+
+Permitindo assim instanciar a classe com VectorT<UINT>
+
+
+. expr.cpp
+
+=> Possibilidade de inicializar ExprParser com _tmaxBuf==0
+
+ExprParser::ExprParser(UINT _nmaxParam, UINT _tmaxBuf, LPCSTR _delims, LPCSTR _simbols, UINT _tmaxParam)
+{
+    ...
+
+    if (nmaxParam && tmaxParam)
+    {
+
+    ...
+}
+
+
+shared-1.1.22
+-------------
+
+. semaphore.h / compat.h
+
+=> No caso de Linux a definicao de INFINITE foi transferida de
+semaphore.h para compat.h
+
+#define INFINITE      0xFFFFFFFF
+
+
+
+shared-1.1.23
+-------------
+
+. ListT.h
+
+=> Nova funcao:
+
+bool SetName(T *pobj, LPCSTR nome);
+
+
+
+shared-1.1.24
+-------------
+
+
+. compat.h
+
+=> Suporte a DOUBLE em Linux
+
+typedef double         DOUBLE;
+
+
+. SocketCtrl.cpp / SocketCtrl.h
+
+=> Novas funcoes:
+
+int  GetSinPort(struct sockaddr_in *_psin);
+BOOL GetClientName(SOCKET _clientSock, LPSTR _pIPStr, UINT _IPMaxLen, int *_pport);
+
+
+=> Alteracao na funcao connect():
+
+BOOL connect(LPCSTR _addr, LPCSTR _protocol, int _port, LPCSTR _service, SOCKET *_pNewSock, LPCSTR _localaddr);
+
+Agora esta funcao passa a aceitar IP em branco e porta=0 no caso de UDP.
+Neste caso eh realizado apenas o bind().
+
+
+. jitterbuffer.h / jitterbuffer.cpp
+
+=> Nova funcao
+
+BOOL JitterBuffer::search( ULONG _seq, LPSTR _pdata, ULONG *_pszdata );
+
+
+. XjitterCtrl.h / XjitterCtrl.cpp
+
+=> Nova funcao
+
+BOOL XJitterCtrl::SearchPacket( ULONG _seq, LPSTR _pdata, ULONG _szdata, ULONG *_pbytesread );
+
+
+
+shared-1.1.25
+-------------
+
+
+=> Criacao de uma classe (com template) de forma a generalizar a classe TxtBufVect (txtbufvect.cpp / h)
+para a bufferizacao de pacotes genericos normalmente recebidos via TCP ateh que estes estejam prontos
+para serem enviados para as rotinas principais de tratamento.
+
+Novo Arquivo: BufVectorT.h
+
+Alteracao de txtbufvect.cpp / h de forma a utilizarem BufVectorT como classe basica.
+
+
+. SVectorT.h
+
+=> Acrescentado parametro _flKill em eraseIndex()
+
+BOOL eraseIndex (UINT ind, BOOL _flKill=TRUE);
+
+
+. SocketCtrl.cpp / h
+
+=>Acrescentado parametro _flBlock na funcao connect() suportando agora chamada nao bloqueante
+
+BOOL SocketCtrl::connect(LPCSTR _addr, LPCSTR _protocol, int _port, LPCSTR _service, SOCKET *_pNewSock, LPCSTR _localaddr, BOOL _flBlock);
+
+Se o socket for nao bloqueante => retorna TRUE se o connect nao teve tempo de completar
+O processo deverah executar select() em seguida para verificar se a conexao
+foi estabelecida com sucesso ou ocorreu erro. Para facilitar esta verificacao foi criada a funcao abaixo:
+
+BOOL SocketCtrl::TestWriteSock(SOCKET clientSock, UINT _timeout)
+
+
+=> Acrescentado parametro _listensock na funcao de callback connectCallback() de accept(). Desta forma torna-se
+possivel saber qual o socket principal com o qual a nova conexao foi estabelecida.
+
+BOOL SocketCtrl::accept( BOOL (__cdecl *acceptCallback ) (SocketCtrl *_psock, SOCKET _ssock, char *buf, unsigned int blen),
+                         BOOL (__cdecl *connectCallback) (SocketCtrl *_psock, SOCKET _ssock, SOCKET _listensock),
+                         void (__cdecl *closeCallback  ) (SocketCtrl *_psock, SOCKET _ssock, LPCSTR _pCloseMsg),
+                         long _timeout )
+
+
+=> Acrescentado parametro _ssock na funcao de callback acceptCallback e closeCallback() de acceptUDP(). Desta forma torna-se
+possivel saber qual o socket principal estah associado ao evento ocorrido.
+
+
+BOOL SocketCtrl::acceptUDP( BOOL (__cdecl *acceptCallback) (SocketCtrl *_psock, SOCKET _ssock, struct sockaddr_in *_psin, char *buf, unsigned int blen),
+                            void (__cdecl *closeCallback)  (SocketCtrl *_psock, SOCKET _ssock, struct sockaddr_in *_psin, LPCSTR _pCloseMsg),
+                            long _timeout )
+
+
+Estas duas funcaoes (accept e acceptUDP) sofreram uma outra alteraacao permitindo que sejam chamadas mesmo que nao hajam sockets ativos na classe.
+Sendo assim, elas irao entrar em Wait(_timeout) antes de retornarem TRUE.
+
+
+=> Outras funcoes alteradas:
+
+De  : BOOL  GetClientName(SOCKET _clientSock, LPSTR _pIPStr, UINT _IPMaxLen, int *_pport)
+Para: BOOL  GetSockName  (SOCKET _clientSock, LPSTR _pIPStr, UINT _IPMaxLen, int *_pport)
+
+De  : ULONG GetClientIP  (SOCKET clientSock, LPSTR pIPStr, UINT IPMaxLen)
+Para: ULONG GetPeerName  (SOCKET _clientSock, LPSTR _pIPStr, UINT _IPMaxLen, int *_pport)
+
+De  : void  SocketCtrl::SetDefSin(LPCSTR _ip, int _port)
+Para: BOOL  SocketCtrl::SetDefSin(LPCSTR _ip, int _port)
+
+
+
+=> Transferido de config.h para SocketCtrl.h a constante SOCK_QLEN (normalmente utilizada na funcao listen() )
+
+#define SOCK_QLEN       1024
+
+
+
+shared-1.1.26
+-------------
+
+
+=> Incluidos em socket/ 3 novos modulos:
+
+sockbuffs.h / sockbuffs.cpp / isockbuff.h
+
+
+//STG_E_INCOMPLETE;     // Socket Error
+//STG_E_ACCESSDENIED    // Socket nao conectado
+//STG_E_INVALIDPOINTER  // Memory error
+//STG_E_WRITEFAULT      // Erro de escrita
+//S_OK                  // Ok
+
+class ISockBuff
+{
+
+public:
+
+    //virtual void SetUrl  (LPCTSTR _sztProtocol, LPCTSTR _sztHost, DWORD _dwPort) = 0;
+    virtual BOOL OpenUrl (void) = 0;
+    virtual BOOL CloseUrl(void) = 0;
+    virtual BOOL IsOpened(void) = 0;
+
+    virtual STDMETHODIMP Read( /* [length_is][size_is][out] */ void *pv,
+                       /* [in] */ ULONG cb,
+                       /* [out] */ ULONG *pcbRead) = 0;
+    virtual STDMETHODIMP Write( /* [size_is][in] */ const void *pv,
+                       /* [in] */ ULONG cb,
+                       /* [out] */ ULONG *pcbWritten) = 0;
+};
+
+
+class SockBuffs : private SocketCtrl
+{
+
+friend SockBuf_reg;
+
+public:
+
+    SockBuffs(UINT _maxids, ULONG _maxblen);
+   ~SockBuffs(void);
+
+    void  SetUrl       (LPCSTR _szProtocol, LPCSTR _szHost, DWORD _dwPort, LPCSTR _szConnStr, BOOL _flListen);
+    BOOL  OpenUrl      (void);
+    void  CloseUrl     (void);
+
+    BOOL  CreateWnd    (ULONG _wndid);
+    BOOL  SetWndMediaId(ULONG _wndid, ULONG _mediaid);
+    void  DestroyWnd   (ULONG _wndid);
+
+    ISockBuff * GetWndObj(ULONG _wndid);
+
+    ...
+};
+
+
+. Expr.cpp
+
+=> Acrescentado parametro <_delimiters> a get_next_string().
+
+// Assume que a expressão é do tipo:
+// v1<DELIM> v2<DELIM> ...<DELIM>vn
+// onde DEF_DELIMSTRING = ",;"
+// a cada chamada desta função é retornada a próxima string da expressão.
+// Os separadores nunca são retornados
+// Se Ok retorna string em token; tok_type == EX_ALFA
+// senão tok_type == '\0'
+
+int Expr::get_next_string(LPCSTR _delimiters)
+{
+   register LPSTR temp;
+
+   *token   = '\0';
+   tok_type = '\0';
+   temp     = token;
+
+   if (*expr)
+   {
+      while (iswhite(*expr))
+         expr++;
+
+      //while (*expr && *expr!=',' && *expr!=';')
+      //{
+      //   *temp++=*expr++;
+      //}
+
+      if (!_delimiters)
+         _delimiters = DEF_DELIMSTRING;
+        
+      while ( *expr && !is_in(*expr, _delimiters) )
+      {
+         *temp++=*expr++;
+      }
+
+      //if (*expr==',' || *expr==';')
+      //   expr++;
+
+      if (*expr)
+         expr++;
+
+      tok_type = EX_ALFA;
+      *temp = '\0';
+
+      trim(token, token);
+   }
+
+   return tok_type;
+}
+
+
+shared-1.1.27
+-------------
+
+
+=>ExprJoin
+
+. Expr.h / Expr.cpp
+
+Facilita a montagem de expressoes concatenando substrings
+
+class ExprJoin
+{
+public:
+
+    ExprJoin (UINT _tmaxexpr, LPCSTR _sep);
+   ~ExprJoin (void);
+
+    LPCSTR GetExpr(void) { return m_pExpr; }
+
+    void   reset       (void);
+    BOOL   CanAddString(LPCSTR _data, BOOL _flCanUseSep=TRUE);
+    BOOL   AddString   (LPCSTR _data, BOOL _flCanUseSep=TRUE);
+
+private:
+
+    LPSTR  m_pExpr;
+
+    BOOL   m_flOk;
+
+    UINT   m_utMaxExpr,
+           m_utExpr,
+           m_utSep;
+
+    char   m_szSep[TEXPR+1];
+};
+
+
+shared-1.1.28
+-------------
+
+=>Implementacao de controle automatico de bitrate para TX
+
+. SocketCtrl.cpp / .h
+
+BOOL SocketCtrl::SetBytesCount(BOOL _flOn, ULONG _uMaxBitrate, SOCKET clientSock)
+
+Se _uMaxBitrate for atingido e nao tenha sido especificado o tamanho da SendQueue
+os pacotes adicionais serao dropados.
+
+A janela de tempo utilizada para o calculo eh de 1 sec.
+
+Eh importante observar que caso o envio de media nao esteja distribuido homogeneamente
+ao longo do tempo, pode ocorrer erro de calculo devido a possivel defasagem entre
+a janela de tempo utilizada e a janela da fonte geradora dos pacotes. Neste caso
+eh fundamental o uso da SendQueue para garantir estabilidade na transmissao.
+
+
+
+shared-1.1.29
+-------------
+
+=>Novo modulo adicionado:
+
+. sockmwbuffs.cpp / .h
+
+Permite o controle de bitrate em transmissoes de media.
+
+
+
+=>Adicionada informacao de msecs em debug.cpp
+
+. debug.cpp
+
+void PrintError(UINT level, LPCTSTR szBuff);
+
+
+shared-1.1.31
+-------------
+
+=> Correcao em common.cpp.
+
+BOOL SplitUserID( LPCSTR UserID, LPSTR nick, LPSTR user, LPSTR host )
+
+Quando o host nao era da forma nick!user@host esta funcao gerava GPF (!)
+
+
+=> Implementado uPnP (para WinXP ou superior).
+
+. upnp.cpp / .h / NATUPnP.h
+
+
+shared-1.1.32
+-------------
+
+=> Correcao em SocketCtrl::TestWriteSock.
+
+Nas versoes anteriores esta funcao soh retornava TRUE no caso da conexao ser estabelecida
+na 1a tentativa do loop. Alem disso foram acrescentadas novas condicoes para closesocket e
+remocao do socket da lista de sockets ativos.
+
+BOOL SocketCtrl::TestWriteSock(SOCKET clientSock, UINT _timeout)
+{
+    BOOL   ret,
+           flAbort;
+
+    int    nSocksReady;
+
+    time_t ctime,
+           lasttime;
+
+    struct timeval stimeout;
+
+    fd_set wfdsel,
+           efdsel;
+
+
+    ret     = FALSE;
+    flAbort = FALSE;
+
+    if (clientSock==INVALID_SOCKET)
+        clientSock = socketMain;
+
+    if ( clientSock!=INVALID_SOCKET )
+    {
+        time(&ctime);
+
+        lasttime = ctime + _timeout;
+
+        // non blocking operation
+        stimeout.tv_sec  = 1;
+        stimeout.tv_usec = 0;
+
+        do
+        {
+            FD_ZERO(&wfdsel);
+            FD_ZERO(&efdsel);
+
+            FD_SET(clientSock, &wfdsel);
+            FD_SET(clientSock, &efdsel);
+
+            nSocksReady = select(FD_SETSIZE, NULL, &wfdsel, &efdsel, &stimeout);
+            
+            if ( nSocksReady!=SOCKET_ERROR && nSocksReady )
+            {
+                _WAIT(pConnectSemaph, "SocketCtrl - TestWriteSock(1)");
+
+                if ( FD_ISSET(clientSock, &wfdsel) )
+                {
+                    ret     = TRUE;
+                    flAbort = TRUE;
+
+                    _TRACE1L(LOGLEVEL3, "TestWriteSock - Conexao pendente estabelecida: sock %d", clientSock);
+                }
+
+                if ( FD_ISSET(clientSock, &efdsel) )
+                {
+                    flAbort = TRUE;
+
+                    _closesocket(clientSock);
+
+                    RemoveActiveSock(clientSock);
+                    _TRACE1L(LOGLEVEL3, "TestWriteSock - Erro no estabelecimento de conexao em connect(): sock %d", clientSock);
+                }
+
+                _SIGNAL(pConnectSemaph, "SocketCtrl - TestWriteSock(1)");
+            }
+            else if ( nSocksReady==SOCKET_ERROR || time(NULL) > lasttime )
+            {
+                _WAIT(pConnectSemaph, "SocketCtrl - TestWriteSock(2)");
+
+                flAbort = TRUE;
+
+                _closesocket(clientSock);
+                RemoveActiveSock(clientSock);
+
+                _SIGNAL(pConnectSemaph, "SocketCtrl - TestWriteSock(2)");
+
+                _TRACE1L(LOGLEVEL3, "TestWriteSock - Erro no estabelecimento de conexao ou timeout em connect(): sock %d", clientSock);
+            }
+        }
+        while ( !flAbort );
+    }
+
+    return ret;
+}
+
+
+shared-1.1.33
+-------------
+
+. expr.cpp / .h
+
+Novas funcoes implementadas:
+
+BOOL   CanAddString(ULONG _udata, BOOL _flCanUseSep=TRUE);
+BOOL   AddString   (ULONG _udata, BOOL _flCanUseSep=TRUE);
+
+class ExprJoin
+{
+public:
+
+    ExprJoin (UINT _tmaxexpr, LPCSTR _sep);
+   ~ExprJoin (void);
+
+    LPCSTR GetExpr(void) { return m_pExpr; }
+
+    void   reset       (void);
+    BOOL   CanAddString(LPCSTR _data, BOOL _flCanUseSep=TRUE);
+    BOOL   CanAddString(ULONG _udata, BOOL _flCanUseSep=TRUE);
+    BOOL   AddString   (LPCSTR _data, BOOL _flCanUseSep=TRUE);
+    BOOL   AddString   (ULONG _udata, BOOL _flCanUseSep=TRUE);
+
+private:
+
+    LPSTR  m_pExpr;
+
+    BOOL   m_flOk;
+
+    UINT   m_utMaxExpr,
+           m_utExpr,
+           m_utSep;
+
+    char   m_szSep[TEXPR+1];
+};
+
+
+shared-1.1.33
+-------------
+
+=> Adicionado novo modulo: sysinfo.cpp / .h
+
+BOOL GetCPUUsage(double *_pCPUUsageAvg, double *_pCPUUsageMin, double *_pCPUUsageMax, UINT _nIterativ)
+
+
+shared-1.1.34
+-------------
+
+=> Adicionada funcao DeleteFile()
+
+=> Novo modulo: socket/natupnp.idl
+
+
+shared-1.1.35
+-------------
+
+=> Added PASSWDLEN to def_ap.h
+
+
+shared-1.1.36
+-------------
+
+=> XStr.cpp changed for Linux compatibility
+
+. XTHROWs removed from code (!)
+
+. XStr member variables initialization changed
+
+
+shared-1.1.37b
+--------------
+
+=> New function added to fd_set modules:
+
+UINT getnfds(void);
+
+=> New function added to SocketCtrl modules: 
+
+UINT GetNumListenSocks(void);
+
+=> str_ap.cpp: fill_string() function now assigns '\0' to string if size=0.
+
+=> Implemented file read / write / index in sockbuffs modules.
+
+
+
+shared-1.1.38a
+--------------
+
+=> Added file percent notification on SockBuffs File Read.
+
+=> kill_elem() now is called after SVectorT control variables have been updated on erase and destroy functions.
+
+=> On accept() function, while processing write error sockets, if fd is included in socket write error list,
+ fd is removed from fd error list (if present) - filled by closeSSock() - to avoid this sock be procecced 2 times.
+
+
+shared-1.1.39a
+--------------
+
+. SockBuffs class extended:
+
+=> Bug Fix accessing offset index on fperc=100%.
+=> NotifyPkt() function changed now using bytes count instead of file pos.
+=> New functions: Play / Stop / Pause
+=> New notify function: NotifyEOF()
+
+
+shared-1.1.40a
+--------------
+
+. socketctrl.cpp
+
+=> Fixed a bug that could cause lost of data in TCP RX when a huge amount of data arrived 
+at once ( > SOCK_SERVERS_TXT_BUFSIZE ).
+
+#define SOCK_SERVERS_TXT_BUFSIZE   32767
+
+. txtbufvect.cpp / .h / BugVectorT.h
+
+=> New functions:
+
+ULONG TxtBuf_reg::GetBytesLeft(void);
+ULONG TxtBufVect::GetBytesLeft(UINT _ind);
+
+ULONG BufVectorT::GetBytesLeft(UINT _ind);
+ULONG BufSVectorT::GetBytesLeft(UINT _id);
+
+virtual ULONG BufVectorReg::GetBytesLeft(void) = 0;
+
+
+shared-1.1.40b
+--------------
+
+. txtbufvect.cpp
+
+=> Fixed a bug that caused stack overflow in TxtBufVect::GetBytesLeft(UINT _ind)
+
+
+
+shared-1.1.41a
+--------------
+
+. str_ap.cpp / .h
+
+New functions:
+
+LPSTR  StrAllocAttrib(LPCSTR _source);
+void * BufAllocAttrib(void *_psource, ULONG _sz);
+
+
+shared-1.1.42a
+--------------
+
+. New modules: xfile.cpp / .h
+
+. New function in str_ap.cpp / .h
+
+LPSTR StrReAllocAttrib(LPCSTR _source, LPSTR _oldptr, ULONG _maxsize)
+
+
+shared-1.1.43a
+--------------
+
+=> Visual Studio 2005 compatibility
+
+
+shared-1.1.44a
+--------------
+
+. semaphore.cpp
+
+=> Change text format in file.
+
+. socketctrl.cpp / .h
+
+=> New function created:
+
+BOOL SocketCtrl::CanSendData(SOCKET clientSock)
+{
+    BOOL ret;
+
+    ret = TRUE;
+
+    if ( clientSock == INVALID_SOCKET )
+        clientSock = socketMain;
+
+    if ( clientSock!=INVALID_SOCKET )
+    {
+        if ( (pewfds && pewfds->isset(clientSock)) ||
+             (pefds && pefds->isset(clientSock)) )
+        {
+            ret = FALSE;
+        }
+    }
+    else
+        ret = FALSE;
+
+    return ret;
+}
+
+Now functions write() and SendQueuedData() verify if socket is not enqueued to be closed
+before sending data.
+
+
+shared-1.1.45a
+--------------
+
+. debug.h
+
+=> Added LOGLEVEL6
+
+
+shared-1.1.46a
+--------------
+
+. Socketctrl.cpp / .h
+
+Added new parameter to SocketCtrl::write()
+
+int SocketCtrl::write(LPCSTR buf, unsigned int sz, SOCKET clientSock, BOOL flDebug, BOOL flMustSendAll, int flUDP, BOOL flWaitOnNoBuf)
+
+If flMustSendAll is set and no send queue is defined for that socket => write will block on NOBUF.
+
+
+shared-1.1.47a
+--------------
+
+. expr.cpp
+
+int Expr::get_token_expr(void)
+
+Fixed a bug caused when expr parameter begins with '*' and '*' has been defined as delimiter.
+
+
+shared-1.1.48a
+--------------
+
+. Sockbuffs classes improved to support defrag / reorder packets / APP Sharing compatibility.
+
+sbavconfindex   : manage avconf index header to let random access to file
+sockbuffsreg    : handle a primary buffer for each media id
+sockbuffsreg2   : create a jitter buffer for each stream to reorder late packets
+sockbuffsdefrag : merges segmented packets and verifies its integrity before send to caller
+
+
+shared-1.1.48b
+--------------
+
+. Added a new function to SockBuffs class to abort threads.
+
+void SockBuffs::Abort(void) { m_flExit = TRUE; }
+
+
+shared-1.1.49a
+--------------
+
+. Function SockBuffs::Abort() improved to release semaphores on aborting.
+
+. Function SockBuf_reg::Abort() is now available in class SockBuf_reg too.
+
+. Added new TRACEs for SockBuf_defrag debugging.
+
+
+shared-1.1.50a
+--------------
+
+. Fixed a bug that caused deadlock on new-del.cpp / memmgr.cpp modules.
+
+Now all memory manager modules use only one mutex instead of two.
+
+
+shared-1.1.51a
+--------------
+
+. Fixed a bug in SockMWBuffs::SavePkt() that could cause an incorrect nSegs calculation on
+defrag mode.
+
+
+shared-1.1.52a
+--------------
+
+. def_ap.h
+
+=> TPATH changed from 260 to 400.
+
+
+. sockbuffs.h / .cpp / isockbuff.h
+
+=> Added Media flags information to NotifyPkt() function on ISockBuffNotify interface.
+
+
+shared-1.1.53a
+--------------
+
+. sockbuffs.cpp
+
+=> Now Media flags information on ISockBuffNotify interface is cleared if stays in IDLE for
+more than NotifyFreq secs.
+
+
+shared-1.1.54a
+--------------
+
+. sockmwbuffs.cpp
+
+Fixed a bug in SockMWBuffs::SavePkt() that could get an incorrect packet size while
+saving packets to temporary buffer before sending to network. That bug ocurred when
+last segment size match 1400 bytes.
+
+
+shared-1.1.55a
+--------------
+
+. Created a new subdir called irm to remove dependences from elccsrv project.
+
+Now, the following files belong do shared lib:
+
+Files: cmd.cpp / .h / irc_defs.h / srv_defs.h / mediapkt.h
+
+
+. def_ap.h
+
+TPATH decreased from 400 to 260 bytes.
+
+
+. file_x.cpp
+
+File functions now accept 260 bytes length filename.
+
+
+. Created a new module: mediabuf.cpp
+
+
+. sockbuffs.h / suckbuffsreg.cpp
+
+Now accepts a new parameter to let dynamic memory reallocation ou out of buffer space.
+
+
+. socketctrl.h
+
+New member function implemented:
+
+inline void SocketCtrl::SetMasterSocket(SOCKET _s) { socketMain = _s;   }
+
+This function may be called after first connection from a listenning socket,
+setting the new socket to be the default one (master) instead of listenning socket.
+
+
+. mediabuf.cpp / .h
+
+New module to buffer incoming pieces of media packets until complete.
+
+
+. sockmwbuffs.cpp / .h 
+
+SockMWBuffs::SockMWBuffs(UINT _bitrate, UINT _nintervals, UINT _nmsecsbuff, BOOL _flmsecQOS, BOOL _flAudioPresent, BOOL _flDefrag)
+
+Now if _flDefrag==TRUE, a new thread will be created (_DoDefrag()) to defrag packets before delivering them
+to network by _DoWriteSock() thread.
+
+
+shared-1.1.55b
+--------------
+
+. sockmwbuffs.cpp
+
+Now flOpen flag remains set to TRUE even if called CloseUrl() function (socket is not closed anyway).
+
+. http-tunnel.cpp
+
+HTTP Header adjusted to protect against firewall / webproxy close connection. Content Length field increased to 1k GB.
+
+
+shared-1.1.55c
+--------------
+
+. New command added to cmd.cpp / .h: PORTQUERY
+
+. mediapkt.h added new LMediaPktExt classes
+
+. Sockbuffs classes extended to defrag AVCODEC encoder / decoder
+
+. Bugs fixed on sockbuffs / sockmwbuffs classes on new features
+
+
+shared-1.1.55d
+--------------
+
+. Added new traces to sockbuffsdefrag
+
+. Bugs fixed on sockbuffsdefrag / sockbuffsreg2
+
+
+shared-1.1.56a
+--------------
+
+. Added notify interface to sockmwbuffs
+
+. Now sockmwbuffs can handle mode than 1 mediaid (audio + video transmition)
+
+
+shared-1.1.57a
+--------------
+
+. sockmwbuffs notification control extended to notify vector, now providing
+mediaid parameter on NotifyPkt().
+
+. if SockMWBuffs::write() fails, reconnects to host and try to send packet again.
+
+
+shared-1.1.58a
+--------------
+
+. Added http proxy and authentication support to http tunnel classes.
+
+. Some modules have been changed to remove compilation warnings.
+
+. http tunnel connection type changed to Keep-Alive.
+
+
+

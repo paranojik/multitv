@@ -1,0 +1,79 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: MultiTV\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2008-02-12 15:19-0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Basepath: ../../../\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-Country: UNITED STATES\n"
+"X-Poedit-SearchPath-0: ./src/Skin\n"
+
+# C:\Documents
+#: src/Skin/Constants.cpp:12
+msgid "No skin found"
+msgstr ""
+
+# C:\Documents
+#: src/Skin/Constants.cpp:13
+msgid "Default skin not found"
+msgstr ""
+
+# C:\Documents
+#: src/Skin/Constants.cpp:14
+msgid "Default skin file not found"
+msgstr ""
+
+# C:\Documents
+#: src/Skin/Constants.cpp:17
+msgid "Change Skin"
+msgstr ""
+
+# C:\Documents
+#: src/Skin/Constants.cpp:18
+msgid "Change Language"
+msgstr ""
+
+# C:\Documents
+#: src/Skin/Constants.cpp:19
+msgid "Language"
+msgstr ""
+
+# C:\Documents
+#: src/Skin/Constants.cpp:20
+msgid "Exit"
+msgstr ""
+
+#: src/Skin/Constants.cpp:21
+msgid "Connect to server"
+msgstr ""
+
+#: src/Skin/Constants.cpp:22
+msgid "Join multicast"
+msgstr ""
+
+#: src/Skin/Constants.cpp:23
+msgid "File playback"
+msgstr ""
+
+#: src/Skin/Constants.cpp:30
+msgid "Select Skin"
+msgstr ""
+
+#: src/Skin/Constants.cpp:31
+msgid "Select Language"
+msgstr ""
+
+#: src/Skin/Constants.cpp:32
+msgid "IP.TV - "
+msgstr ""
+
+# C:\Documents
+#: src/Skin/Constants.cpp:35
+msgid "Select Skin Dialog"
+msgstr ""
+
